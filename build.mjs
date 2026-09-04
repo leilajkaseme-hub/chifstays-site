@@ -12,7 +12,7 @@
  */
 import { writeFileSync } from "node:fs";
 
-const SITE = "https://chifstay.com";      // not registered yet; used for canonical + JSON-LD
+const SITE = "https://chifstays.com";   // acheté 2026-09-04 chez Spaceship
 
 /* The hero grid is one tall picture and four small ones, so it needs exactly
    five. Six would wrap onto a third row and break the block. [stay, photo]. */
