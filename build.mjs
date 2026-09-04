@@ -10,7 +10,18 @@
  * The same object also writes the JSON-LD, so the structured data and the
  * visible text cannot drift apart.
  */
-import { writeFileSync } from "node:fs";
+import { writeFileSync, existsSync } from "node:fs";
+
+/* The wordmark is used only if it is actually on disk. Until make-logo.sh has
+   run there is no file, and a nav pointing at a missing image is worse than
+   the text it replaced, so the text stays. */
+const HAS_LOGO = existsSync("assets/logo-black.webp") && existsSync("assets/logo-white.webp");
+const brandNav = HAS_LOGO
+  ? '<img src="assets/logo-black.webp" alt="Chifstay" width="150" height="40"/>'
+  : 'Chif<span>stay</span>';
+const brandFoot = HAS_LOGO
+  ? '<img src="assets/logo-white.webp" alt="Chifstay" width="170" height="45"/>'
+  : 'Chif<span>stay</span>';
 
 const SITE = "https://chifstays.com";   // acheté 2026-09-04 chez Spaceship
 
@@ -169,7 +180,10 @@ function shell({ title, desc, canonical, body, jsonld, active }) {
 
 <nav class="nav">
   <div class="wrap">
-    <a class="brand" href="index.html">Chif<span>stay</span> <small>Funchal</small></a>
+    <a class="brand" href="index.html" aria-label="Chifstay, Funchal">
+      ${brandNav}
+      <small>Funchal</small>
+    </a>
     <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <div class="nav-links">
       ${link("index.html", "Home")}
@@ -186,7 +200,7 @@ ${body}
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="foot-brand">Chif<span>stay</span></div>
+        <div class="foot-brand">${brandFoot}</div>
         <p style="max-width:38ch;margin:0">Two apartments in Funchal, Madeira, looked after by ${HOST.name}. Both licensed, both booked through Airbnb.</p>
       </div>
       <div>

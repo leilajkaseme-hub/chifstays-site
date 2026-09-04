@@ -307,3 +307,11 @@ footer li{margin-bottom:9px}
 .book-price{font-size:1.6rem;font-weight:700;letter-spacing:-.03em;margin:2px 0 4px}
 .book-price span{font-size:.95rem;font-weight:400;color:var(--ink-2)}
 .book-save{font-size:.88rem;color:var(--terra);font-weight:600;margin:0 0 14px}
+
+/* --------------------------------------------------------------- wordmark
+   The logo is a raster wordmark, so it is exported twice rather than
+   recoloured by CSS: inverting anti-aliased black leaves grey fringes on the
+   dark footer. Black on the nav, white on the footer, each with its own alpha. */
+.brand img{height:34px;width:auto;display:block}
+.foot-brand img{height:38px;width:auto;margin-bottom:12px}
+@media (max-width:760px){ .brand img{height:28px} .brand small{display:none} }
