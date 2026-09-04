@@ -1,0 +1,25 @@
+name = "chifstays-booking-api"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+[vars]
+SITE_ORIGIN = "https://chifstays.com"
+
+# Holds, confirmed bookings and the cached Airbnb calendars live here.
+#   npx wrangler kv namespace create BOOKINGS
+[[kv_namespaces]]
+binding = "BOOKINGS"
+id = "0eee64cbe0954110940d90a70e2bc1b4"
+
+# Every 15 minutes: settle any hold Stripe has actually taken money for, drop
+# the ones it has not, and refresh the Airbnb calendars. The refresh is what
+# stops a night selling here after it sold on Airbnb, Vrbo or Booking.
+[triggers]
+crons = ["*/15 * * * *"]
+
+# Secrets are never written here. Set them with:
+#   npx wrangler secret put STRIPE_SECRET_KEY
+#   npx wrangler secret put STRIPE_WEBHOOK_SECRET
+#   npx wrangler secret put ICAL_PERLA        <- the Airbnb export URL
+#   npx wrangler secret put ICAL_VARANDA      <- the Airbnb export URL
