@@ -220,6 +220,15 @@ export default {
       return json(env, { ok: true, stripe: !!env.STRIPE_SECRET_KEY, channels: out });
     }
 
+    /* Pull the channel calendars now instead of waiting for the quarter hour.
+       Safe to call repeatedly: it only reads two feeds and overwrites a cached
+       list, and it is what the cron calls anyway. */
+    if (p === "/v1/refresh") {
+      const out = {};
+      for (const k of Object.keys(STAYS)) out[k] = await refreshChannel(env, k);
+      return json(env, out);
+    }
+
     if (p === "/v1/catalogue") {
       return json(env, { currency: CURRENCY, timezone: TZ,
         stays: Object.fromEntries(Object.entries(STAYS).map(([k, s]) =>
