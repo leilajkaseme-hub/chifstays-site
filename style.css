@@ -299,3 +299,11 @@ footer li{margin-bottom:9px}
   .hero-grid figure:nth-child(n+3),.gal figure:nth-child(n+3){display:none}
   .amen{grid-template-columns:1fr}
 }
+
+/* ------------------------------------------------------------------ prices */
+.price{font-size:.96rem;color:var(--ink-2);margin:0 0 16px}
+.price b{color:var(--ink);font-size:1.05rem}
+.price span{display:block;color:var(--terra);font-size:.85rem;font-weight:600;margin-top:2px}
+.book-price{font-size:1.6rem;font-weight:700;letter-spacing:-.03em;margin:2px 0 4px}
+.book-price span{font-size:.95rem;font-weight:400;color:var(--ink-2)}
+.book-save{font-size:.88rem;color:var(--terra);font-weight:600;margin:0 0 14px}

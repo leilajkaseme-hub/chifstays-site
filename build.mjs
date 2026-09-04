@@ -30,6 +30,10 @@ const STAYS = [
     area: "Barreiros, Funchal",
     guests: 3, bedrooms: 2, beds: 2, baths: 1,
     rating: 4.95, reviews: 21,
+    /* Read off the host calendar on 4 September 2026. airbnbNightly is what
+       Airbnb charges before its own service fee; nightly is what we charge
+       here, and there is no service fee on top of it. */
+    airbnbNightly: 126, nightly: 115, minNights: 7, leadDays: 2,
     badge: "Guest favourite",
     badgeNote: "In the top 10% of listings on Airbnb, by rating, reviews and reliability.",
     dir: "perla",
@@ -79,6 +83,7 @@ const STAYS = [
     area: "Above Praia Formosa, Funchal",
     guests: 3, bedrooms: 2, beds: 2, baths: 1,
     rating: 4.83, reviews: 6,
+    airbnbNightly: 138, nightly: 125, minNights: 7, leadDays: 2,
     badge: "Superhost",
     badgeNote: "Free parking on site, which is rare in this part of Funchal.",
     dir: "varanda",
@@ -231,6 +236,8 @@ function home() {
             <span>${ICON.bath} ${s.baths} bathroom</span>
           </div>
           <p>${esc(s.tagline)}.</p>
+          <p class="price"><b>€${s.nightly}</b> a night · ${s.minNights} nights minimum
+             <span>€${s.airbnbNightly - s.nightly} less than Airbnb, no service fee</span></p>
           <div class="stay-cta">
             <a class="btn btn-p" href="${s.slug}.html">See the apartment</a>
             <a class="btn btn-o" href="${s.airbnb}" target="_blank" rel="noopener">Check dates</a>
@@ -397,6 +404,9 @@ function listing(s) {
     <aside>
       <div class="book rv">
         ${ratingBlock(s)}
+        <div class="book-price"><b>€${s.nightly}</b> <span>a night</span></div>
+        <p class="book-save">€${s.airbnbNightly - s.nightly} a night less than the same flat on Airbnb,
+           and no Airbnb service fee on top.</p>
         <h3>${esc(s.badge)}</h3>
         <p style="color:var(--ink-2);font-size:.94rem">${esc(s.badgeNote)}</p>
         <a class="btn btn-p btn-lg" href="${s.airbnb}" target="_blank" rel="noopener">Check dates on Airbnb</a>
@@ -405,6 +415,8 @@ function listing(s) {
           <li><span>Bedrooms</span><b>${s.bedrooms}</b></li>
           <li><span>Beds</span><b>${s.beds}</b></li>
           <li><span>Bathroom</span><b>${s.baths}</b></li>
+          <li><span>Minimum stay</span><b>${s.minNights} nights</b></li>
+          <li><span>Book at least</span><b>${s.leadDays} days ahead</b></li>
           <li><span>Licence</span><b>${s.licence}</b></li>
         </ul>
         <p class="note">Prices depend on your dates, so they live on Airbnb rather than here.
@@ -453,6 +465,10 @@ function listing(s) {
       occupancy: { "@type": "QuantitativeValue", maxValue: s.guests },
       amenityFeature: s.amenities.map(([a, on]) => ({ "@type": "LocationFeatureSpecification", name: a, value: !!on })),
       aggregateRating: { "@type": "AggregateRating", ratingValue: s.rating, reviewCount: s.reviews, bestRating: 5 },
+      offers: { "@type": "Offer", price: s.nightly, priceCurrency: "EUR",
+                availability: "https://schema.org/InStock",
+                priceSpecification: { "@type": "UnitPriceSpecification",
+                  price: s.nightly, priceCurrency: "EUR", unitCode: "DAY" } },
       image: s.photos.slice(0, 5).map((p) => `${SITE}/assets/${s.dir}/${p[0]}.webp`),
     },
   });
