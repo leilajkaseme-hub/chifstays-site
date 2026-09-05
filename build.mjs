@@ -33,6 +33,7 @@ const HOST = { name: "Natalia", since: "1 year", superhost: true };
 
 const STAYS = [
   {
+    key: "perla",
     slug: "perla-do-oceano",
     name: "Perla do Oceano",
     tagline: "Funchal sea view with an XL terrace",
@@ -86,6 +87,7 @@ const STAYS = [
     ],
   },
   {
+    key: "varanda",
     slug: "varanda-do-sol",
     name: "Varanda do Sol",
     tagline: "A private terrace above Praia Formosa",
@@ -154,7 +156,7 @@ const ratingBlock = (s) =>
 const img = (s, [file, alt], cls = "") =>
   `<img${cls ? ` class="${cls}"` : ""} src="assets/${s.dir}/${file}.webp" alt="${esc(alt)}" loading="lazy" decoding="async" width="1200" height="800"/>`;
 
-function shell({ title, desc, canonical, body, jsonld, active }) {
+function shell({ title, desc, canonical, body, jsonld, active, booking, noindex }) {
   const link = (href, label) =>
     `<a href="${href}"${active === label ? ' aria-current="page"' : ""}>${label}</a>`;
   return `<!doctype html>
@@ -164,6 +166,7 @@ function shell({ title, desc, canonical, body, jsonld, active }) {
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}"/>
+${noindex ? '<meta name="robots" content="noindex,nofollow"/>' : ""}
 <link rel="canonical" href="${canonical}"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="${esc(title)}"/>
@@ -201,7 +204,7 @@ ${body}
     <div class="foot-grid">
       <div>
         <div class="foot-brand">${brandFoot}</div>
-        <p style="max-width:38ch;margin:0">Two apartments in Funchal, Madeira, looked after by ${HOST.name}. Both licensed, both booked through Airbnb.</p>
+        <p style="max-width:38ch;margin:0">Two apartments in Funchal, Madeira, looked after by ${HOST.name}. Both licensed. Book direct, no service fee.</p>
       </div>
       <div>
         <h4>The apartments</h4>
@@ -219,12 +222,13 @@ ${body}
     </div>
     <div class="foot-legal">
       <span>© ${new Date().getFullYear()} Chifstay · Funchal, Madeira, Portugal</span>
-      <span>Bookings and payment are handled by Airbnb.</span>
+      <span>Card payments by Stripe.</span>
     </div>
   </div>
 </footer>
 
 <script src="app.js"></script>
+${booking ? '<script src="booking.js"></script>' : ""}
 </body>
 </html>
 `;
@@ -254,7 +258,7 @@ function home() {
              <span>€${s.airbnbNightly - s.nightly} less than Airbnb, no service fee</span></p>
           <div class="stay-cta">
             <a class="btn btn-p" href="${s.slug}.html">See the apartment</a>
-            <a class="btn btn-o" href="${s.airbnb}" target="_blank" rel="noopener">Check dates</a>
+            <a class="btn btn-o" href="${s.slug}.html#book">Check dates</a>
           </div>
         </div>
       </article>`).join("\n");
@@ -326,8 +330,11 @@ ${cards}
     </div>
     <div class="faq rv">
       <details><summary>How do I book?</summary>
-        <p>Through Airbnb. Both apartments are listed there, the calendar is live, and payment and cancellation
-        are handled by Airbnb. The buttons on this site take you straight to the right listing.</p></details>
+        <p>Here, on this site. Pick your dates on the apartment page and pay by card through Stripe. The
+        calendar shows what is actually free: it reads the same availability as Airbnb, Vrbo and Booking, so a
+        night sold anywhere is closed everywhere.</p></details>
+      <details><summary>Is it cheaper than Airbnb?</summary>
+        <p>Yes, twice over. The nightly rate here is lower, and there is no Airbnb service fee on top.</p></details>
       <details><summary>How many people can stay?</summary>
         <p>Three in each apartment. Both have two bedrooms, two beds and one bathroom.</p></details>
       <details><summary>Is there parking?</summary>
@@ -423,7 +430,8 @@ function listing(s) {
            and no Airbnb service fee on top.</p>
         <h3>${esc(s.badge)}</h3>
         <p style="color:var(--ink-2);font-size:.94rem">${esc(s.badgeNote)}</p>
-        <a class="btn btn-p btn-lg" href="${s.airbnb}" target="_blank" rel="noopener">Check dates on Airbnb</a>
+        <div id="book" data-stay="${s.key}" data-nightly="${s.nightly}"
+             data-min="${s.minNights}" data-lead="${s.leadDays}"></div>
         <ul class="book-list">
           <li><span>Guests</span><b>${s.guests}</b></li>
           <li><span>Bedrooms</span><b>${s.bedrooms}</b></li>
@@ -455,8 +463,8 @@ function listing(s) {
 <section>
   <div class="wrap" style="text-align:center">
     <h2 class="rv">Free on your dates?</h2>
-    <p class="lede rv" style="margin:14px auto 26px">The calendar on Airbnb is the live one.</p>
-    <a class="btn btn-p btn-lg rv" href="${s.airbnb}" target="_blank" rel="noopener">Check dates on Airbnb</a>
+    <p class="lede rv" style="margin:14px auto 26px">Book straight here, and keep what Airbnb would have charged you on top.</p>
+    <a class="btn btn-p btn-lg rv" href="#book">Pick your dates</a>
   </div>
 </section>
 `;
@@ -466,6 +474,7 @@ function listing(s) {
     desc: `${s.name}: ${s.tagline.toLowerCase()}. ${s.guests} guests, ${s.bedrooms} bedrooms, ${s.baths} bathroom in ${s.area}. Rated ${s.rating} from ${s.reviews} reviews. Licence ${s.licence}.`,
     canonical: `${SITE}/${s.slug}.html`,
     active: s.name,
+    booking: true,
     body,
     jsonld: {
       "@context": "https://schema.org",
@@ -488,8 +497,75 @@ function listing(s) {
   });
 }
 
+
+/* ------------------------------------------------------- after the payment
+ * Stripe sends the guest back here. The page asks the Worker what actually
+ * happened rather than believing the URL, because anything in a query string
+ * is something a visitor can type. One <h1>, set once, and noindex: this page
+ * exists for one person for one minute. */
+function bookingDone() {
+  const body = `
+<section style="min-height:60vh;display:grid;place-items:center;text-align:center">
+  <div class="wrap" style="max-width:620px">
+    <p class="eyebrow" id="dnEyebrow">Booking</p>
+    <h1 id="dnTitle" style="margin-bottom:16px">Checking your booking…</h1>
+    <p class="lede" id="dnText" style="margin-inline:auto">One moment.</p>
+    <div id="dnFacts" style="margin-top:26px"></div>
+    <p style="margin-top:30px"><a class="btn btn-o" href="index.html">Back to the apartments</a></p>
+  </div>
+</section>
+
+<script>
+(function () {
+  var API = 'https://chifbay-booking-api.chifandcopt.workers.dev/stays';
+  var id = new URLSearchParams(location.search).get('id');
+  var title = document.getElementById('dnTitle');
+  var text  = document.getElementById('dnText');
+  var facts = document.getElementById('dnFacts');
+
+  function say(t, p) { title.textContent = t; text.textContent = p; }
+
+  if (!id) { say('We could not find that booking', 'The link is missing its reference. If you were charged, write to us and we will sort it out.'); return; }
+
+  /* The webhook usually lands before the guest does, but not always, so a
+     booking still showing as held is worth one retry rather than an alarming
+     message about a payment that did go through. */
+  var tries = 0;
+  (function check() {
+    fetch(API + '/v1/booking/' + encodeURIComponent(id))
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (b) {
+        if (b.status !== 'paid' && tries++ < 4) { setTimeout(check, 2000); return; }
+        if (b.status === 'paid') {
+          say('You are booked', 'We have your payment and the dates are yours. You will hear from us with the keys and the arrival details.');
+          facts.innerHTML = '<ul class="book-list" style="text-align:left;max-width:320px;margin:0 auto">'
+            + '<li><span>Arrive</span><b>' + b.from + '</b></li>'
+            + '<li><span>Leave</span><b>' + b.to + '</b></li>'
+            + '<li><span>Nights</span><b>' + b.nights + '</b></li>'
+            + '<li><span>Paid</span><b>&euro;' + (b.amount / 100).toFixed(0) + '</b></li></ul>';
+        } else {
+          say('Payment not completed', 'Nothing has been charged and the dates have been released. You can pick them again whenever you like.');
+        }
+      })
+      .catch(function () {
+        say('We could not load your booking', 'If your card was charged you are booked, and we will be in touch. Otherwise nothing was taken.');
+      });
+  })();
+})();
+</script>`;
+  return shell({
+    title: "Booking confirmed | Chifstay",
+    desc: "Your Chifstay booking.",
+    canonical: `${SITE}/booking-done.html`,
+    noindex: true,
+    body,
+    jsonld: { "@context": "https://schema.org", "@type": "WebPage", name: "Booking confirmed" },
+  });
+}
+
 /* ------------------------------------------------------------------- write */
 writeFileSync("index.html", home());
+writeFileSync("booking-done.html", bookingDone());
 for (const s of STAYS) writeFileSync(`${s.slug}.html`, listing(s));
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

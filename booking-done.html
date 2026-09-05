@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Booking confirmed | Chifstay</title>
+<meta name="description" content="Your Chifstay booking."/>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="canonical" href="https://chifstays.com/booking-done.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Booking confirmed | Chifstay"/>
+<meta property="og:description" content="Your Chifstay booking."/>
+<meta property="og:url" content="https://chifstays.com/booking-done.html"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Booking confirmed"}</script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Chifstay, Funchal">
+      <img src="assets/logo-black.webp" alt="Chifstay" width="150" height="40"/>
+      <small>Funchal</small>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="perla-do-oceano.html">Perla do Oceano</a>
+      <a href="varanda-do-sol.html">Varanda do Sol</a>
+      <a href="index.html#funchal">Funchal</a>
+    </div>
+  </div>
+</nav>
+
+
+<section style="min-height:60vh;display:grid;place-items:center;text-align:center">
+  <div class="wrap" style="max-width:620px">
+    <p class="eyebrow" id="dnEyebrow">Booking</p>
+    <h1 id="dnTitle" style="margin-bottom:16px">Checking your booking…</h1>
+    <p class="lede" id="dnText" style="margin-inline:auto">One moment.</p>
+    <div id="dnFacts" style="margin-top:26px"></div>
+    <p style="margin-top:30px"><a class="btn btn-o" href="index.html">Back to the apartments</a></p>
+  </div>
+</section>
+
+<script>
+(function () {
+  var API = 'https://chifbay-booking-api.chifandcopt.workers.dev/stays';
+  var id = new URLSearchParams(location.search).get('id');
+  var title = document.getElementById('dnTitle');
+  var text  = document.getElementById('dnText');
+  var facts = document.getElementById('dnFacts');
+
+  function say(t, p) { title.textContent = t; text.textContent = p; }
+
+  if (!id) { say('We could not find that booking', 'The link is missing its reference. If you were charged, write to us and we will sort it out.'); return; }
+
+  /* The webhook usually lands before the guest does, but not always, so a
+     booking still showing as held is worth one retry rather than an alarming
+     message about a payment that did go through. */
+  var tries = 0;
+  (function check() {
+    fetch(API + '/v1/booking/' + encodeURIComponent(id))
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (b) {
+        if (b.status !== 'paid' && tries++ < 4) { setTimeout(check, 2000); return; }
+        if (b.status === 'paid') {
+          say('You are booked', 'We have your payment and the dates are yours. You will hear from us with the keys and the arrival details.');
+          facts.innerHTML = '<ul class="book-list" style="text-align:left;max-width:320px;margin:0 auto">'
+            + '<li><span>Arrive</span><b>' + b.from + '</b></li>'
+            + '<li><span>Leave</span><b>' + b.to + '</b></li>'
+            + '<li><span>Nights</span><b>' + b.nights + '</b></li>'
+            + '<li><span>Paid</span><b>&euro;' + (b.amount / 100).toFixed(0) + '</b></li></ul>';
+        } else {
+          say('Payment not completed', 'Nothing has been charged and the dates have been released. You can pick them again whenever you like.');
+        }
+      })
+      .catch(function () {
+        say('We could not load your booking', 'If your card was charged you are booked, and we will be in touch. Otherwise nothing was taken.');
+      });
+  })();
+})();
+</script>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><img src="assets/logo-white.webp" alt="Chifstay" width="170" height="45"/></div>
+        <p style="max-width:38ch;margin:0">Two apartments in Funchal, Madeira, looked after by Natalia. Both licensed. Book direct, no service fee.</p>
+      </div>
+      <div>
+        <h4>The apartments</h4>
+        <ul>
+          <li><a href="perla-do-oceano.html">Perla do Oceano</a></li>
+          <li><a href="varanda-do-sol.html">Varanda do Sol</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Licences</h4>
+        <ul>
+          <li>Perla do Oceano — Alojamento Local 164578/AL</li>
+          <li>Varanda do Sol — Alojamento Local 164601/AL</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>© 2026 Chifstay · Funchal, Madeira, Portugal</span>
+      <span>Card payments by Stripe.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+
+</body>
+</html>

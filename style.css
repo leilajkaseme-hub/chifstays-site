@@ -315,3 +315,41 @@ footer li{margin-bottom:9px}
 .brand img{height:34px;width:auto;display:block}
 .foot-brand img{height:38px;width:auto;margin-bottom:12px}
 @media (max-width:760px){ .brand img{height:28px} .brand small{display:none} }
+
+/* ----------------------------------------------------------------- booking
+   Lives inside the sticky card. Taken nights are struck through as well as
+   greyed: colour alone is not a signal a colour-blind guest can read. */
+.bk-wait,.bk-down{font-size:.92rem;color:var(--ink-2)}
+.bk-down{border:1px solid var(--line);border-radius:var(--radius);padding:16px;background:var(--sand)}
+.bk-down p{margin:0 0 8px}.bk-down p:last-child{margin:0;color:var(--ink-3);font-size:.86rem}
+.bk-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.bk-head strong{font-size:.98rem}
+.bk-nav{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:#fff;
+  cursor:pointer;font-size:1.1rem;line-height:1;color:var(--ink);transition:border-color .2s,background .2s}
+.bk-nav:hover:not(:disabled){border-color:var(--ink)}
+.bk-nav:disabled{opacity:.3;cursor:default}
+.bk-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:16px}
+.bk-dow{text-align:center;font-size:.68rem;font-weight:700;letter-spacing:.06em;color:var(--ink-3);padding:4px 0}
+.bk-pad{aspect-ratio:1}
+.bk-day{aspect-ratio:1;border:0;background:none;border-radius:8px;cursor:pointer;font-size:.85rem;
+  color:var(--ink);font-family:inherit;transition:background .15s,color .15s}
+.bk-day:hover:not(:disabled){background:rgba(201,86,58,.12)}
+.bk-day.is-taken{color:var(--ink-3);text-decoration:line-through;cursor:not-allowed}
+.bk-day.is-past{color:var(--line);cursor:not-allowed}
+.bk-day.is-from,.bk-day.is-to{background:var(--terra);color:#fff;font-weight:700}
+.bk-day.is-mid{background:rgba(201,86,58,.16)}
+.bk-sum{border-top:1px solid var(--line);padding-top:14px}
+.bk-hint{font-size:.9rem;color:var(--ink-2);margin:0 0 6px}
+.bk-rate{font-size:1.05rem;font-weight:700;margin:0}
+.bk-row{display:flex;justify-content:space-between;gap:12px;font-size:.92rem;margin-bottom:10px}
+.bk-total{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:14px}
+.bk-amount{font-size:1.5rem;letter-spacing:-.03em}
+.bk-field{display:block;margin-bottom:10px}
+.bk-field span{display:block;font-size:.78rem;font-weight:600;color:var(--ink-2);margin-bottom:4px}
+.bk-field input{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;
+  font-family:inherit;font-size:.95rem;color:var(--ink);background:#fff}
+.bk-field input:focus{outline:none;border-color:var(--terra);box-shadow:0 0 0 3px rgba(201,86,58,.14)}
+.bk-go{width:100%;margin-top:4px}
+.bk-note{font-size:.8rem;color:var(--ink-3);margin:10px 0 0;text-align:center}
+.bk-err{font-size:.86rem;color:var(--terra-dark);font-weight:600;margin:10px 0 0}
