@@ -236,7 +236,7 @@ section{padding:clamp(56px,8vw,104px) 0}
 /* ----------------------------------------------------------------- footer */
 footer{background:var(--ink);color:#cfc9c1;padding:64px 0 34px;font-size:.92rem}
 footer a:hover{color:#fff}
-.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:38px;margin-bottom:40px}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:38px;margin-bottom:40px}
 footer h4{color:#fff;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;font-weight:700}
 footer ul{list-style:none;margin:0;padding:0}
 footer li{margin-bottom:9px}
@@ -285,12 +285,19 @@ footer li{margin-bottom:9px}
   .feats,.revs{gap:16px}
 }
 @media (max-width:760px){
+  /* Closed, this panel must be gone, not merely pushed up. translateY(-120%)
+     was measured leaving its last 28px and its bottom border showing over the
+     header as a stray line across the top of every phone page: the panel sits
+     at top:76px, so a percentage of its own height never clears the header.
+     visibility does clear it, whatever the height turns out to be. */
   .nav-links{
     position:fixed;inset:var(--nav-h) 0 auto;background:#fff;flex-direction:column;
     align-items:stretch;gap:0;padding:8px 20px 22px;border-bottom:1px solid var(--line);
-    transform:translateY(-120%);transition:transform .34s cubic-bezier(.2,.8,.2,1);
+    visibility:hidden;transform:translateY(-14px);opacity:0;
+    transition:transform .3s cubic-bezier(.2,.8,.2,1),opacity .24s,visibility 0s .3s;
+    box-shadow:0 14px 30px rgba(31,29,27,.09);
   }
-  .nav-links.open{transform:none}
+  .nav-links.open{visibility:visible;transform:none;opacity:1;transition-delay:0s}
   .nav-links a{padding:14px 0;border-bottom:1px solid var(--line)}
   .nav-toggle{display:block}
   .hero-grid,.gal{grid-template-columns:1fr;grid-template-rows:none;height:auto}
@@ -353,3 +360,5 @@ footer li{margin-bottom:9px}
 .bk-go{width:100%;margin-top:4px}
 .bk-note{font-size:.8rem;color:var(--ink-3);margin:10px 0 0;text-align:center}
 .bk-err{font-size:.86rem;color:var(--terra-dark);font-weight:600;margin:10px 0 0}
+.bk-day.is-short{color:var(--line);cursor:not-allowed}
+.bk-rule{font-size:.84rem;color:var(--terra);font-weight:600;margin:0 0 8px;line-height:1.45}

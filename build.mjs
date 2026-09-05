@@ -199,7 +199,7 @@ ${noindex ? '<meta name="robots" content="noindex,nofollow"/>' : ""}
       ${link("/", "Home")}
       ${link("/perla-do-oceano", "Perla do Oceano")}
       ${link("/varanda-do-sol", "Varanda do Sol")}
-      ${link("/#funchal", "Funchal")}
+      ${link("/#boat", "The boat")}
     </div>
   </div>
 </nav>
@@ -218,6 +218,14 @@ ${body}
         <ul>
           <li><a href="/perla-do-oceano">Perla do Oceano</a></li>
           <li><a href="/varanda-do-sol">Varanda do Sol</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>On the water</h4>
+        <ul>
+          <li><a href="https://chifbay.com" rel="noopener">Chifbay, private boat tours</a></li>
+          <li><a href="https://chifbay.com/hidden-coves-half-day" rel="noopener">The day trip</a></li>
+          <li><a href="https://chifbay.com/sunset-cruise" rel="noopener">The sunset trip</a></li>
         </ul>
       </div>
       <div>
@@ -329,6 +337,40 @@ ${cards}
   </div>
 </section>
 
+<section id="boat">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">The same crew, on the water</p>
+      <h2>We also run the boat</h2>
+      <p class="lede">Chifbay is our private boat out of Marina do Funchal, the same family, a few minutes
+      from either apartment. One group at a time, never shared: Cabo Girão, a swim at Fajã dos Padres, or the
+      coast at golden hour. Guests staying with us book it directly.</p>
+    </div>
+    <div class="feats rv-group">
+      <div class="feat rv">
+        <div class="ico">${ICON.wave}</div>
+        <h3>The day trip</h3>
+        <p>Two and a half or three hours down the west coast, with swimming and paddle boarding.</p>
+        <p style="margin-top:12px"><a class="btn btn-o" href="https://chifbay.com/hidden-coves-half-day"
+           rel="noopener">See the day trip</a></p>
+      </div>
+      <div class="feat rv">
+        <div class="ico">${ICON.star}</div>
+        <h3>The sunset trip</h3>
+        <p>Two hours to Cabo Girão as the light goes, or two and a half on to Ribeira Brava.</p>
+        <p style="margin-top:12px"><a class="btn btn-o" href="https://chifbay.com/sunset-cruise"
+           rel="noopener">See the sunset trip</a></p>
+      </div>
+      <div class="feat rv">
+        <div class="ico">${ICON.key}</div>
+        <h3>Rated 5.0</h3>
+        <p>Across every verified trip, with the same two skippers on board each time.</p>
+        <p style="margin-top:12px"><a class="btn btn-p" href="https://chifbay.com" rel="noopener">chifbay.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="sec-head rv">
@@ -365,6 +407,8 @@ ${cards}
     jsonld: {
       "@context": "https://schema.org",
       "@type": "ItemList",
+      publisher: { "@type": "Organization", name: "Chifstay", url: SITE,
+                   parentOrganization: { "@type": "Organization", name: "Chifbay", url: "https://chifbay.com" } },
       name: "Chifstay apartments in Funchal",
       itemListElement: STAYS.map((s, i) => ({
         "@type": "ListItem", position: i + 1,

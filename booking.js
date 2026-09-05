@@ -109,10 +109,21 @@
 
       var isBlocked = blocked.has(date);
       var tooSoon = date < earliest;
+
+      /* Once an arrival is chosen, every date that would make a stay shorter
+         than the minimum is switched off. Before this, a guest could pick six
+         nights, get a refusal, and have no way of seeing which day would have
+         worked. Now the first day they are allowed to leave is simply the
+         first one they can click. */
+      var tooShort = false;
+      if (from && !to) tooShort = date > from && date < addDays(from, MIN);
+
       if (isBlocked) b.classList.add('is-taken');
       if (tooSoon) b.classList.add('is-past');
-      b.disabled = isBlocked || tooSoon;
+      if (tooShort) b.classList.add('is-short');
+      b.disabled = isBlocked || tooSoon || tooShort;
       if (isBlocked) b.title = 'Already booked';
+      if (tooShort) b.title = MIN + ' nights minimum';
 
       if (from && date === from) b.classList.add('is-from');
       if (to && date === to) b.classList.add('is-to');
@@ -143,9 +154,14 @@
     var s = el('div', 'bk-sum');
 
     if (!from || !to) {
-      s.appendChild(el('p', 'bk-hint', from
-        ? 'Now pick the day you leave.'
-        : 'Pick the day you arrive. ' + MIN + ' nights minimum.'));
+      if (from) {
+        var earliestOut = addDays(from, MIN);
+        s.appendChild(el('p', 'bk-hint', 'Arriving ' + fmt(from) + '. Now pick the day you leave.'));
+        s.appendChild(el('p', 'bk-rule', MIN + ' nights minimum, so the earliest you can leave is ' + fmt(earliestOut) + '.'));
+      } else {
+        s.appendChild(el('p', 'bk-hint', 'Pick the day you arrive.'));
+        s.appendChild(el('p', 'bk-rule', 'Stays are ' + MIN + ' nights or more. Shorter stays are not possible here.'));
+      }
       s.appendChild(el('p', 'bk-rate', '€' + NIGHTLY + ' a night'));
       return s;
     }
@@ -157,7 +173,7 @@
     s.appendChild(row);
 
     if (n < MIN) {
-      s.appendChild(el('p', 'bk-err', 'The minimum stay is ' + MIN + ' nights.'));
+      s.appendChild(el('p', 'bk-err', MIN + ' nights minimum. Pick a later day to leave.'));
       return s;
     }
 
