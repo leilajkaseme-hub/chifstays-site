@@ -136,6 +136,13 @@ const STAYS = [
 ];
 
 /* ------------------------------------------------------------------ helpers */
+/* One place that decides what a URL looks like. GitHub Pages already serves
+   /perla-do-oceano for perla-do-oceano.html, so the extension is only ever
+   noise in a link, in a canonical and in a sitemap. The home page is "/" and
+   never "/index". The .html forms still answer 200 for anyone holding an old
+   link; the canonical tells search engines which of the two is the real one. */
+const url = (slug) => (slug ? `/${slug}` : "/");
+
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const stars = (n) => "★".repeat(Math.round(n)) + "☆".repeat(5 - Math.round(n));
 
@@ -183,16 +190,16 @@ ${noindex ? '<meta name="robots" content="noindex,nofollow"/>' : ""}
 
 <nav class="nav">
   <div class="wrap">
-    <a class="brand" href="index.html" aria-label="Chifstay, Funchal">
+    <a class="brand" href="/" aria-label="Chifstay, Funchal">
       ${brandNav}
       <small>Funchal</small>
     </a>
     <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <div class="nav-links">
-      ${link("index.html", "Home")}
-      ${link("perla-do-oceano.html", "Perla do Oceano")}
-      ${link("varanda-do-sol.html", "Varanda do Sol")}
-      ${link("index.html#funchal", "Funchal")}
+      ${link("/", "Home")}
+      ${link("/perla-do-oceano", "Perla do Oceano")}
+      ${link("/varanda-do-sol", "Varanda do Sol")}
+      ${link("/#funchal", "Funchal")}
     </div>
   </div>
 </nav>
@@ -209,8 +216,8 @@ ${body}
       <div>
         <h4>The apartments</h4>
         <ul>
-          <li><a href="perla-do-oceano.html">Perla do Oceano</a></li>
-          <li><a href="varanda-do-sol.html">Varanda do Sol</a></li>
+          <li><a href="/perla-do-oceano">Perla do Oceano</a></li>
+          <li><a href="/varanda-do-sol">Varanda do Sol</a></li>
         </ul>
       </div>
       <div>
@@ -257,8 +264,8 @@ function home() {
           <p class="price"><b>€${s.nightly}</b> a night · ${s.minNights} nights minimum
              <span>€${s.airbnbNightly - s.nightly} less than Airbnb, no service fee</span></p>
           <div class="stay-cta">
-            <a class="btn btn-p" href="${s.slug}.html">See the apartment</a>
-            <a class="btn btn-o" href="${s.slug}.html#book">Check dates</a>
+            <a class="btn btn-p" href="${url(s.slug)}">See the apartment</a>
+            <a class="btn btn-o" href="${url(s.slug)}#book">Check dates</a>
           </div>
         </div>
       </article>`).join("\n");
@@ -352,7 +359,7 @@ ${cards}
   return shell({
     title: "Chifstay — two apartments to rent in Funchal, Madeira",
     desc: "Two licensed apartments in Funchal, Madeira, each sleeping three with two bedrooms and a private terrace over the sea. Perla do Oceano in Barreiros and Varanda do Sol above Praia Formosa.",
-    canonical: SITE + "/",
+    canonical: SITE + url(),
     active: "Home",
     body,
     jsonld: {
@@ -362,7 +369,7 @@ ${cards}
       itemListElement: STAYS.map((s, i) => ({
         "@type": "ListItem", position: i + 1,
         item: {
-          "@type": "Apartment", name: s.name, url: `${SITE}/${s.slug}.html`,
+          "@type": "Apartment", name: s.name, url: `${SITE}${url(s.slug)}`,
           address: { "@type": "PostalAddress", addressLocality: "Funchal", addressRegion: "Madeira", addressCountry: "PT" },
           numberOfBedrooms: s.bedrooms, numberOfBathroomsTotal: s.baths,
           occupancy: { "@type": "QuantitativeValue", maxValue: s.guests },
@@ -472,7 +479,7 @@ function listing(s) {
   return shell({
     title: `${s.name} — ${s.tagline} | Chifstay Funchal`,
     desc: `${s.name}: ${s.tagline.toLowerCase()}. ${s.guests} guests, ${s.bedrooms} bedrooms, ${s.baths} bathroom in ${s.area}. Rated ${s.rating} from ${s.reviews} reviews. Licence ${s.licence}.`,
-    canonical: `${SITE}/${s.slug}.html`,
+    canonical: `${SITE}${url(s.slug)}`,
     active: s.name,
     booking: true,
     body,
@@ -481,7 +488,7 @@ function listing(s) {
       "@type": "Apartment",
       name: s.name,
       description: s.intro,
-      url: `${SITE}/${s.slug}.html`,
+      url: `${SITE}${url(s.slug)}`,
       address: { "@type": "PostalAddress", addressLocality: "Funchal", addressRegion: "Madeira", addressCountry: "PT" },
       numberOfBedrooms: s.bedrooms,
       numberOfBathroomsTotal: s.baths,
@@ -511,7 +518,7 @@ function bookingDone() {
     <h1 id="dnTitle" style="margin-bottom:16px">Checking your booking…</h1>
     <p class="lede" id="dnText" style="margin-inline:auto">One moment.</p>
     <div id="dnFacts" style="margin-top:26px"></div>
-    <p style="margin-top:30px"><a class="btn btn-o" href="index.html">Back to the apartments</a></p>
+    <p style="margin-top:30px"><a class="btn btn-o" href="/">Back to the apartments</a></p>
   </div>
 </section>
 
@@ -556,7 +563,7 @@ function bookingDone() {
   return shell({
     title: "Booking confirmed | Chifstay",
     desc: "Your Chifstay booking.",
-    canonical: `${SITE}/booking-done.html`,
+    canonical: `${SITE}/booking-done`,
     noindex: true,
     body,
     jsonld: { "@context": "https://schema.org", "@type": "WebPage", name: "Booking confirmed" },
@@ -570,8 +577,8 @@ for (const s of STAYS) writeFileSync(`${s.slug}.html`, listing(s));
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>${SITE}/</loc></url>
-${STAYS.map((s) => `  <url><loc>${SITE}/${s.slug}.html</loc></url>`).join("\n")}
+  <url><loc>${SITE}${url()}</loc></url>
+${STAYS.map((s) => `  <url><loc>${SITE}${url(s.slug)}</loc></url>`).join("\n")}
 </urlset>
 `;
 writeFileSync("sitemap.xml", sitemap);
