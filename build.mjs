@@ -441,8 +441,8 @@ function listing(s) {
           <li><span>Book at least</span><b>${s.leadDays} days ahead</b></li>
           <li><span>Licence</span><b>${s.licence}</b></li>
         </ul>
-        <p class="note">Prices depend on your dates, so they live on Airbnb rather than here.
-        Booking, payment and cancellation are handled there too.</p>
+        <p class="note">Booked and paid here. The calendar reads the same availability as Airbnb,
+        Vrbo and Booking, so a night sold anywhere is closed everywhere.</p>
       </div>
     </aside>
   </div>
