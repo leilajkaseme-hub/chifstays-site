@@ -96,7 +96,7 @@ const STAYS = [
     area: "Above Praia Formosa, Funchal",
     guests: 3, bedrooms: 2, beds: 2, baths: 1,
     rating: 4.83, reviews: 6,
-    airbnbNightly: 138, nightly: 125, minNights: 7, leadDays: 2,
+    airbnbNightly: 176, nightly: 165, minNights: 7, leadDays: 2,
     badge: "Superhost",
     badgeNote: "Free parking on site, which is rare in this part of Funchal.",
     dir: "varanda",
