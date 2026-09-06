@@ -426,10 +426,14 @@ ${cards}
 
 /* ------------------------------------------------------------ listing page */
 function listing(s) {
+  /* One gallery, not two. The five that show are the grid; the rest are in the
+     same lightbox behind them, hidden from the page but present in the DOM so
+     the viewer has every photo in order and the page stays short. Two galleries
+     half a page apart made a guest hunt for pictures they had already seen. */
   const gallery = s.photos.slice(0, 5).map((p, i) =>
-    `<figure>${img(s, p)}${i === 4 ? `<span class="gal-more">${s.photos.length} photos</span>` : ""}</figure>`).join("\n      ");
+    `<figure>${img(s, p)}${i === 4 ? `<span class="gal-more">Show all ${s.photos.length} photos</span>` : ""}</figure>`).join("\n      ");
 
-  const rest = s.photos.slice(5).map((p) => `<figure>${img(s, p)}</figure>`).join("\n      ");
+  const rest = s.photos.slice(5).map((p) => `<figure hidden>${img(s, p)}</figure>`).join("\n      ");
 
   const body = `
 <div class="wrap listing-head">
@@ -445,6 +449,7 @@ function listing(s) {
 
   <div class="gal rv">
       ${gallery}
+      ${rest}
   </div>
 
   <div class="cols">
@@ -498,18 +503,6 @@ function listing(s) {
     </aside>
   </div>
 </div>
-
-<section class="sand" data-lightbox>
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">Every room</p>
-      <h2>The rest of the apartment</h2>
-    </div>
-    <div class="shots rv-group">
-      ${rest}
-    </div>
-  </div>
-</section>
 
 <section>
   <div class="wrap" style="text-align:center">

@@ -6,33 +6,43 @@
  *
  *   Chifbay   dark navy ground, gold accent, huge serif display type, photos
  *             bled edge to edge, a video hero.
- *   Chifstay  white ground, terracotta accent, one clean sans, photos in a
+ *   Chifstay  white ground, sea-blue accent, one clean sans, photos in a
  *             rounded grid with air around them, a still photo hero.
  *
- * Terracotta and sea teal come from the apartments themselves - the roof tiles
- * and the water in the real photos - not from Airbnb's pink, which belongs to
- * Airbnb.
+ * The accent is the blue of the water in the real photos, not Airbnb's pink,
+ * which belongs to Airbnb.
  */
 
 :root{
+  /* The palette is read off the photographs, not chosen.
+     Measured across all 28 images: the dominant colour is warm sand at hue 30
+     with saturation around 0.25, and the only strongly saturated thing in any
+     frame is the sky and sea at hue 210, saturation 0.75.
+     The old terracotta accent sat at hue 15-30, the same family as the sand, so
+     it never separated from the photos and everything read muddy-warm. The
+     accent is now the blue: it is the one colour the pictures already contain
+     that nothing else on the page competes with, and it is what guests are
+     paying for. */
+
   /* ground and ink */
   --paper:#ffffff;
-  --sand:#faf8f5;          /* section bands, so white sections still separate */
-  --line:#e6e2dc;
-  --ink:#1f1d1b;
-  --ink-2:#57524c;         /* secondary text, passes AA on both grounds */
-  --ink-3:#8a837a;
+  --sand:#f7f4ef;          /* the warm neutral the rooms actually are */
+  --line:#e4ded4;
+  --ink:#1b2027;           /* charcoal with a blue cast, not a brown one */
+  --ink-2:#4e5762;
+  --ink-3:#8a929c;
 
   /* accents */
-  --terra:#c9563a;         /* the roof tiles */
-  --terra-dark:#a8402a;
-  --teal:#125f63;          /* the water */
-  --gold:#c9922f;          /* the review stars only */
+  --sea:#0a6ba8;           /* the water */
+  --sea-dark:#08507f;
+  --sea-soft:#e8f1f8;
+  --sand-deep:#a8895f;     /* the terracotta roofs, kept for small marks only */
+  --gold:#c9922f;          /* review stars only */
 
   --radius:14px;
   --radius-lg:20px;
-  --shadow:0 2px 6px rgba(31,29,27,.05),0 12px 28px rgba(31,29,27,.07);
-  --shadow-lift:0 4px 10px rgba(31,29,27,.07),0 20px 44px rgba(31,29,27,.12);
+  --shadow:0 2px 6px rgba(27,32,39,.05),0 12px 28px rgba(27,32,39,.07);
+  --shadow-lift:0 4px 10px rgba(27,32,39,.07),0 20px 44px rgba(27,32,39,.12);
   --wrap:1180px;
   --nav-h:76px;
 }
@@ -56,7 +66,7 @@ p{margin:0 0 1em}
 .lede{font-size:1.09rem;color:var(--ink-2);max-width:62ch}
 .eyebrow{
   font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
-  color:var(--terra);margin-bottom:14px;
+  color:var(--sea);margin-bottom:14px;
 }
 .sand{background:var(--sand)}
 section{padding:clamp(56px,8vw,104px) 0}
@@ -72,13 +82,13 @@ section{padding:clamp(56px,8vw,104px) 0}
 .nav.stuck{border-bottom-color:var(--line);box-shadow:0 1px 12px rgba(31,29,27,.05)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
 .brand{display:flex;align-items:baseline;gap:9px;font-weight:800;font-size:1.24rem;letter-spacing:-.03em}
-.brand span{color:var(--terra)}
+.brand span{color:var(--sea)}
 .brand small{font-weight:500;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
 .nav-links{display:flex;align-items:center;gap:30px;font-size:.93rem;font-weight:500;color:var(--ink-2)}
 .nav-links a{position:relative;padding:4px 0}
 .nav-links a::after{
   content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;
-  background:var(--terra);transition:right .3s cubic-bezier(.2,.8,.2,1);
+  background:var(--sea);transition:right .3s cubic-bezier(.2,.8,.2,1);
 }
 .nav-links a:hover{color:var(--ink)}
 .nav-links a:hover::after{right:0}
@@ -93,8 +103,8 @@ section{padding:clamp(56px,8vw,104px) 0}
   transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s,background .22s,color .22s;
 }
 .btn:hover{transform:translateY(-2px)}
-.btn-p{background:var(--terra);color:#fff;box-shadow:0 6px 18px rgba(201,86,58,.26)}
-.btn-p:hover{background:var(--terra-dark);box-shadow:0 10px 26px rgba(201,86,58,.34)}
+.btn-p{background:var(--sea);color:#fff;box-shadow:0 6px 18px rgba(10,107,168,.26)}
+.btn-p:hover{background:var(--sea-dark);box-shadow:0 10px 26px rgba(10,107,168,.34)}
 .btn-o{border-color:var(--line);background:#fff;color:var(--ink)}
 .btn-o:hover{border-color:var(--ink);box-shadow:var(--shadow)}
 .btn-lg{padding:16px 30px;font-size:1rem}
@@ -106,7 +116,7 @@ section{padding:clamp(56px,8vw,104px) 0}
 .hero{padding:clamp(28px,4vw,44px) 0 clamp(44px,6vw,72px)}
 .hero-copy{max-width:min(100%,760px);margin-bottom:clamp(26px,3.4vw,40px)}
 .hero h1{max-width:15ch}
-.hero h1 em{font-style:normal;color:var(--terra)}
+.hero h1 em{font-style:normal;color:var(--sea)}
 .hero-grid{
   display:grid;gap:12px;border-radius:var(--radius-lg);overflow:hidden;
   grid-template-columns:1.62fr 1fr 1fr;
@@ -156,9 +166,9 @@ section{padding:clamp(56px,8vw,104px) 0}
 .feat{padding:26px;border-radius:var(--radius);background:#fff;border:1px solid var(--line)}
 .feat .ico{
   width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
-  background:rgba(201,86,58,.09);margin-bottom:16px;
+  background:rgba(10,107,168,.09);margin-bottom:16px;
 }
-.feat .ico svg{width:20px;height:20px;stroke:var(--terra);fill:none;stroke-width:1.8}
+.feat .ico svg{width:20px;height:20px;stroke:var(--sea);fill:none;stroke-width:1.8}
 .feat h3{margin-bottom:8px}
 .feat p{color:var(--ink-2);font-size:.95rem;margin:0}
 
@@ -197,7 +207,7 @@ section{padding:clamp(56px,8vw,104px) 0}
 @media(max-width:560px){.shots{grid-template-columns:1fr}}
 .amen{display:grid;grid-template-columns:repeat(2,1fr);gap:13px 24px;margin:0;padding:0;list-style:none}
 .amen li{display:flex;align-items:center;gap:11px;color:var(--ink-2);font-size:.96rem}
-.amen svg{width:17px;height:17px;stroke:var(--teal);fill:none;stroke-width:1.7;flex:none}
+.amen svg{width:17px;height:17px;stroke:var(--sand-deep);fill:none;stroke-width:1.7;flex:none}
 .amen li.off{color:var(--ink-3);text-decoration:line-through;text-decoration-color:var(--line)}
 .amen li.off svg{stroke:var(--ink-3)}
 
@@ -229,7 +239,7 @@ section{padding:clamp(56px,8vw,104px) 0}
   justify-content:space-between;align-items:center;gap:20px;
 }
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-size:1.4rem;color:var(--terra);transition:transform .3s;line-height:1}
+.faq summary::after{content:"+";font-size:1.4rem;color:var(--sea);transition:transform .3s;line-height:1}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq p{margin:14px 0 0;color:var(--ink-2)}
 
@@ -241,7 +251,7 @@ footer h4{color:#fff;font-size:.76rem;letter-spacing:.14em;text-transform:upperc
 footer ul{list-style:none;margin:0;padding:0}
 footer li{margin-bottom:9px}
 .foot-brand{font-size:1.3rem;font-weight:800;color:#fff;letter-spacing:-.03em;margin-bottom:12px}
-.foot-brand span{color:var(--terra)}
+.foot-brand span{color:var(--sea)}
 .foot-legal{border-top:1px solid rgba(255,255,255,.13);padding-top:22px;display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:space-between;color:var(--ink-3);font-size:.83rem}
 
 /* --------------------------------------------------------------- lightbox */
@@ -310,10 +320,10 @@ footer li{margin-bottom:9px}
 /* ------------------------------------------------------------------ prices */
 .price{font-size:.96rem;color:var(--ink-2);margin:0 0 16px}
 .price b{color:var(--ink);font-size:1.05rem}
-.price span{display:block;color:var(--terra);font-size:.85rem;font-weight:600;margin-top:2px}
+.price span{display:block;color:var(--sea);font-size:.85rem;font-weight:600;margin-top:2px}
 .book-price{font-size:1.6rem;font-weight:700;letter-spacing:-.03em;margin:2px 0 4px}
 .book-price span{font-size:.95rem;font-weight:400;color:var(--ink-2)}
-.book-save{font-size:.88rem;color:var(--terra);font-weight:600;margin:0 0 14px}
+.book-save{font-size:.88rem;color:var(--sea);font-weight:600;margin:0 0 14px}
 
 /* --------------------------------------------------------------- wordmark
    The logo is a raster wordmark, so it is exported twice rather than
@@ -340,11 +350,11 @@ footer li{margin-bottom:9px}
 .bk-pad{aspect-ratio:1}
 .bk-day{aspect-ratio:1;border:0;background:none;border-radius:8px;cursor:pointer;font-size:.85rem;
   color:var(--ink);font-family:inherit;transition:background .15s,color .15s}
-.bk-day:hover:not(:disabled){background:rgba(201,86,58,.12)}
+.bk-day:hover:not(:disabled){background:rgba(10,107,168,.12)}
 .bk-day.is-taken{color:var(--ink-3);text-decoration:line-through;cursor:not-allowed}
 .bk-day.is-past{color:var(--line);cursor:not-allowed}
-.bk-day.is-from,.bk-day.is-to{background:var(--terra);color:#fff;font-weight:700}
-.bk-day.is-mid{background:rgba(201,86,58,.16)}
+.bk-day.is-from,.bk-day.is-to{background:var(--sea);color:#fff;font-weight:700}
+.bk-day.is-mid{background:rgba(10,107,168,.16)}
 .bk-sum{border-top:1px solid var(--line);padding-top:14px}
 .bk-hint{font-size:.9rem;color:var(--ink-2);margin:0 0 6px}
 .bk-rate{font-size:1.05rem;font-weight:700;margin:0}
@@ -356,9 +366,15 @@ footer li{margin-bottom:9px}
 .bk-field span{display:block;font-size:.78rem;font-weight:600;color:var(--ink-2);margin-bottom:4px}
 .bk-field input{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;
   font-family:inherit;font-size:.95rem;color:var(--ink);background:#fff}
-.bk-field input:focus{outline:none;border-color:var(--terra);box-shadow:0 0 0 3px rgba(201,86,58,.14)}
+.bk-field input:focus{outline:none;border-color:var(--sea);box-shadow:0 0 0 3px rgba(10,107,168,.14)}
 .bk-go{width:100%;margin-top:4px}
 .bk-note{font-size:.8rem;color:var(--ink-3);margin:10px 0 0;text-align:center}
-.bk-err{font-size:.86rem;color:var(--terra-dark);font-weight:600;margin:10px 0 0}
+.bk-err{font-size:.86rem;color:var(--sea-dark);font-weight:600;margin:10px 0 0}
 .bk-day.is-short{color:var(--line);cursor:not-allowed}
-.bk-rule{font-size:.84rem;color:var(--terra);font-weight:600;margin:0 0 8px;line-height:1.45}
+.bk-rule{font-size:.84rem;color:var(--sea);font-weight:600;margin:0 0 8px;line-height:1.45}
+
+/* One gallery: the five in the grid are laid out, the rest sit in the same
+   container as [hidden] so the lightbox has them in order without lengthening
+   the page. display:none on [hidden] is already in the reset. */
+.gal figure[hidden]{display:none}
+.gal-more{cursor:zoom-in}
