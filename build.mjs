@@ -313,8 +313,8 @@ ${STAYS.map((s, i) => `
         <span>${ICON.bath} ${s.baths} bathroom</span>
       </div>
       <p>${esc(s.tagline)}.</p>
-      <p class="price"><b>€${s.nightly}</b> a night · ${s.minNights} nights minimum
-         <span>€${s.airbnbNightly - s.nightly} less than Airbnb, no service fee</span></p>
+      <p class="price"><b>from €${s.nightly}</b> a night · ${s.minNights} nights minimum
+         <span>€10 or more a night under Airbnb, and no service fee</span></p>
       <div class="stay-cta">
         <a class="btn btn-p" href="${url(s.slug)}">See the apartment</a>
         <a class="btn btn-o" href="${url(s.slug)}#book">Check dates</a>
