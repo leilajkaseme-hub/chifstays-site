@@ -269,8 +269,8 @@ function home() {
             <span>${ICON.bath} ${s.baths} bathroom</span>
           </div>
           <p>${esc(s.tagline)}.</p>
-          <p class="price"><b>€${s.nightly}</b> a night · ${s.minNights} nights minimum
-             <span>€${s.airbnbNightly - s.nightly} less than Airbnb, no service fee</span></p>
+          <p class="price"><b>from €${s.nightly}</b> a night · ${s.minNights} nights minimum
+             <span>€10 or more a night under Airbnb, and no service fee</span></p>
           <div class="stay-cta">
             <a class="btn btn-p" href="${url(s.slug)}">See the apartment</a>
             <a class="btn btn-o" href="${url(s.slug)}#book">Check dates</a>
@@ -493,9 +493,9 @@ function listing(s) {
     <aside>
       <div class="book rv">
         ${ratingBlock(s)}
-        <div class="book-price"><b>€${s.nightly}</b> <span>a night</span></div>
-        <p class="book-save">€${s.airbnbNightly - s.nightly} a night less than the same flat on Airbnb,
-           and no Airbnb service fee on top.</p>
+        <div class="book-price"><b>from €${s.nightly}</b> <span>a night</span></div>
+        <p class="book-save">Always at least €10 a night under the same flat on Airbnb,
+           and no Airbnb service fee on top. Pick your dates for the exact price.</p>
         <h3>${esc(s.badge)}</h3>
         <p style="color:var(--ink-2);font-size:.94rem">${esc(s.badgeNote)}</p>
         <div id="book" data-stay="${s.key}" data-nightly="${s.nightly}"
@@ -545,6 +545,7 @@ function listing(s) {
       amenityFeature: s.amenities.map(([a, on]) => ({ "@type": "LocationFeatureSpecification", name: a, value: !!on })),
       aggregateRating: { "@type": "AggregateRating", ratingValue: s.rating, reviewCount: s.reviews, bestRating: 5 },
       offers: { "@type": "Offer", price: s.nightly, priceCurrency: "EUR",
+                description: "Lowest nightly rate; high season costs more.",
                 availability: "https://schema.org/InStock",
                 priceSpecification: { "@type": "UnitPriceSpecification",
                   price: s.nightly, priceCurrency: "EUR", unitCode: "DAY" } },

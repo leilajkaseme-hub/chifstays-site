@@ -162,7 +162,7 @@
         s.appendChild(el('p', 'bk-hint', 'Pick the day you arrive.'));
         s.appendChild(el('p', 'bk-rule', 'Stays are ' + MIN + ' nights or more. Shorter stays are not possible here.'));
       }
-      s.appendChild(el('p', 'bk-rate', '€' + NIGHTLY + ' a night'));
+      s.appendChild(el('p', 'bk-rate', 'from €' + NIGHTLY + ' a night'));
       return s;
     }
 
@@ -177,8 +177,13 @@
       return s;
     }
 
+    /* The nightly figure is whatever the server worked out for these exact
+       nights, not the headline rate: high season costs more, and a week over
+       new year pays December's rate for some nights and January's for the
+       rest. Showing NIGHTLY x n here would have been a number that did not
+       match the total underneath it. */
     var total = el('div', 'bk-total');
-    total.appendChild(el('span', null, '€' + NIGHTLY + ' × ' + n));
+    total.appendChild(el('span', 'bk-per', n + (n > 1 ? ' nights' : ' night')));
     total.appendChild(el('b', 'bk-amount', '…'));
     s.appendChild(total);
 
@@ -205,6 +210,8 @@
     return i;
   }
 
+  var n2 = function (q) { return q.count + (q.count > 1 ? ' nights' : ' night'); };
+
   var fmt = function (d) {
     return new Date(d + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
   };
@@ -229,6 +236,10 @@
       .then(function (res) {
         if (!res.ok) { box.textContent = '—'; showError(res.b.error); return; }
         box.textContent = '€' + (res.b.amount / 100).toFixed(0);
+        var per = root.querySelector('.bk-per');
+        if (per && res.b.perNight) {
+          per.textContent = n2(res.b) + ' · €' + (res.b.perNight / 100).toFixed(0) + ' a night';
+        }
       })
       .catch(function () { box.textContent = '—'; });
   }
