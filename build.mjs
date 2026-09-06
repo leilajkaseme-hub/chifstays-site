@@ -279,14 +279,13 @@ function home() {
       </article>`).join("\n");
 
   const body = `
-<header class="hero">
+<header class="intro">
   <div class="wrap">
     <div class="hero-copy rv">
       <p class="eyebrow">Funchal · Madeira</p>
       <h1>Two apartments, <em>both with the sea</em> in the window</h1>
-    </div>
-    <div class="hero-grid rv">
-      ${HERO_FIVE.map(([i, j]) => `<figure>${img(STAYS[i], STAYS[i].photos[j])}</figure>`).join("\n      ")}
+      <p class="lede">Both sleep three, both have two bedrooms and a terrace of their own. One looks over
+      Funchal bay from Barreiros, the other sits on the cliff above Praia Formosa.</p>
     </div>
     <div class="hero-facts rv">
       <span><b>${STAYS.length}</b> apartments</span>
@@ -297,19 +296,32 @@ function home() {
   </div>
 </header>
 
-<section id="stays">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">The apartments</p>
-      <h2>Pick the view you want to wake up to</h2>
-      <p class="lede">Both sleep three, both have two bedrooms and a terrace of their own. One looks over
-      Funchal bay from Barreiros, the other sits on the cliff above Praia Formosa.</p>
+${STAYS.map((s, i) => `
+<section class="flat${i % 2 ? " sand" : ""}" id="${s.slug}">
+  <div class="wrap flat-in${i % 2 ? " flip" : ""}">
+    <div class="flat-shots rv">
+      ${s.photos.slice(0, 3).map((ph, j) => `<figure${j ? "" : ' class="lead"'}>${img(s, ph)}</figure>`).join("\n      ")}
     </div>
-    <div class="stays rv-group">
-${cards}
+    <div class="flat-copy rv">
+      <span class="badge-flat">${esc(s.badge)}</span>
+      <h2>${esc(s.name)}</h2>
+      <p class="flat-where">${esc(s.area)}</p>
+      ${ratingBlock(s)}
+      <div class="stay-meta">
+        <span>${ICON.guests} ${s.guests} guests</span>
+        <span>${ICON.bed} ${s.bedrooms} bedrooms · ${s.beds} beds</span>
+        <span>${ICON.bath} ${s.baths} bathroom</span>
+      </div>
+      <p>${esc(s.tagline)}.</p>
+      <p class="price"><b>€${s.nightly}</b> a night · ${s.minNights} nights minimum
+         <span>€${s.airbnbNightly - s.nightly} less than Airbnb, no service fee</span></p>
+      <div class="stay-cta">
+        <a class="btn btn-p" href="${url(s.slug)}">See the apartment</a>
+        <a class="btn btn-o" href="${url(s.slug)}#book">Check dates</a>
+      </div>
     </div>
   </div>
-</section>
+</section>`).join("\n")}
 
 <section class="sand" id="funchal">
   <div class="wrap">

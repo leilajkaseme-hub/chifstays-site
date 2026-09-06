@@ -81,9 +81,13 @@ section{padding:clamp(56px,8vw,104px) 0}
 }
 .nav.stuck{border-bottom-color:var(--line);box-shadow:0 1px 12px rgba(31,29,27,.05)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
-.brand{display:flex;align-items:baseline;gap:9px;font-weight:800;font-size:1.24rem;letter-spacing:-.03em}
+/* center, not baseline. An image's baseline is its bottom edge, so FUNCHAL was
+   hanging off the foot of the wordmark, measured at 14.4px below its centre.
+   The art's own optical centre is 9px off in a 400px file, which is under a
+   pixel at the size it is drawn, so the box centre is the right anchor. */
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.24rem;letter-spacing:-.03em}
 .brand span{color:var(--sea)}
-.brand small{font-weight:500;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.brand small{font-weight:600;font-size:.64rem;line-height:1;padding-top:2px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
 .nav-links{display:flex;align-items:center;gap:30px;font-size:.93rem;font-weight:500;color:var(--ink-2)}
 .nav-links a{position:relative;padding:4px 0}
 .nav-links a::after{
@@ -378,3 +382,35 @@ footer li{margin-bottom:9px}
    the page. display:none on [hidden] is already in the reset. */
 .gal figure[hidden]{display:none}
 .gal-more{cursor:zoom-in}
+
+/* ------------------------------------------------------------ flat blocks
+   One section per apartment instead of a single grid mixing both. On a phone
+   they stack into two clean screens, which is the whole point: a mixed grid of
+   six photos told a visitor nothing about which flat was which. */
+.intro{padding:clamp(30px,5vw,56px) 0 clamp(20px,3vw,32px)}
+.intro .lede{margin-top:16px}
+.flat{padding:clamp(40px,5.5vw,72px) 0}
+.flat-in{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(26px,4vw,52px);align-items:center}
+.flat-in.flip .flat-shots{order:2}
+.flat-shots{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,1fr);
+  gap:10px;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3}
+.flat-shots figure{margin:0;overflow:hidden;background:var(--sand)}
+.flat-shots figure.lead{grid-row:span 2}
+.flat-shots img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.flat-shots figure:hover img{transform:scale(1.05)}
+.badge-flat{display:inline-block;background:var(--sea-soft);color:var(--sea-dark);border-radius:999px;
+  padding:6px 14px;font-size:.72rem;font-weight:700;letter-spacing:.03em;margin-bottom:14px}
+.flat-copy h2{margin-bottom:6px}
+.flat-where{color:var(--ink-3);font-size:.95rem;margin:0 0 10px}
+.flat-copy .rating{margin-bottom:16px}
+.flat-copy > p{color:var(--ink-2)}
+@media (max-width:860px){
+  /* Two separate rules. Grouping them applied grid-template-columns:1fr to the
+     inner photo grid of the flipped block as well, which collapsed its three
+     photos into one column and left the second apartment showing a single
+     picture where the first showed three. */
+  .flat-in{grid-template-columns:1fr}
+  .flat-in.flip .flat-shots{order:0}
+  .flat-shots{aspect-ratio:3/2}
+  .flat{padding:34px 0}
+}
