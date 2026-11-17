@@ -35,7 +35,7 @@ const STAYS = [
   {
     key: "perla",
     slug: "perla-do-oceano",
-    name: "Perla do Oceano",
+    name: "Perla do Oceano Suite",
     tagline: "Funchal sea view with an XL terrace",
     airbnb: "https://www.airbnb.com/rooms/1420093678403124003",
     licence: "164578/AL",
@@ -89,7 +89,7 @@ const STAYS = [
   {
     key: "varanda",
     slug: "varanda-do-sol",
-    name: "Varanda do Sol",
+    name: "Varanda do Sol Suite",
     tagline: "A private terrace above Praia Formosa",
     airbnb: "https://www.airbnb.com/rooms/1397784964911656134",
     licence: "164601/AL",
