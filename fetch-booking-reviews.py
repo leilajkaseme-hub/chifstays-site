@@ -90,6 +90,11 @@ async def one(ctx, key, slug):
         if m2 and m2.group(1) not in dict(categories):
             categories.append([m2.group(1).strip(), float(m2.group(2))])
 
+    # Booking shuffles the order between visits; a fixed order keeps the file
+    # unchanged when nothing new came in.
+    ORDER = ["Cleanliness", "Comfort", "Facilities", "Location", "Staff", "Value for money"]
+    categories.sort(key=lambda c: (ORDER.index(c[0]) if c[0] in ORDER else 99, c[0]))
+
     await page.click("button:has-text('Read all reviews')", timeout=10000)
     await page.wait_for_timeout(4000)
     # Page through the drawer until every review has been loaded.
