@@ -7,11 +7,7 @@
    "count": 5,
    "categories": [
     [
-     "Staff",
-     9.5
-    ],
-    [
-     "Facilities",
+     "Location",
      9.5
     ],
     [
@@ -19,15 +15,19 @@
      10.0
     ],
     [
-     "Comfort",
-     9.5
-    ],
-    [
      "Value for money",
      9.0
     ],
     [
-     "Location",
+     "Facilities",
+     9.5
+    ],
+    [
+     "Comfort",
+     9.5
+    ],
+    [
+     "Staff",
      9.5
     ]
    ],
@@ -109,19 +109,11 @@
    "count": 11,
    "categories": [
     [
-     "Staff",
-     10.0
-    ],
-    [
-     "Facilities",
-     9.4
-    ],
-    [
-     "Cleanliness",
+     "Location",
      9.6
     ],
     [
-     "Comfort",
+     "Cleanliness",
      9.6
     ],
     [
@@ -129,8 +121,16 @@
      9.3
     ],
     [
-     "Location",
+     "Facilities",
+     9.4
+    ],
+    [
+     "Comfort",
      9.6
+    ],
+    [
+     "Staff",
+     10.0
     ]
    ],
    "url": "https://www.booking.com/hotel/pt/ocean-cliff-retreat-between-natural-pools-amp-praia-formosa.html",
