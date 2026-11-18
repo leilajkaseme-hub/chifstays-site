@@ -207,11 +207,21 @@ section{padding:clamp(56px,8vw,104px) 0}
 .shots figure:hover img{transform:scale(1.05)}
 @media(max-width:860px){.shots{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.shots{grid-template-columns:1fr}}
-.amen{display:grid;grid-template-columns:repeat(2,1fr);gap:13px 24px;margin:0;padding:0;list-style:none}
-.amen li{display:flex;align-items:center;gap:11px;color:var(--ink-2);font-size:.96rem}
-.amen svg{width:17px;height:17px;stroke:var(--sand-deep);fill:none;stroke-width:1.7;flex:none}
-.amen li.off{color:var(--ink-3);text-decoration:line-through;text-decoration-color:var(--line)}
-.amen li.off svg{stroke:var(--ink-3)}
+.amen{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 28px;margin:0;padding:0;list-style:none}
+.amen li{display:flex;align-items:flex-start;gap:14px;color:var(--ink);font-size:1rem;line-height:1.35}
+.amen svg{width:24px;height:24px;fill:var(--ink);flex:none}
+.amen small{display:block;color:var(--ink-3);font-size:.85rem;margin-top:2px}
+.amen-all{margin-top:28px}
+.amen-all summary{list-style:none;cursor:pointer}
+.amen-all summary::-webkit-details-marker{display:none}
+.amen-all[open] summary{margin-bottom:8px}
+.amen-all .less,.amen-all[open] .more{display:none}
+.amen-all[open] .less{display:inline}
+/* Open, the full grouped list replaces the ten highlights above it. */
+#amenities:has(.amen-all[open]) > .amen{display:none}
+#amenities:has(.amen-all[open]) .amen-all{margin-top:0}
+.amen-all h3{font-size:1.05rem;margin:26px 0 14px;padding-top:22px;border-top:1px solid var(--line)}
+.amen-all h3:first-of-type{border-top:0;padding-top:0}
 
 /* booking card: sticky on desktop, a plain block on a phone */
 .book{
@@ -372,6 +382,7 @@ footer li{margin-bottom:9px}
    container as [hidden] so the lightbox has them in order without lengthening
    the page. display:none on [hidden] is already in the reset. */
 .gal figure[hidden]{display:none}
+[hidden]{display:none!important}
 .gal-more{cursor:zoom-in}
 
 /* ------------------------------------------------------------ flat blocks
@@ -456,9 +467,10 @@ footer li{margin-bottom:9px}
 
 /* review sources: one tile per site, a tag on each card, and a filter */
 .src-tiles{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
-.src-tile{display:flex;flex-direction:column;gap:2px;min-width:150px;padding:14px 18px;border-radius:var(--radius);
-  background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none;transition:border-color .2s}
-.src-tile:hover{border-color:var(--sea)}
+.src-tile{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:150px;padding:14px 18px;border-radius:var(--radius);
+  background:#fff;border:1px solid var(--line);color:var(--ink);font:inherit;text-align:left;cursor:pointer;transition:border-color .2s}
+.src-tile:hover{border-color:var(--ink-3)}
+.src-tile.on{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
 .src-tile span{font-size:.84rem;color:var(--ink-3);font-weight:600}
 .src-tile b{font-size:1.7rem;letter-spacing:-.02em;line-height:1.1}
 .src-tile b i{font-style:normal;font-size:.9rem;color:var(--ink-3);font-weight:500}
@@ -478,3 +490,19 @@ footer li{margin-bottom:9px}
   background:#fff;border:1px solid var(--line);color:var(--ink-2)}
 .rev-filter button.on{background:var(--ink);border-color:var(--ink);color:#fff}
 @media (max-width:640px){ .src-tiles{gap:8px} .src-tile{flex:1 1 0;min-width:0;padding:12px} .src-tile b{font-size:1.35rem} }
+
+/* what to do nearby: photo on top, distance, name, two lines */
+.near{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 22px}
+.near-card{margin:0}
+.near-card img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:var(--radius);background:var(--line);display:block}
+.near-card div{padding-top:14px}
+.near-card h3{font-size:1.08rem;margin:0 0 6px}
+.near-card p{color:var(--ink-2);font-size:.94rem;margin:0}
+.near-km{display:inline-block;font-size:.8rem;font-weight:600;color:var(--ink-3);margin-bottom:4px}
+.near-link{display:inline-block;margin-top:8px;font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.near-credits{margin-top:30px;font-size:.8rem;color:var(--ink-3)}
+.near-credits summary{cursor:pointer;width:max-content}
+.near-credits p{margin:8px 0 0}
+.near-credits a{color:inherit}
+@media (max-width:960px){ .near{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:640px){ .near{grid-template-columns:1fr;gap:26px} }

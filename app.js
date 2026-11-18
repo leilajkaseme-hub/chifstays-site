@@ -134,32 +134,50 @@
 })();
 
 /* ------------------------------------------------------- all the reviews
-   The first six reviews show; the rest are in the page, hidden, so search
-   engines and screen readers still have them. "Show all" opens them, and the
-   site buttons (Airbnb, Booking.com, Vrbo) show only that site's reviews. */
+   Every review is in the page. Six show at first and "Show more reviews"
+   adds six at a time. The site buttons and the score tiles (Airbnb,
+   Booking.com, Vrbo) only filter the list: nothing here leaves the site. */
 (function () {
   'use strict';
-  var cards = [].slice.call(document.querySelectorAll('.rev[data-src]'));
-  var btn = document.querySelector('[data-more-reviews]');
-  var filters = [].slice.call(document.querySelectorAll('.rev-filter button'));
-  var showAll = false;
+  var STEP = 6;
+  var root = document.getElementById('reviews');
+  if (!root) return;
+  var cards = [].slice.call(root.querySelectorAll('.rev[data-src]'));
+  var btn = root.querySelector('[data-more-reviews]');
+  var controls = [].slice.call(root.querySelectorAll('.rev-filter button, .src-tile[data-filter]'));
+  var src = 'all', limit = STEP;
 
-  function apply(src) {
-    var shown = 0;
-    cards.forEach(function (c) {
-      var match = src === 'all' || c.getAttribute('data-src') === src;
-      var visible = match && (showAll || src !== 'all' || shown < 6);
-      c.hidden = !visible;
-      if (visible) { shown++; c.classList.add('in'); }
+  function apply() {
+    var matches = cards.filter(function (c) { return src === 'all' || c.getAttribute('data-src') === src; });
+    cards.forEach(function (c) { c.hidden = true; });
+    matches.forEach(function (c, i) {
+      if (i < limit) { c.hidden = false; c.classList.add('in'); }
     });
-    if (btn) btn.hidden = showAll || src !== 'all';
+    controls.forEach(function (o) {
+      var on = o.getAttribute('data-filter') === src;
+      o.classList.toggle('on', on);
+      o.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    if (btn) {
+      var left = matches.length - limit;
+      btn.hidden = left <= 0;
+      btn.textContent = 'Show more reviews (' + left + ' more)';
+    }
   }
 
-  if (btn) btn.addEventListener('click', function () { showAll = true; apply('all'); });
-  filters.forEach(function (f) {
-    f.addEventListener('click', function () {
-      filters.forEach(function (o) { o.classList.toggle('on', o === f); o.setAttribute('aria-pressed', o === f ? 'true' : 'false'); });
-      apply(f.getAttribute('data-filter'));
+  if (btn) btn.addEventListener('click', function () { limit += STEP; apply(); });
+  controls.forEach(function (o) {
+    o.addEventListener('click', function () {
+      var f = o.getAttribute('data-filter');
+      // A second tap on an active score tile goes back to all reviews.
+      src = (o.classList.contains('src-tile') && src === f) ? 'all' : f;
+      limit = STEP;
+      apply();
+      if (o.classList.contains('src-tile')) {
+        var list = root.querySelector('.rev-filter');
+        if (list && list.getBoundingClientRect().top < 0) list.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
   });
+  apply();
 })();

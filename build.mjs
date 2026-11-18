@@ -95,14 +95,56 @@ const STAYS = [
       ["falaise-ocean",      "The view from the terrace, out past the cliffs"],
       ["exterieur-entree",   "The entrance to the building"],
     ],
-    // Exactly what the listing states, in the listing's own order.
+    /* What is in the flat, from the Airbnb and Booking.com listings and the
+       photos (18 Nov 2026). [icon file in assets/icons, label]. The first ten
+       of `top` show on the page; the rest open with "Show all". */
+    top: ["Sea view", "XL terrace", "Wifi", "Full kitchen", "Dishwasher", "Washing machine", "Tumble dryer",
+          "Bathtub", "Lift", "Free street parking"],
     amenities: [
-      ["Kitchen", 1], ["Wifi", 1], ["Free street parking", 1], ["TV", 1],
-      ["Washing machine", 1], ["Tumble dryer", 1], ["Bathtub", 1],
-      ["Hair dryer", 1], ["Fridge", 1], ["Lift in the building", 1],
-      ["Carbon monoxide alarm", 0],
+      ["Views and outside", [
+        ["waves", "Sea view", "Over Funchal bay and the harbour"],
+        ["sun-horizon", "XL terrace", "Loungers and space to sit out"],
+        ["coffee", "Second balcony", "Morning sun and a breakfast table"],
+        ["mountains", "Mountain view", "The hills behind Funchal"],
+      ]],
+      ["Kitchen and dining", [
+        ["cooking-pot", "Full kitchen", "Hob, pots and pans, oil, salt and pepper"],
+        ["oven", "Oven", ""],
+        ["snowflake", "Full-size fridge-freezer", ""],
+        ["drop", "Dishwasher", ""],
+        ["coffee", "Espresso machine", ""],
+        ["bowl-food", "Plates, bowls and cutlery", ""],
+        ["wine", "Wine glasses", ""],
+        ["cooking-pot", "Blender", ""],
+        ["fork-knife", "Dining table", ""],
+      ]],
+      ["Bedrooms and laundry", [
+        ["bed", "Extra pillows and blankets", ""],
+        ["towel", "Bed linen and towels", ""],
+        ["coat-hanger", "Hangers", ""],
+        ["vault", "Safe", ""],
+        ["washing-machine", "Washing machine", ""],
+        ["wind", "Tumble dryer", ""],
+      ]],
+      ["Bathroom", [
+        ["bathtub", "Bathtub", ""],
+        ["hair-dryer", "Hair dryer", ""],
+        ["toilet", "Bidet", ""],
+        ["spray-bottle", "Cleaning products", ""],
+      ]],
+      ["Living and internet", [
+        ["wifi-high", "Wifi", ""],
+        ["television-simple", "TV", "Big screen, sign in to your own Netflix"],
+      ]],
+      ["Building and parking", [
+        ["elevator", "Lift", "Sixth floor, no stairs to carry bags up"],
+        ["car", "Free street parking", ""],
+        ["bus", "Bus stop", "About two minutes on foot"],
+      ]],
+      ["Safety", [
+        ["siren", "Smoke alarm", ""],
+      ]],
     ],
-    amenityTotal: 23,
     intro:
       "A two-bedroom apartment in Barreiros with two large balconies and an open view across Funchal bay. " +
       "It sleeps three: a double bedroom, a second bedroom, and a sofa bed in the living room. " +
@@ -144,13 +186,49 @@ const STAYS = [
       ["immeuble",          "The building, from the road"],
       ["vue-mer-rue",       "The sea, a short walk from the door"],
     ],
+    top: ["Sea view", "Private terrace", "Free parking in the garage", "Wifi", "Desk to work at", "Full kitchen",
+          "Dishwasher", "Washing machine", "Beach access", "Ceiling fan"],
     amenities: [
-      ["Shared beach access", 1], ["Kitchen", 1], ["Wifi", 1],
-      ["Dedicated workspace", 1], ["Free parking on site", 1], ["TV", 1],
-      ["Washing machine", 1], ["Hair dryer", 1],
-      ["Carbon monoxide alarm", 0],
+      ["Views and outside", [
+        ["waves", "Sea view", "Over Praia Formosa and along the coast"],
+        ["sun-horizon", "Private terrace", "Loungers, facing the water"],
+        ["fork-knife", "Outdoor dining area", "Eat out on the terrace"],
+        ["umbrella-simple", "Beach access", "Praia Formosa and the Doca do Cavacas pools below"],
+      ]],
+      ["Kitchen and dining", [
+        ["cooking-pot", "Full kitchen", "Hob, pots and pans, oil, salt and pepper"],
+        ["oven", "Oven", ""],
+        ["snowflake", "Fridge", ""],
+        ["oven", "Microwave", ""],
+        ["drop", "Dishwasher", ""],
+        ["coffee", "Coffee machine", ""],
+        ["tea-bag", "Electric kettle", ""],
+        ["bowl-food", "Plates, bowls and cutlery", ""],
+      ]],
+      ["Bedrooms and laundry", [
+        ["t-shirt", "Wardrobes", "In both bedrooms"],
+        ["towel", "Bed linen and towels", ""],
+        ["washing-machine", "Washing machine", ""],
+      ]],
+      ["Bathroom", [
+        ["shower", "Shower", ""],
+        ["hair-dryer", "Hair dryer", ""],
+      ]],
+      ["Living, work and internet", [
+        ["wifi-high", "Wifi", ""],
+        ["desk", "Desk to work at", ""],
+        ["television-simple", "TV", ""],
+        ["fan", "Ceiling fan", ""],
+      ]],
+      ["Parking", [
+        ["garage", "Free parking in the garage", "Your own space in the building"],
+        ["bus", "Bus stop", "A short walk up the road"],
+      ]],
+      ["Safety", [
+        ["siren", "Smoke alarm", ""],
+        ["fire-extinguisher", "Fire extinguisher", ""],
+      ]],
     ],
-    amenityTotal: 16,
     intro:
       "A bright, quiet two-bedroom flat on the cliff above Praia Formosa and the Gomes natural pools. " +
       "It sleeps three, has a terrace of its own, a desk to work at, and free parking on site, " +
@@ -162,6 +240,88 @@ const STAYS = [
     ],
   },
 ];
+
+/* Things to do around the flats. Photos: Wikimedia Commons (free licence,
+   credited on the page) and Chifbay's own for the boat. geo is the place
+   itself; the page shows the straight-line distance from each flat. */
+const NEARBY = [
+  { key: "formosa", name: "Praia Formosa", geo: [32.6380, -16.9480],
+    text: "The biggest beach in Funchal. Dark pebbles, lifeguards in summer and cafés on the sand. A flat seafront path runs west from here to Câmara de Lobos.",
+    credit: ["Dietmar Rabich", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:S%C3%A3o_Martinho_(Madeira,_Portugal),_Praia_Formosa_--_2025_--_0656.jpg"] },
+  { key: "cavacas", name: "Doca do Cavacas pools", geo: [32.6386, -16.9393],
+    text: "Sea pools cut into black lava rock, with a fish restaurant on top. You swim in calm water while the waves break just outside.",
+    credit: ["H. Zell", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Doca_do_Cavacas_-_Funchal_01.jpg"] },
+  { key: "lido", name: "The Lido promenade", geo: [32.6380, -16.9335],
+    text: "A seafront walk past gardens, cafés and the Lido and Ponta Gorda pools. Flat the whole way, and at its best around sunset.",
+    credit: ["Dr. Thomas Liptak", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Funchal,_Promenade_do_Lido_(Passeio_P%C3%BAblico_Mar%C3%ADtimo)_2.jpg"] },
+  { key: "camara", name: "Câmara de Lobos", geo: [32.6487, -16.9768],
+    text: "A fishing village with painted boats pulled up on the slipway, a small bay, and poncha bars. Churchill came here to paint in 1950.",
+    credit: ["Dietmar Rabich", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:C%C3%A2mara_de_Lobos_(Madeira,_Portugal),_Porto_de_C%C3%A2mara_de_Lobos_--_2025_--_1901.jpg"] },
+  { key: "girao", name: "Cabo Girão skywalk", geo: [32.6563, -17.0047],
+    text: "A glass floor at the edge of one of the highest sea cliffs in Europe, 580 metres straight down to the fields and the sea.",
+    credit: ["Ximonic (Simo Räsänen)", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Glass_balcony_of_Cabo_Gir%C3%A3o_skywalk,_C%C3%A2mara_de_Lobos,_Madeira,_2023_May.jpg"] },
+  { key: "market", name: "The market and the old town", geo: [32.6497, -16.9035],
+    text: "Mercado dos Lavradores sells exotic fruit, fish and flowers. Next to it, Rua de Santa Maria has its painted doors and many of the best restaurants in town.",
+    credit: ["Dietmar Rabich", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Funchal_(Madeira,_Portugal),_Mercado_dos_Lavradores_--_2025_--_0995.jpg"] },
+  { key: "monte", name: "Cable car to Monte", geo: [32.6482, -16.9019],
+    text: "Fifteen minutes in the air from the old town up to Monte, its gardens and its church. Come back down in a wicker toboggan, pushed by two men in straw hats.",
+    credit: ["Ввласенко", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Funchal_Cable_Car_Madeira.jpg"] },
+  { key: "barcelos", name: "Pico dos Barcelos", geo: [32.6626, -16.9407],
+    text: "A viewpoint above the city. The whole of Funchal bay in one look, and even better at night with the lights on.",
+    credit: ["Diego Delso", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Vista_de_Funchal_desde_Pico_dos_Barcelos,_Madeira,_Portugal,_2019-05-29,_DD_45.jpg"] },
+  { key: "boat", name: "Our boat, Chifbay", geo: [32.6450, -16.9100], link: "https://chifbay.com",
+    text: "We also run a private boat from Marina do Funchal. Along the coast to Cabo Girão, with a swim and paddle boards, just your group on board.",
+    credit: null },
+];
+const amenityCount = (s) => s.amenities.reduce((n, [, l]) => n + l.length, 0);
+const amenityByLabel = (s, label) => {
+  const a = s.amenities.flatMap(([, l]) => l).find((x) => x[1] === label);
+  if (!a) throw new Error(`${s.key}: "${label}" is in top but not in amenities`);
+  return a;
+};
+const km = ([a, b], [c, d]) => {
+  const r = Math.PI / 180, x = (d - b) * r * Math.cos(((a + c) / 2) * r), y = (c - a) * r;
+  return Math.hypot(x, y) * 6371;
+};
+const fmtKm = (k) => (k < 1 ? `${Math.round(k * 10) * 100} m` : `${k.toFixed(1)} km`);
+
+/* Cards of what to do nearby. On a flat page they are sorted by distance
+   from that flat and show it; on the home page they keep the list order. */
+const nearbyBlock = (stay) => {
+  const list = stay ? [...NEARBY].sort((x, y) => km(stay.geo, x.geo) - km(stay.geo, y.geo)) : NEARBY;
+  return `<section${stay ? ' class="sand"' : ""} id="nearby">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Around ${stay ? "the flat" : "the flats"}</p>
+      <h2>What to do nearby</h2>
+      <p class="lede">${stay
+        ? `Sorted by distance from ${esc(stay.name)}, as the crow flies. Buses, Bolt and Uber cover all of it; we are happy to tell you what we would do.`
+        : "Both flats are on the west side of Funchal, between the Lido and Praia Formosa. Everything below is a short bus, Bolt or Uber ride away."}</p>
+    </div>
+    <div class="near rv-group">
+      ${list.map((n) => `<article class="near-card rv">
+        <img src="assets/near/${n.key}.webp" alt="${esc(n.name)}" loading="lazy" decoding="async" width="1200" height="800"/>
+        <div>
+          ${stay ? `<span class="near-km">${fmtKm(km(stay.geo, n.geo))}</span>` : ""}
+          <h3>${esc(n.name)}</h3>
+          <p>${esc(n.text)}</p>
+          ${n.link ? `<a class="near-link" href="${n.link}" rel="noopener">See the boat trips</a>` : ""}
+        </div>
+      </article>`).join("\n      ")}
+    </div>
+    <details class="near-credits">
+      <summary>Photo credits</summary>
+      <p>${NEARBY.filter((n) => n.credit).map((n) => `${esc(n.name)}: <a href="${n.credit[2]}" rel="noopener">${esc(n.credit[0])}</a>, ${esc(n.credit[1])}`).join(" · ")}. From Wikimedia Commons, cropped. The boat photo is ours.</p>
+    </details>
+  </div>
+</section>`;
+};
+
+/* Amenity icons are Phosphor (MIT), one file each in assets/icons, inlined so
+   the page makes no extra requests. */
+const ICON_CACHE = {};
+const aicon = (name) => (ICON_CACHE[name] ??= readFileSync(`assets/icons/${name}.svg`, "utf8")
+  .replace(/ xmlns="[^"]*"/, "").replace("<svg", '<svg aria-hidden="true"').trim());
 
 /* Every review becomes the same shape: a title, what was good, what was not,
    the guest's own words when we show a translation, and the host's reply. */
@@ -184,8 +344,7 @@ for (const s of STAYS) {
     const d = SRC[key][s.key];
     if (!d) continue;
     const scale = d.scale || 5;
-    s.sources.push({ key, name: PLATFORM[key], rating: d.rating, scale, count: d.count,
-      url: key === "airbnb" ? `${s.airbnb}/reviews` : d.url, categories: d.categories || [] });
+    s.sources.push({ key, name: PLATFORM[key], rating: d.rating, scale, count: d.count, categories: d.categories || [] });
     s.reviewList.push(...(d.reviews || []).map((r) => normalise(key, r, scale)));
     if (key === "airbnb") { s.rating = d.rating; s.reviews = d.count; s.categories = d.categories || []; }
   }
@@ -203,6 +362,13 @@ const SITE_SCORES = Object.keys(PLATFORM).map((key) => {
   return { key, name: PLATFORM[key], scale: rows[0].scale, count,
     rating: rows.reduce((n, x) => n + x.rating * x.count, 0) / count };
 }).filter(Boolean);
+/* The home page shows every review of both flats: the chosen six first, then
+   the rest, newest first. Each card says which flat it is about. */
+const HOME_REVIEWS = (() => {
+  const all = STAYS.flatMap((s) => s.reviewList.map((r) => ({ ...r, stayName: s.name })));
+  const first = FEATURED.map(([k, id]) => all.find((r) => r.id === id && r.stayName === STAYS.find((x) => x.key === k).name)).filter(Boolean);
+  return [...first, ...all.filter((r) => !first.includes(r)).sort((a, b) => b.date.localeCompare(a.date))];
+})();
 const fmtScore = (v, scale) => (scale === 5 ? v.toFixed(2) : v % 1 ? v.toFixed(1) : String(v));
 
 /* ------------------------------------------------------------------ helpers */
@@ -257,10 +423,29 @@ const reviewCard = (r, { stayName = "", hidden = false, reveal = false } = {}) =
           ${r.reply ? `<details class="rev-orig"><summary>Reply from ${esc(HOST.name)}</summary>${para(r.reply)}</details>` : ""}
         </article>`;
 
-/* The site scores as small tiles, each linking to the reviews on that site. */
-const siteTiles = (rows) => `<div class="src-tiles">
-      ${rows.map((x) => `<a class="src-tile" href="${x.url || "#reviews"}"${x.url ? ' rel="noopener" target="_blank"' : ""}>
-        <span>${esc(x.name)}</span><b>${fmtScore(x.rating, x.scale)}<i>/${x.scale}</i></b><small>${x.count} review${x.count > 1 ? "s" : ""}</small></a>`).join("\n      ")}
+/* The site scores as small tiles. A tile never leaves the site: it filters
+   the reviews below to that site, the same as the buttons. Guests book here. */
+const siteTiles = (rows) => `<div class="src-tiles" role="group" aria-label="Scores by site">
+      ${rows.map((x) => `<button type="button" class="src-tile" data-filter="${x.key}" aria-pressed="false">
+        <span>${esc(x.name)}</span><b>${fmtScore(x.rating, x.scale)}<i>/${x.scale}</i></b><small>${x.count} rating${x.count > 1 ? "s" : ""}</small></button>`).join("\n      ")}
+    </div>`;
+
+/* Filter buttons, the cards, and "Show more": 6 at first, 6 more per tap.
+   Every review is in the page so search engines and screen readers have them. */
+const PAGE = 6;
+const reviewBlock = (list) => `
+    <div class="rev-filter rv" role="group" aria-label="Show reviews from">
+      <button type="button" class="on" data-filter="all" aria-pressed="true">All ${list.length}</button>
+      ${Object.keys(PLATFORM).map((k) => {
+        const n = list.filter((r) => r.platform === k).length;
+        return n ? `<button type="button" data-filter="${k}" aria-pressed="false">${esc(PLATFORM[k])} ${n}</button>` : "";
+      }).join("\n      ")}
+    </div>
+    <div class="revs rv-group">
+      ${list.map((r, i) => reviewCard(r, { stayName: r.stayName || "", hidden: i >= PAGE, reveal: i < PAGE })).join("")}
+    </div>
+    <div class="rev-links">
+      <button class="btn btn-o" type="button" data-more-reviews${list.length > PAGE ? "" : " hidden"}>Show more reviews</button>
     </div>`;
 
 const img = (s, [file, alt], cls = "") =>
@@ -434,21 +619,12 @@ ${STAYS.map((s, i) => `
   <div class="wrap">
     <div class="sec-head rv">
       <p class="eyebrow">Guest reviews</p>
-      <h2>${TOTAL} guest reviews</h2>
+      <h2>${HOME_REVIEWS.length} guest reviews, from three sites</h2>
       <p class="lede">Each one written by a guest after their stay, on Airbnb, Booking.com or Vrbo. Nothing is
       edited; reviews in other languages show an English translation, with the guest's own words one tap away.</p>
     </div>
     <div class="rv">${siteTiles(SITE_SCORES)}</div>
-    <div class="revs rv-group">
-      ${FEATURED.map(([k, id]) => {
-        const s = STAYS.find((x) => x.key === k);
-        const r = (s.reviewList || []).find((x) => x.id === id);
-        return r ? reviewCard(r, { stayName: s.name, reveal: true }) : "";
-      }).join("")}
-    </div>
-    <div class="rev-links rv">
-      ${STAYS.map((s) => `<a class="btn btn-o" href="${url(s.slug)}#reviews">All ${s.reviewTotal} reviews of ${esc(s.name)}</a>`).join("\n      ")}
-    </div>
+    ${reviewBlock(HOME_REVIEWS)}
   </div>
 </section>
 
@@ -478,7 +654,9 @@ ${STAYS.map((s, i) => `
   </div>
 </section>
 
-<section id="boat">
+${nearbyBlock(null)}
+
+<section class="sand" id="boat">
   <div class="wrap">
     <div class="sec-head rv">
       <p class="eyebrow">The same crew, on the water</p>
@@ -608,14 +786,19 @@ function listing(s) {
         </div>
       </section>
 
-      <section style="padding-top:14px">
+      <section style="padding-top:14px" id="amenities">
         <h2 class="rv" style="margin-bottom:22px">What this place has</h2>
         <ul class="amen rv">
-          ${s.amenities.map(([a, on]) =>
-            `<li${on ? "" : ' class="off"'}>${on ? ICON.tick : ICON.cross}${esc(a)}</li>`).join("\n          ")}
+          ${s.top.map((label) => { const a = amenityByLabel(s, label);
+            return `<li>${aicon(a[0])}<span>${esc(a[1])}${a[2] ? `<small>${esc(a[2])}</small>` : ""}</span></li>`; }).join("\n          ")}
         </ul>
-        <p class="rv" style="color:var(--ink-3);font-size:.9rem;margin-top:18px">
-          ${s.amenityTotal} amenities are listed in full on Airbnb.</p>
+        <details class="amen-all rv">
+          <summary class="btn btn-o"><span class="more">Show all ${amenityCount(s)} amenities</span><span class="less">Show fewer</span></summary>
+          ${s.amenities.map(([group, list]) => `<h3>${esc(group)}</h3>
+          <ul class="amen">
+            ${list.map(([ic, label, note]) => `<li>${aicon(ic)}<span>${esc(label)}${note ? `<small>${esc(note)}</small>` : ""}</span></li>`).join("\n            ")}
+          </ul>`).join("\n          ")}
+        </details>
       </section>
     </div>
 
@@ -649,7 +832,7 @@ function listing(s) {
   <div class="wrap">
     <div class="sec-head rv">
       <p class="eyebrow">Guest reviews</p>
-      <h2>${s.reviewTotal} reviews, on three sites</h2>
+      <h2>${s.reviewList.length} guest reviews, from three sites</h2>
     </div>
     <div class="rv">${siteTiles(s.sources)}</div>
     ${s.categories && s.categories.length ? `<div class="rev-head rv">
@@ -658,19 +841,7 @@ function listing(s) {
         ${s.categories.map(([l, v]) => `<li><span>${esc(l)}</span><i><em style="width:${(v / 5) * 100}%"></em></i><b>${v.toFixed(1)}</b></li>`).join("\n        ")}
       </ul>
     </div>` : ""}
-    <div class="rev-filter rv" role="group" aria-label="Show reviews from">
-      <button type="button" class="on" data-filter="all" aria-pressed="true">All ${s.reviewList.length}</button>
-      ${s.sources.map((x) => {
-        const n = s.reviewList.filter((r) => r.platform === x.key).length;
-        return n ? `<button type="button" data-filter="${x.key}" aria-pressed="false">${esc(x.name)} ${n}</button>` : "";
-      }).join("\n      ")}
-    </div>
-    <div class="revs rv-group">
-      ${s.reviewList.map((r, i) => reviewCard(r, { hidden: i >= 6, reveal: i < 6 })).join("")}
-    </div>
-    <div class="rev-links rv">
-      ${s.reviewList.length > 6 ? `<button class="btn btn-o" type="button" data-more-reviews>Show all ${s.reviewList.length} reviews</button>` : ""}
-    </div>
+    ${reviewBlock(s.reviewList)}
   </div>
 </section>
 
@@ -685,6 +856,8 @@ function listing(s) {
          aria-label="Map of ${esc(s.area)}, Madeira"></div>
   </div>
 </section>
+
+${nearbyBlock(s)}
 
 <section>
   <div class="wrap" style="text-align:center">
@@ -714,7 +887,7 @@ function listing(s) {
       numberOfBedrooms: s.bedrooms,
       numberOfBathroomsTotal: s.baths,
       occupancy: { "@type": "QuantitativeValue", maxValue: s.guests },
-      amenityFeature: s.amenities.map(([a, on]) => ({ "@type": "LocationFeatureSpecification", name: a, value: !!on })),
+      amenityFeature: s.amenities.flatMap(([, l]) => l).map(([, a]) => ({ "@type": "LocationFeatureSpecification", name: a, value: true })),
       /* No aggregateRating and no Review here: Google's rules forbid marking up
          ratings collected on other sites (Airbnb, Booking, Vrbo), and breaking
          them can cost the page its rich results. The reviews stay visible. */
@@ -809,4 +982,4 @@ writeFileSync("sitemap.xml", sitemap);
 writeFileSync("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 
 console.log(`index.html + ${STAYS.length} listing pages + sitemap.xml + robots.txt`);
-for (const s of STAYS) console.log(`  ${s.slug}.html — ${s.photos.length} photos, ${s.amenities.length} amenities shown of ${s.amenityTotal}`);
+for (const s of STAYS) console.log(`  ${s.slug}.html — ${s.photos.length} photos, ${amenityCount(s)} amenities, ${s.reviewList.length} reviews`);

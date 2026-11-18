@@ -63,6 +63,17 @@ IntersectionObserver adds `.in`. With JavaScript off or
   translation. Airbnb: `fetch-reviews.mjs`. Booking.com:
   `fetch-booking-reviews.py` (Playwright). Vrbo blocks scripts, so its reviews
   are copied by hand into `reviews-manual.json`. `.github/workflows/reviews.yml`
-  refreshes Airbnb and Booking.com every Monday. The home page shows six,
-  picked by id in `FEATURED` in `build.mjs`. No rating markup in the JSON-LD:
-  Google does not allow ratings taken from other sites.
+  refreshes Airbnb and Booking.com every Monday. Six show at first, "Show
+  more reviews" adds six at a time. The home page has every review of both
+  flats, the six in `FEATURED` first. **Nothing links to Airbnb, Booking.com or
+  Vrbo**: the score tiles and the site buttons only filter the reviews, so
+  guests stay here and book here. No rating markup in the JSON-LD: Google does
+  not allow ratings taken from other sites.
+- **Amenities.** The full list per flat is in `amenities` in `build.mjs`
+  (from the Airbnb and Booking.com listings and the photos, 18 Nov 2026), with
+  `top` choosing the ten shown before "Show all". Icons: Phosphor (MIT), one
+  SVG each in `assets/icons`, inlined at build time.
+- **What to do nearby.** `NEARBY` in `build.mjs`: nine places with a photo,
+  two lines, and the distance from each flat. Photos in `assets/near` are from
+  Wikimedia Commons (CC BY-SA, credited on the page under "Photo credits"),
+  plus Chifbay's own boat photo.

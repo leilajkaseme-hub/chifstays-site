@@ -119,18 +119,25 @@
   <div class="wrap">
     <div class="sec-head rv">
       <p class="eyebrow">Guest reviews</p>
-      <h2>56 guest reviews</h2>
+      <h2>50 guest reviews, from three sites</h2>
       <p class="lede">Each one written by a guest after their stay, on Airbnb, Booking.com or Vrbo. Nothing is
       edited; reviews in other languages show an English translation, with the guest's own words one tap away.</p>
     </div>
-    <div class="rv"><div class="src-tiles">
-      <a class="src-tile" href="#reviews">
-        <span>Airbnb</span><b>4.94<i>/5</i></b><small>33 reviews</small></a>
-      <a class="src-tile" href="#reviews">
-        <span>Booking.com</span><b>9.1<i>/10</i></b><small>16 reviews</small></a>
-      <a class="src-tile" href="#reviews">
-        <span>Vrbo</span><b>9.5<i>/10</i></b><small>7 reviews</small></a>
+    <div class="rv"><div class="src-tiles" role="group" aria-label="Scores by site">
+      <button type="button" class="src-tile" data-filter="airbnb" aria-pressed="false">
+        <span>Airbnb</span><b>4.94<i>/5</i></b><small>33 ratings</small></button>
+      <button type="button" class="src-tile" data-filter="booking" aria-pressed="false">
+        <span>Booking.com</span><b>9.1<i>/10</i></b><small>16 ratings</small></button>
+      <button type="button" class="src-tile" data-filter="vrbo" aria-pressed="false">
+        <span>Vrbo</span><b>9.5<i>/10</i></b><small>7 ratings</small></button>
     </div></div>
+    
+    <div class="rev-filter rv" role="group" aria-label="Show reviews from">
+      <button type="button" class="on" data-filter="all" aria-pressed="true">All 50</button>
+      <button type="button" data-filter="airbnb" aria-pressed="false">Airbnb 32</button>
+      <button type="button" data-filter="booking" aria-pressed="false">Booking.com 11</button>
+      <button type="button" data-filter="vrbo" aria-pressed="false">Vrbo 7</button>
+    </div>
     <div class="revs rv-group">
       
         <article class="rev rv" data-src="airbnb">
@@ -205,10 +212,537 @@
           
           
         </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">O</span>
+            <div><b>Ola</b><span>7 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>October 2026</span><span>Stayed about a week</span><span>Varanda do Sol Suite</span></div>
+          <div class="rev-text"><p>Everything was good. Very nice people to stay with :)</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">D</span>
+            <div><b>Dan</b><span>Tel Aviv-Yafo, Israel</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>September 2026</span><span>Stayed about a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>We loved it, great apartment. Natalia and Hugo were super helpful. 10/10</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">L</span>
+            <div><b>Lara</b><span>9 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>September 2026</span><span>Stayed about a week</span><span>Varanda do Sol Suite</span></div>
+          <div class="rev-text"><p>We spent our summer vacation here with our young son, and the apartment was really great!</p><p>The great big terrace was our highlight. When we were in the apartment, we actually just spent our time there. We brought a small paddling pool for our son, so everyone got their money's worth. We can really recommend that. The large awning over the terrace was perfect for that (and everything else)! In the afternoon, the sun shines directly on the terrace, so we were able to find shade under the awning. So it was really pleasant. 😊☀️</p><p>The location is really great. You can walk to the beach quite quickly, and restaurants and shops are also within easy walking distance. </p><p>There are ceiling fans in every room except the bathroom, but no air conditioning. Therefore, it was very warm in the bedroom (September).</p><p>Parking was very easy thanks to the underground parking garage, the courtyard and nearby parking lots. And the washing machine was helpful, too! 😊</p></div>
+          <details class="rev-orig"><summary>Translated from German · show original</summary><p>Wir haben unseren Sommerurlaub mit unserem kleinen Sohn hier verbracht und die Wohnung war wirklich top!</p><p>Die tolle große Terrasse war unser Highlight. Wenn wir in der Wohnung waren, dann haben wir die Zeit eigentlich nur dort verbracht. Wir hatten ein kleines Planschbecken für unseren Sohn dabei, sodass alle auf ihre Kosten kamen - das können wir echt empfehlen. Die große Markise über der Terrasse war dafür (und auch sonst) perfekt! Nachmittags scheint die Sonne direkt auf die Terrasse, sodass wir unter der Markise Schatten finden konnten. So war es richtig angenehm 😊☀️</p><p>Die Lage ist wirklich top. Man ist zu Fuß recht schnell am Strand und auch Restaurants und Einkaufsmöglichkeiten sind fußläufig gut erreichbar. </p><p>Es gibt Deckenventilatoren in jedem Zimmer außer im Bad, aber keine Klimaanlage. Im Schlafzimmer war es daher sehr warm (September).</p><p>Das Parken war durch die Tiefgarage, den Hof und nahegelegene Parkplätze sehr einfach. Und die Waschmaschine war auch hilfreich! 😊</p></details>
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">P</span>
+            <div><b>Pierre</b><span>5 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>September 2026</span><span>Stayed about a week</span><span>Varanda do Sol Suite</span></div>
+          <div class="rev-text"><p>Beautiful, quiet apartment with a beautiful terrace overlooking the sea. Has all the comforts. Close to the supermarket, the beach and lots of good restaurants. Great host, I recommend it!</p></div>
+          <details class="rev-orig"><summary>Translated from French · show original</summary><p>Superbe appartement au calme avec une très belle terrasse vue sur mer. Dispose de tout le confort. Proche du supermarché, de la plage et de pleins de bons restaurant. Super hôte je recommande !</p></details>
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">K</span>
+            <div><b>Karoline</b><span>7 months on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>September 2026</span><span>Stayed about a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>We had a really lovely stay in the apartment. The apartment was incredibly clean, tidy, and well-maintained, and everything worked as it should. We quickly felt at home and were very pleased with our stay. The host was also kind and helpful.</p><p>We highly recommend the apartment and would definitely like to stay here again! ☀️</p></div>
+          <details class="rev-orig"><summary>Translated from Danish · show original</summary><p>Vi havde et rigtig dejligt ophold i lejligheden. Lejligheden var utrolig ren, pæn og velholdt, og alt fungerede, som det skulle. Vi følte os hurtigt hjemme og var meget tilfredse med vores ophold. Værten var også sød og hjælpsom.</p><p>Vi kan varmt anbefale lejligheden og ville bestemt gerne bo her igen! ☀️</p></details>
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">V</span>
+            <div><b>Viacheslav</b><span>4 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>August 2026</span><span>Stayed about a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>We had a wonderful stay! The apartment was very clean, tidy, and well maintained, with everything we needed for a comfortable stay.</p><p>The host was very helpful and always available whenever we had any questions, which made everything easy and stress-free.</p><p>And the highlight was definitely the incredible ocean view — absolutely beautiful and something we enjoyed every single day. A great place to stay in Madeira, and we would happily come back again. Highly recommended!</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">C</span>
+            <div><b>Corneliu</b><span>10 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="4 out of 5 stars">★★★★<i>★</i></span>
+            <span>August 2026</span><span>Stayed over a week</span><span>Varanda do Sol Suite</span></div>
+          <div class="rev-text"><p>The apartment is large, comfortable and has a very nice terrace. We ate there every day, especially breakfast. It faces west, so there is nice shade in the morning. There is no air conditioning, but there is a ceiling fan in every room. I do not stand the heat well, but the fans were perfect and we did not need air conditioning.</p><p>There are restaurants nearby, but we preferred the small, simple Portuguese restaurants in central Funchal. You can also walk to the sea, but like everywhere in Madeira, you have to go down and then climb back up, so be mentally prepared! 😊</p><p>The apartment is a little outside the centre, but buses run often and the stop is just outside the building. </p><p>The bathroom is a little dated and would benefit from a refresh. The hosts are very friendly, always available and gave us useful advice about the island.</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">L</span>
+            <div><b>Luke</b><span>2 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>August 2026</span><span>Stayed about a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>What a beautiful place on an indescribably beautiful island.</p><p>The views were pristine, and the flat was clean, beautifully decorated and incredibly spacious — almost too big for the two of us, but we’re certainly not complaining! It was always just a short drive from great restaurants and the beautiful Funchal city centre.</p><p>If you have a car, don’t worry about parking — we always managed to find somewhere nearby.</p><p>Our only regret is that we didn’t get to spend more time in the flat and really take it all in, but Madeira simply has so much to see and do!</p><p>We really hope to return one day and once again sit on that balcony looking out over that incredible sea and city view.</p><p>Book this place — you won’t regret it!</p><p>Thank you both for a wonderful stay.</p><p>Luke and Maria.</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">P</span>
+            <div><b>Patrik</b><span>5 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>August 2026</span><span>Stayed about a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>Amazing location with a great view. We loved the place and stayed for a week. Natalia and Hugo are great hosts and communicate promptly about everything. We recommend car if you stay here. We highly recommend this lovely place.</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">V</span>
+            <div><b>Victor</b><span>5 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>July 2026</span><span>Stayed about a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>Great stay in Madeira in this very nice, spacious, clean Airbnb with a great view of Funchal. </p><p>Our hosts were extremely thoughtful and helpful, and we were happy to communicate with them (in French!). </p><p>We also hired Chifbay for a fantastic boat trip and a memorable sunset. </p><p>Thanks again for this exceptional vacation!</p></div>
+          <details class="rev-orig"><summary>Translated from French · show original</summary><p>Super séjour à Madère dans cet Airbnb très agréable, spacieux, propre et avec une super vue sur Funchal. </p><p>Nos hôtes ont été hyper attentionnés et serviables, et nous avons pu communiquer avec eux (en français !) avec grand plaisir. </p><p>Nous avons également fait appel aux services de Chifbay pour un tour en bateau fantastique, et un coucher de soleil mémorable. </p><p>Merci encore pour ces vacances exceptionnelles !</p></details>
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">M</span>
+            <div><b>Menno</b><span>8 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>June 2026</span><span>Stayed about a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>Beautiful location, spacious apartment and very nice view.</p></div>
+          <details class="rev-orig"><summary>Translated from Dutch · show original</summary><p>Mooie locatie, ruim appartement en zeer mooi uitzicht.</p></details>
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">R</span>
+            <div><b>Rubina Alexandra</b><span>8 months on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>June 2026</span><span>Stayed about a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>Natalia and Hugo were wonderful hosts.  They communicated clearly and were very responsive.  The apartment was ideally located in an area where the locals lived; exactly what we wanted.  Yet it was easy access to walk into the Center of Funchal.  Parking was a non issue at the location as there was always plenty of street parking available regardless of the time of day.  The view was wonderful and we spent every morning enjoying coffee on the terrace overlooking the ocean.  Great value.  Would highly recommend.</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">M</span>
+            <div><b>Moos</b><span>8 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>June 2026</span><span>Stayed about a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>Hugo &amp; Natalia were great hosts, nice apartment, beautiful sea view and a nice central location.</p></div>
+          <details class="rev-orig"><summary>Translated from Dutch · show original</summary><p>Hugo &amp; Natalia waren top hosts, mooi appartement, prachtig uitzicht op zee en een fijne centrale locatie.</p></details>
+          
+        </article>
+        <article class="rev rev-more" data-src="booking" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">T</span>
+            <div><b>Thomas</b><span>Germany</span></div>
+            <span class="rev-src rev-src-booking">Booking.com</span>
+          </header>
+          <div class="rev-meta"><span class="rev-ten" aria-label="9 out of 10">9<i>/10</i></span>
+            <span>May 2026</span><span>Stayed 7 nights</span><span>Varanda do Sol Suite</span></div>
+          <div class="rev-text"><p class="rev-title">A pleasant stay</p><p>The apartment is well-equipped and located in a very quiet area near the promenade.</p><p class="rev-bad"><span>Less good:</span> The bathroom needs renovating.</p></div>
+          <details class="rev-orig"><summary>Translated from German · show original</summary><p class="rev-title">Ein schöner Aufenthalt</p><p>Das Apartment ist gut ausgestattet und liegt sehr ruhig in der Nähe der Promenade.</p><p class="rev-bad"><span>Less good:</span> Das Bad gehört renoviert.</p></details>
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">L</span>
+            <div><b>Lotte</b><span>3 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>May 2026</span><span>Stayed a few nights</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>We had a great stay</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="booking" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">C</span>
+            <div><b>Cindy</b><span>Germany</span></div>
+            <span class="rev-src rev-src-booking">Booking.com</span>
+          </header>
+          <div class="rev-meta"><span class="rev-ten" aria-label="9 out of 10">9<i>/10</i></span>
+            <span>May 2026</span><span>Stayed 5 nights</span><span>Varanda do Sol Suite</span></div>
+          <div class="rev-text"><p class="rev-title">It was a very nice stay.</p><p>Great location, nice and quiet, second row to the sea, sound of the sea included, bus stop right outside, everything easily and quickly accessible. Many thanks to the truly lovely hosts for making the departure to the airport, which you organized, go so smoothly! We felt very comfortable.</p></div>
+          <details class="rev-orig"><summary>Translated from German · show original</summary><p class="rev-title">Es war sein sehr schöner Aufenthalt.</p><p>Super Lage, schön ruhig, 2. Reihe zum Meer, Meeresrauschen inklusive, Bus vor der Tür, alles gut und schnell erreichbar. Vielen Dank an die wirklich sehr netten Gastgeber, dass auch die von euch organisierte Abreise zum Flughafen so gut geklappt hat! Wir haben uns sehr wohl gefühlt.</p></details>
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">M</span>
+            <div><b>Maxime</b><span>11 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>May 2026</span><span>Stayed about a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>The apartment was conveniently located, right in the center, with plenty of parking options nearby. The view was absolutely splendid.</p></div>
+          <details class="rev-orig"><summary>Translated from French · show original</summary><p>L’appartement était idéalement situé, en plein centre, avec de nombreuses possibilités de stationnement à proximité. La vue était absolument splendide.</p></details>
+          
+        </article>
+        <article class="rev rev-more" data-src="vrbo" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">V</span>
+            <div><b>Verified traveller</b><span>Travelled with partner</span></div>
+            <span class="rev-src rev-src-vrbo">Vrbo</span>
+          </header>
+          <div class="rev-meta"><span class="rev-ten" aria-label="6 out of 10">6<i>/10</i></span>
+            <span>May 2026</span><span>Stayed 16 nights</span><span>Varanda do Sol Suite</span></div>
+          <div class="rev-text"><p>Communication and the key handover were very good. Good location, close to a bus stop. A space in the garage for the car. Shops nearby. The flat is well equipped and very clean. The bed was comfortable.</p><p class="rev-bad"><span>Less good:</span> The flat is very noisy, depending on who is in the flats around it. The flat is a little dated overall.</p></div>
+          <details class="rev-orig"><summary>Translated from German · show original</summary><p>Kommunikation und Schlüsselübergabe war sehr gut Gute Lage, nähe Bushaltestelle Einstellhallenplatz fürs Auto Einkaufsmöglichkeiten in der Nähe Wohnung ist gut ausgestattet und sehr sauber Das Bett war bequem</p><p class="rev-bad"><span>Less good:</span> Negativ zu erwähnen, ist die extreme hellhörigkeit der Wohnung, je nach Besetzung der umliegenden Wohnungen. Die Wohnung ist insgesamt etwas in die Jahre gekommen.</p></details>
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">A</span>
+            <div><b>Alexander</b><span>11 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>May 2026</span><span>Stayed about a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>We spent a week in this apartment and enjoyed it. Good location, nice view, excellent communication and all the things you might need. Definitely recommended.</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">D</span>
+            <div><b>Danielle</b><span>Longueuil, Canada</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>April 2026</span><span>Stayed about a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>Highlights include the terraces and the views. There are also small shops nearby that are very helpful.</p></div>
+          <details class="rev-orig"><summary>Translated from French · show original</summary><p>Les points forts sont les terrasses et les points de vue. Il y a aussi les petits commerces à proximité qui dépannent bien.</p></details>
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">M</span>
+            <div><b>Michelle</b><span>8 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>April 2026</span><span>Stayed about a week</span><span>Varanda do Sol Suite</span></div>
+          <div class="rev-text"><p>I stayed at the property with a friend, and we had a wonderful vacation. The apartment is spacious and, with its huge terrace, offers a wonderful vacation feel with a sea view. Having our own garage parking space for the rental car was also super helpful. The only thing was that the house was very noisy. </p><p>Natalia welcomed us very warmly and was very easy to reach. </p><p>The beach, as well as several restaurants and the natural swimming pool, are within minutes walking distance. A shopping center and grocery stores are also within walking distance. We also enjoyed using the bus stop next door to get downtown. </p><p>Also, be sure to visit the Tradicional restaurant directly across from the house. The food is extremely good. </p><p>To eat on the outdoor terrace at the restaurant by the natural pool, you absolutely need to make a reservation in advance. </p><p>In downtown, we loved “Bar Number Two” (best poncha and caipirinha!!).</p></div>
+          <details class="rev-orig"><summary>Translated from German · show original</summary><p>Ich war mit einer Freundin in der Unterkunft und wir hatten einen wunderschönen Urlaub. Die Wohnung ist geräumig und bietet mit der riesigen Terrasse ein wunderschönes Urlaubsfeeling mit Meerblick. Super hilfreich war auch der eigene Garagenstellplatz für den Mietwagen. Einzig das Haus war sehr hellhörig. </p><p>Natalia hat uns sehr herzlich empfangen und war sehr gut erreichbar. </p><p>Der Strand sowie einige Restaurants und das Naturbad sind in wenigen Minuten zu Fuß erreichbar. Ein Einkaufszentrum und Lebensmittelgeschäfte sind ebenfalls zu Fuß erreichbar. Wir haben auch gerne die Bushaltestelle nebenan genutzt, um in die Innenstadt zu kommen. </p><p>Besucht auch unbedingt das Tradicional Restaurant direkt gegenüber vom Haus. Das Essen ist extrem gut. </p><p>Um beim Restaurant am Naturbad auf der Außenterrasse zu Essen, muss man dringend vorher reservieren. </p><p>In der Innenstadt haben wir die &quot;Bar Number Two&quot; geliebt (bester Poncha und Caipirinha!!).</p></details>
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">I</span>
+            <div><b>Imogen</b><span>9 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="4 out of 5 stars">★★★★<i>★</i></span>
+            <span>March 2026</span><span>Stayed about a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>Pros - beautiful view from balcony, one sheltered from bad weather, there was always parking available. Natalia’s communication was very responsive and friendly. </p><p>Cons - we found mattress hard and uncomfortable and so used a spare duvet to make it softer, there was only one electric heater so difficult to dry things (we had bad weather so couldn’t dry things on balcony), at night the bedroom light bulbs dimly glowed even though switch was off (apparently might be common in Madeira)</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">M</span>
+            <div><b>Malcolm</b><span>11 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>February 2026</span><span>Stayed over a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>Loved it here! Great to be away from the tourist hotspots and feel included in a lovely community. Great coffee shops etc!</p><p>Also got fit walking up and down the hill. Did occasionally resort to a bus or taxi - both very cheap!</p><p>Many Thanks for a great stay!</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="vrbo" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">R</span>
+            <div><b>Reid H.</b><span>Travelled with family</span></div>
+            <span class="rev-src rev-src-vrbo">Vrbo</span>
+          </header>
+          <div class="rev-meta"><span class="rev-ten" aria-label="10 out of 10">10<i>/10</i></span>
+            <span>February 2026</span><span>Stayed 15 nights</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>We spent almost two weeks in this unit and enjoyed it. A spacious, well maintained, one-bedroom apartment with an extra bed in an alcove to accommodate a third person if you wished. Located on the 6th floor in a family friendly residential apartment building a short drive from Funchal old town. The surrounding residential area has upscale villas and multiple housing. Lovely. Well equipped kitchen with a full size fridge-freezer and a dishwasher. Big screen TV with a few basic English-language channels and easy access to your Netflix account. Beautiful view overlooking Funchal harbour to watch the cruise ships come and go. Two big terraces for sitting out in warm weather. Note that this unit, like virtually all of Funchal, is in a hilly area and walking can be a challenge for some. There is a large grocery store about 500 metres away and smaller shops for groceries, veggies and bakery items about 200 metres away but all shopping requires walking up or down considerable hills if you wanted to go by foot. A rental car would be useful, but we managed well using Bolt/Uber that can be ordered by app within 2-5 minutes and is really inexpensive with nice cars and friendly drivers. We just booked them using the address of the pizza restaurant at the ground level of the building and the drivers knew where to go immediately. Dealing with the owners Natalia and Hugo was very easy. Immediate response and really helpful. We would stay again.</p></div>
+          
+          <details class="rev-orig"><summary>Reply from Natalia and Hugo</summary><p>Reid and Karen were wonderful guests. Communication was easy and pleasant throughout their stay. They took great care of the apartment and left it clean and in very good condition. It was a pleasure hosting them in Madeira, and I would happily recommend them to other hosts. They are always welcome back anytime! Natalia 🌸</p></details>
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">M</span>
+            <div><b>Mandy</b><span>7 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>January 2026</span><span>Stayed over a week</span><span>Varanda do Sol Suite</span></div>
+          <div class="rev-text"><p>We had a lovely time at Natalia’s place over Christmas and New Year’s Eve. The terrace is the heart of the apartment, and we spent most of our time there. </p><p>The apartment is ideal for two people, but it also works well for three and has super fast internet, which allowed me to comfortably work remotely after the holidays.</p><p>Communication with Natalia was always great — she responded quickly and took care of everything. The only small note for people who enjoy cooking a lot: with the available equipment and the stove, cooking can be a bit challenging and may take a little longer. However, this is manageable.</p><p>Other than that, everything was wonderful, and I would definitely come back anytime. Thanks for hosting us!🌞🌸</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">R</span>
+            <div><b>Richard</b><span>11 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>November 2025</span><span>Stayed about a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>Lovely flat with views of the sea and mountains. Everything needed was there. Would highly recommend!</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">S</span>
+            <div><b>Sandra</b><span>7 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>October 2025</span><span>Stayed about a week</span><span>Varanda do Sol Suite</span></div>
+          <div class="rev-text"><p>Fast and friendly answers, always available even if you leave your key in the apartment :) </p><p>Clear check-in and check-out instructions. Great big apartment and beautiful terrace :) happy to come back next time</p></div>
+          <details class="rev-orig"><summary>Translated from German · show original</summary><p>Schnelle und freundliche Antworten, immer erreichbar auch wenn man mal seinen Schlüssel in der Wohnung liegen lässt :) </p><p>Klare Anweisungen für Check-in und out. Tolle große Wohnung und wunderschöner Terasse :) gerne beim nächsten Mal wieder</p></details>
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">P</span>
+            <div><b>Peter</b><span>9 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>October 2025</span><span>Stayed about a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>Great place to stay, friendly hosts, good location and lovely outside space</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">D</span>
+            <div><b>Deirdre</b><span>8 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>October 2025</span><span>Stayed over a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>Exceptionally clean, spacious and well equipped apartment. The balcony off the living room offers stunning views over Funchal to the ocean. The large outdoor terrace is  a standout amenity.</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="booking" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">M</span>
+            <div><b>Max</b><span>Netherlands</span></div>
+            <span class="rev-src rev-src-booking">Booking.com</span>
+          </header>
+          <div class="rev-meta"><span class="rev-ten" aria-label="9 out of 10">9<i>/10</i></span>
+            <span>September 2025</span><span>Stayed 14 nights</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p class="rev-title">Nice location, welcoming and helpful</p><p>The view</p><p class="rev-bad"><span>Less good:</span> Air conditioning, and wifi on the balcony</p></div>
+          <details class="rev-orig"><summary>Translated from Dutch · show original</summary><p class="rev-title">Fijne locatie gastvrijheid en hulpvaardig</p><p>Uitzicht</p><p class="rev-bad"><span>Less good:</span> Airco en wifi op het balkon</p></details>
+          <details class="rev-orig"><summary>Reply from Natalia and Hugo</summary><p>Thank you very much, Max, for your kind comments and for highlighting our hospitality and helpfulness 🌸. We are delighted that you enjoyed the comfort, cleanliness, and location of the apartment.</p><p>We were, however, a little surprised by the 7.5 rating for staff, as it seems somewhat inconsistent with your positive remarks. We always do our very best to be responsive and available to ensure our guests have a pleasant stay.</p><p>Your feedback is nevertheless very valuable to us, and it encourages us to keep improving. We would be very happy to welcome you back to Madeira in the future ✨🏝</p><p>Natalia &amp;amp; Hugo</p></details>
+        </article>
+        <article class="rev rev-more" data-src="booking" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">G</span>
+            <div><b>Gonzalo</b><span>Portugal</span></div>
+            <span class="rev-src rev-src-booking">Booking.com</span>
+          </header>
+          <div class="rev-meta"><span class="rev-ten" aria-label="9 out of 10">9<i>/10</i></span>
+            <span>September 2025</span><span>Stayed 6 nights</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>Confortable and clean spaces, very sunny and well ventilated, quiet neighbourhood,</p><p class="rev-bad"><span>Less good:</span> The bed mattress is too firm but that is my personal taste</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="booking" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">C</span>
+            <div><b>Corentin</b><span>France</span></div>
+            <span class="rev-src rev-src-booking">Booking.com</span>
+          </header>
+          <div class="rev-meta"><span class="rev-ten" aria-label="10 out of 10">10<i>/10</i></span>
+            <span>September 2025</span><span>Stayed 7 nights</span><span>Varanda do Sol Suite</span></div>
+          <div class="rev-text"><p>A very practical location for seeing the island</p><p>Terrace with a sea view</p><p class="rev-bad"><span>Less good:</span> Nothing</p></div>
+          <details class="rev-orig"><summary>Translated from French · show original</summary><p>Emplacement très pratique pour la visite de l'île </p><p>Terrasse avec vue sur mer</p><p class="rev-bad"><span>Less good:</span> Rien</p></details>
+          <details class="rev-orig"><summary>Reply from Natalia and Hugo</summary><p>Bonjour,</p><p>Merci infiniment pour votre gentil message et pour avoir tout laissé impeccable, c’est vraiment attentionné. </p><p>Je vous souhaite un excellent retour, et ce sera un vrai plaisir de vous revoir un jour sur l’île ! Natalia 🌸</p></details>
+        </article>
+        <article class="rev rev-more" data-src="booking" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">O</span>
+            <div><b>Olga</b><span>Poland</span></div>
+            <span class="rev-src rev-src-booking">Booking.com</span>
+          </header>
+          <div class="rev-meta"><span class="rev-ten" aria-label="10 out of 10">10<i>/10</i></span>
+            <span>August 2025</span><span>Stayed 11 nights</span><span>Varanda do Sol Suite</span></div>
+          <div class="rev-text"><p class="rev-title">The stay was wonderful as the apartment stays in a good location near the natural pools beach. It was very clean, we had</p><p>Location, the apartment and the terrace.</p><p class="rev-bad"><span>Less good:</span> All was great!</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">A</span>
+            <div><b>Andréa</b><span>10 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>August 2025</span><span>Stayed about a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>I am more than delighted with my stay at Nathalia and Hugo's. </p><p>The apartment is in a great location, clean and spacious.</p><p>The place is quiet and peaceful.</p><p>The apartment is beautifully decorated, small touches of authenticity make up the charm of the apartment, which makes it warm.</p><p>Easy access, ideal with children or a person with reduced mobility.</p><p>I had a very nice week with my father. </p><p>I would highly recommend it, and I am in a hurry to return to feel at home again. </p><p>Thanks again 🌺</p><p>See you soon </p><p>Andréa and her Dad</p></div>
+          <details class="rev-orig"><summary>Translated from French · show original</summary><p>Je suis plus que Ravie de mon séjour chez Nathalia et Hugo. </p><p>L’appartement est idéalement situé, propre et spacieux.</p><p>L’endroit est Calme et paisible.</p><p>L’appartement est magnifiquement décoré, des petites touche d’authenticité font tout le charme de l’appartement, cela je rends chaleureux.</p><p>Facile d’accès, idéal avec des enfants ou une personnalité à mobilité réduite.</p><p>J’ai passé une semaine très agréable avec mon père. </p><p>Je recommande vivement, et je suis pressé de revenir pour m’y sentir de nouveau chez moi. </p><p>Encore merci 🌺</p><p>À très vite </p><p>Andréa et son Papa</p></details>
+          
+        </article>
+        <article class="rev rev-more" data-src="booking" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">S</span>
+            <div><b>Stefano</b><span>Italy</span></div>
+            <span class="rev-src rev-src-booking">Booking.com</span>
+          </header>
+          <div class="rev-meta"><span class="rev-ten" aria-label="10 out of 10">10<i>/10</i></span>
+            <span>August 2025</span><span>Stayed 7 nights</span><span>Varanda do Sol Suite</span></div>
+          <div class="rev-text"><p class="rev-title">Spectacular terrace</p><p>Spectacular terrace with a sea view, a very spacious apartment with every comfort. The garage is very handy too.</p><p class="rev-bad"><span>Less good:</span> If I had to find a flaw, perhaps the bathroom: the shower is almost impossible to set between hot and cold, and it is a bit worn overall, from the door itself to the shower tray.</p></div>
+          <details class="rev-orig"><summary>Translated from Italian · show original</summary><p class="rev-title">Terrazzo spettacolare</p><p>Terrazzo spettacolare con vista mare,appartamento molto spazioso e con ogni comfort . Anche il Garage comodissimo.</p><p class="rev-bad"><span>Less good:</span> Se dovessi trovare una pecca forse il bagno,doccia quasi impossibile da regolare tra acqua calda e fredda e un po’ rovinato in generale dalla porta stessa al piano doccia.</p></details>
+          
+        </article>
+        <article class="rev rev-more" data-src="vrbo" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">S</span>
+            <div><b>Sandra Gabriele R.</b><span></span></div>
+            <span class="rev-src rev-src-vrbo">Vrbo</span>
+          </header>
+          <div class="rev-meta"><span class="rev-ten" aria-label="10 out of 10">10<i>/10</i></span>
+            <span>August 2025</span><span>Stayed 9 nights</span><span>Varanda do Sol Suite</span></div>
+          <div class="rev-text"><p>We had 10 wonderful days and were happy with the apartment. The location is very good. Communication and check-in were perfect. Thank you, Natalia!</p></div>
+          <details class="rev-orig"><summary>Translated from German · show original</summary><p>Wir hatten 10 wunderschöne Tage, waren mit dem Apartment zufrieden. Die Lage ist sehr gut. Kommunikation und check in sind perfekt. Danke an Natalia!</p></details>
+          
+        </article>
+        <article class="rev rev-more" data-src="booking" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">B</span>
+            <div><b>Bram</b><span>Netherlands</span></div>
+            <span class="rev-src rev-src-booking">Booking.com</span>
+          </header>
+          <div class="rev-meta"><span class="rev-ten" aria-label="9 out of 10">9<i>/10</i></span>
+            <span>August 2025</span><span>Stayed 13 nights</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p class="rev-title">Delicious</p><p>Super accommodation, clean, spacious, and with a huge XXL terrace.</p><p class="rev-bad"><span>Less good:</span> Nothing</p></div>
+          <details class="rev-orig"><summary>Translated from Dutch · show original</summary><p class="rev-title">Heerlijk</p><p>Super accommodatie, schoon, ruim en met een enorm xxl terras.</p><p class="rev-bad"><span>Less good:</span> Niets</p></details>
+          <details class="rev-orig"><summary>Reply from Natalia and Hugo</summary><p>Hi Bram 🌟</p><p>Thanks a ton for the awesome rating! You’re welcome back anytime🏝️</p><p>Cheers,</p><p>Natalia</p></details>
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">N</span>
+            <div><b>Niko</b><span>3 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>July 2025</span><span>Stayed over a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>Large terrace and beautiful views</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="booking" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">I</span>
+            <div><b>Ina</b><span>Moldova</span></div>
+            <span class="rev-src rev-src-booking">Booking.com</span>
+          </header>
+          <div class="rev-meta"><span class="rev-ten" aria-label="10 out of 10">10<i>/10</i></span>
+            <span>July 2025</span><span>Stayed 6 nights</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p class="rev-title">Friendly hosts. A super comfortable and beautiful apartment. Convenient location</p><p>An apartment with a huge terrace looking out over the ocean</p><p class="rev-bad"><span>Less good:</span> Everything was great</p></div>
+          <details class="rev-orig"><summary>Translated from Russian · show original</summary><p class="rev-title">Приветливые хозяева.Супер комфортная и красивая квартира.Удобное расположение</p><p>Квартира с огромной террасой с видом на океан</p><p class="rev-bad"><span>Less good:</span> Все было супер</p></details>
+          <details class="rev-orig"><summary>Reply from Natalia and Hugo</summary><p>Hi Ina🌟</p><p>Thank you so much for your wonderful comment! 🥰</p><p>We’re delighted that you enjoyed the warm welcome, the comfort of the apartment, and the terrace overlooking the ocean.</p><p>Knowing that “everything was great” truly warms our hearts. We look forward to hosting you again🏝️</p><p>Natalia 🌺</p></details>
+        </article>
+        <article class="rev rev-more" data-src="booking" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">C</span>
+            <div><b>Carmelo</b><span>Italy</span></div>
+            <span class="rev-src rev-src-booking">Booking.com</span>
+          </header>
+          <div class="rev-meta"><span class="rev-ten" aria-label="7 out of 10">7<i>/10</i></span>
+            <span>June 2025</span><span>Stayed 8 nights</span><span>Varanda do Sol Suite</span></div>
+          <div class="rev-text"><p>Excellent location, lots of space. A wonderful neighbourhood, full of places for lunch and dinner, and a supermarket too. A short hop from Funchal and the centre. The garage is great to use as well. Very kind owners, ready to help with anything.</p><p class="rev-bad"><span>Less good:</span> It would be nice to have the flat cleaned at least once every 7 days.</p></div>
+          <details class="rev-orig"><summary>Translated from Italian · show original</summary><p>Posizione dell'appartamento ottima, ampi spazi. Vicinato stupendo, molto fornito di locali per cenare e pranzare ma anche supermercato. A due passi da Funchal e dal centro. Inoltre ottimo per l'utilizzo del box auto. Proprietari molto gentili e disponibili per qualsiasi evenienza.</p><p class="rev-bad"><span>Less good:</span> Sarebbe carino poter usufruire di un servizio di pulizia dell'appartamento minimo 1 volta ogni 7 giorni.</p></details>
+          <details class="rev-orig"><summary>Reply from Natalia and Hugo</summary><p>Ciao,</p><p>Grazie per il tuo feedback. Siamo felici che tu abbia apprezzato la posizione dell’appartamento, il quartiere e la vicinanza al centro di Funchal. È stato un piacere ospitarti.</p><p>Per quanto riguarda il servizio di pulizia durante il soggiorno, ci dispiace ci sia stato un malinteso. Se ce lo avessi richiesto, avremmo potuto organizzarlo senza problemi.</p><p>Il prezzo della prenotazione include infatti solo la pulizia finale dopo la partenza, oltre alla gestione della biancheria da letto e da bagno, per garantire un alto standard di pulizia a tutti gli ospiti.</p><p>Il servizio di pulizia durante il soggiorno non è incluso, ma può essere organizzato su richiesta anticipata.</p><p>Grazie ancora per il tuo soggiorno e per il tuo commento.</p><p>Cordiali saluti,</p><p>Natália &amp; Hugo</p></details>
+        </article>
+        <article class="rev rev-more" data-src="airbnb" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">B</span>
+            <div><b>Barbara</b><span>2 years on Airbnb</span></div>
+            <span class="rev-src rev-src-airbnb">Airbnb</span>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="5 out of 5 stars">★★★★★<i></i></span>
+            <span>June 2025</span><span>Stayed about a week</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p>The apartment was very large and clean, there was everything you needed. The large terrace was just great overlooking the sea and Funchal. The kitchen was well equipped and you could even do laundry. Communication with Natalia was great, she always responded quickly, we could figure out check-in times and it was super easy. Plenty of parking available in the area, a small kiosk downstairs in the house and a great cafeteria nearby. On foot, it was about 30 minutes to Funchal, we also took the bus. It was a really great stay.</p><p>Unfortunately, there were many barking dogs in the area (for which the hostess can do nothing), but with earplugs it was no problem at night.</p></div>
+          <details class="rev-orig"><summary>Translated from German · show original</summary><p>Das Apartment war sehr groß und sauber, es war alles vorhanden was man brauchte. Die große Terrasse war einfach nur toll mit Blick auf das Meer und auf Funchal. Die Küche war toll ausgestattet und man konnte sogar die Wäsche waschen. Die Kommunikation mit Natalia war großartig, sie hat immer schnell geantwortet, Check in Zeiten konnten wir uns ausmachen und war super einfach. Genug Parkplätze in der Gegend vorhanden, ein kleiner Kiosk unten im Haus und gleich in der Nähe eine tolle Cafeteria. Zu Fuss waren es ca. 30 min nach Funchal, wir sind auch mit dem Bus gefahren. Es war ein wirklich toller Aufenthalt.</p><p>Leider waren in der Gegend viele bellende Hunde (wofür die Gastgeberin ja nichts kann), aber mit Ohrenstöpsel war es kein Problem in der Nacht.</p></details>
+          
+        </article>
+        <article class="rev rev-more" data-src="vrbo" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">P</span>
+            <div><b>Patricia R.</b><span>Travelled with group</span></div>
+            <span class="rev-src rev-src-vrbo">Vrbo</span>
+          </header>
+          <div class="rev-meta"><span class="rev-ten" aria-label="10 out of 10">10<i>/10</i></span>
+            <span>May 2025</span><span>Stayed 12 nights</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p class="rev-title">Everything’s was good</p><p>The apartment was very clean and large. Equipped with everything you need. You had a great view of the sea and the mountains. Would book again anytime.</p></div>
+          
+          
+        </article>
+        <article class="rev rev-more" data-src="vrbo" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">A</span>
+            <div><b>Aude T.</b><span>Travelled with partner</span></div>
+            <span class="rev-src rev-src-vrbo">Vrbo</span>
+          </header>
+          <div class="rev-meta"><span class="rev-ten" aria-label="10 out of 10">10<i>/10</i></span>
+            <span>May 2025</span><span>Stayed 7 nights</span><span>Varanda do Sol Suite</span></div>
+          <div class="rev-text"><p class="rev-title">A place you have to discover</p><p>Madeira is, without any doubt, a place to discover. Natalia and Hugo's apartment is ideally placed, close to restaurants, shops, bus stops and the famous Lido promenade. The double terrace is more than pleasant, with a view of the ocean, and our hosts told us what to see and what to taste: all the must-dos. I recommend it without any hesitation!</p></div>
+          <details class="rev-orig"><summary>Translated from French · show original</summary><p class="rev-title">une destination à découvrir absolument</p><p>Madère est sans aucune discussion une destination à découvrir. L'appartement de Natalia et Hugo est idéalement situé, proche des restaurants, des commerces, des arrêts de bus, de l'emblématique promenade du Lido. La double terrasse est plus qu'agréable avec une vue sur l'océan, et les hôtes nous ont indiqué les choses à découvrir, à goûter...les incontournables. Je recommande sans aucune hésitation!</p></details>
+          <details class="rev-orig"><summary>Reply from Natalia and Hugo</summary><p>Un grand merci à Aude pour son passage ! Elle a été une invitée adorable, respectueuse du lieu et de tout ce qui était mis à disposition. On sent qu’elle prend soin des choses comme si c’était chez elle, ce qui est vraiment précieux. Tout s’est passé avec simplicité et bienveillance. Ce serait un vrai plaisir de l’accueillir à nouveau !</p></details>
+        </article>
+        <article class="rev rev-more" data-src="vrbo" hidden>
+          <header>
+            <span class="rev-av" aria-hidden="true">M</span>
+            <div><b>Michael L.</b><span>Travelled with group</span></div>
+            <span class="rev-src rev-src-vrbo">Vrbo</span>
+          </header>
+          <div class="rev-meta"><span class="rev-ten" aria-label="10 out of 10">10<i>/10</i></span>
+            <span>April 2025</span><span>Stayed 11 nights</span><span>Perla do Oceano Suite</span></div>
+          <div class="rev-text"><p class="rev-title">All excellent</p><p>Very nice and good-value accommodation, everything we needed. Many thanks to Nathalia, Hugo and Arthur. We felt very much at home and would gladly come again.</p></div>
+          <details class="rev-orig"><summary>Translated from German · show original</summary><p class="rev-title">Alles bestens</p><p>Sehr schöne und auch preiswerte Unterkunft, für unsere Zwecke völlig ausreichend. Besten Dank an Nathalia, Hugo und Arthur. Wir haben uns sehr wohl gefühlt und kommen auch gerne wieder</p></details>
+          
+        </article>
     </div>
-    <div class="rev-links rv">
-      <a class="btn btn-o" href="/perla-do-oceano#reviews">All 33 reviews of Perla do Oceano Suite</a>
-      <a class="btn btn-o" href="/varanda-do-sol#reviews">All 23 reviews of Varanda do Sol Suite</a>
+    <div class="rev-links">
+      <button class="btn btn-o" type="button" data-more-reviews>Show more reviews</button>
     </div>
   </div>
 </section>
@@ -239,7 +773,104 @@
   </div>
 </section>
 
-<section id="boat">
+<section id="nearby">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Around the flats</p>
+      <h2>What to do nearby</h2>
+      <p class="lede">Both flats are on the west side of Funchal, between the Lido and Praia Formosa. Everything below is a short bus, Bolt or Uber ride away.</p>
+    </div>
+    <div class="near rv-group">
+      <article class="near-card rv">
+        <img src="assets/near/formosa.webp" alt="Praia Formosa" loading="lazy" decoding="async" width="1200" height="800"/>
+        <div>
+          
+          <h3>Praia Formosa</h3>
+          <p>The biggest beach in Funchal. Dark pebbles, lifeguards in summer and cafés on the sand. A flat seafront path runs west from here to Câmara de Lobos.</p>
+          
+        </div>
+      </article>
+      <article class="near-card rv">
+        <img src="assets/near/cavacas.webp" alt="Doca do Cavacas pools" loading="lazy" decoding="async" width="1200" height="800"/>
+        <div>
+          
+          <h3>Doca do Cavacas pools</h3>
+          <p>Sea pools cut into black lava rock, with a fish restaurant on top. You swim in calm water while the waves break just outside.</p>
+          
+        </div>
+      </article>
+      <article class="near-card rv">
+        <img src="assets/near/lido.webp" alt="The Lido promenade" loading="lazy" decoding="async" width="1200" height="800"/>
+        <div>
+          
+          <h3>The Lido promenade</h3>
+          <p>A seafront walk past gardens, cafés and the Lido and Ponta Gorda pools. Flat the whole way, and at its best around sunset.</p>
+          
+        </div>
+      </article>
+      <article class="near-card rv">
+        <img src="assets/near/camara.webp" alt="Câmara de Lobos" loading="lazy" decoding="async" width="1200" height="800"/>
+        <div>
+          
+          <h3>Câmara de Lobos</h3>
+          <p>A fishing village with painted boats pulled up on the slipway, a small bay, and poncha bars. Churchill came here to paint in 1950.</p>
+          
+        </div>
+      </article>
+      <article class="near-card rv">
+        <img src="assets/near/girao.webp" alt="Cabo Girão skywalk" loading="lazy" decoding="async" width="1200" height="800"/>
+        <div>
+          
+          <h3>Cabo Girão skywalk</h3>
+          <p>A glass floor at the edge of one of the highest sea cliffs in Europe, 580 metres straight down to the fields and the sea.</p>
+          
+        </div>
+      </article>
+      <article class="near-card rv">
+        <img src="assets/near/market.webp" alt="The market and the old town" loading="lazy" decoding="async" width="1200" height="800"/>
+        <div>
+          
+          <h3>The market and the old town</h3>
+          <p>Mercado dos Lavradores sells exotic fruit, fish and flowers. Next to it, Rua de Santa Maria has its painted doors and many of the best restaurants in town.</p>
+          
+        </div>
+      </article>
+      <article class="near-card rv">
+        <img src="assets/near/monte.webp" alt="Cable car to Monte" loading="lazy" decoding="async" width="1200" height="800"/>
+        <div>
+          
+          <h3>Cable car to Monte</h3>
+          <p>Fifteen minutes in the air from the old town up to Monte, its gardens and its church. Come back down in a wicker toboggan, pushed by two men in straw hats.</p>
+          
+        </div>
+      </article>
+      <article class="near-card rv">
+        <img src="assets/near/barcelos.webp" alt="Pico dos Barcelos" loading="lazy" decoding="async" width="1200" height="800"/>
+        <div>
+          
+          <h3>Pico dos Barcelos</h3>
+          <p>A viewpoint above the city. The whole of Funchal bay in one look, and even better at night with the lights on.</p>
+          
+        </div>
+      </article>
+      <article class="near-card rv">
+        <img src="assets/near/boat.webp" alt="Our boat, Chifbay" loading="lazy" decoding="async" width="1200" height="800"/>
+        <div>
+          
+          <h3>Our boat, Chifbay</h3>
+          <p>We also run a private boat from Marina do Funchal. Along the coast to Cabo Girão, with a swim and paddle boards, just your group on board.</p>
+          <a class="near-link" href="https://chifbay.com" rel="noopener">See the boat trips</a>
+        </div>
+      </article>
+    </div>
+    <details class="near-credits">
+      <summary>Photo credits</summary>
+      <p>Praia Formosa: <a href="https://commons.wikimedia.org/wiki/File:S%C3%A3o_Martinho_(Madeira,_Portugal),_Praia_Formosa_--_2025_--_0656.jpg" rel="noopener">Dietmar Rabich</a>, CC BY-SA 4.0 · Doca do Cavacas pools: <a href="https://commons.wikimedia.org/wiki/File:Doca_do_Cavacas_-_Funchal_01.jpg" rel="noopener">H. Zell</a>, CC BY-SA 3.0 · The Lido promenade: <a href="https://commons.wikimedia.org/wiki/File:Funchal,_Promenade_do_Lido_(Passeio_P%C3%BAblico_Mar%C3%ADtimo)_2.jpg" rel="noopener">Dr. Thomas Liptak</a>, CC BY-SA 4.0 · Câmara de Lobos: <a href="https://commons.wikimedia.org/wiki/File:C%C3%A2mara_de_Lobos_(Madeira,_Portugal),_Porto_de_C%C3%A2mara_de_Lobos_--_2025_--_1901.jpg" rel="noopener">Dietmar Rabich</a>, CC BY-SA 4.0 · Cabo Girão skywalk: <a href="https://commons.wikimedia.org/wiki/File:Glass_balcony_of_Cabo_Gir%C3%A3o_skywalk,_C%C3%A2mara_de_Lobos,_Madeira,_2023_May.jpg" rel="noopener">Ximonic (Simo Räsänen)</a>, CC BY-SA 4.0 · The market and the old town: <a href="https://commons.wikimedia.org/wiki/File:Funchal_(Madeira,_Portugal),_Mercado_dos_Lavradores_--_2025_--_0995.jpg" rel="noopener">Dietmar Rabich</a>, CC BY-SA 4.0 · Cable car to Monte: <a href="https://commons.wikimedia.org/wiki/File:Funchal_Cable_Car_Madeira.jpg" rel="noopener">Ввласенко</a>, CC BY-SA 3.0 · Pico dos Barcelos: <a href="https://commons.wikimedia.org/wiki/File:Vista_de_Funchal_desde_Pico_dos_Barcelos,_Madeira,_Portugal,_2019-05-29,_DD_45.jpg" rel="noopener">Diego Delso</a>, CC BY-SA 4.0. From Wikimedia Commons, cropped. The boat photo is ours.</p>
+    </details>
+  </div>
+</section>
+
+<section class="sand" id="boat">
   <div class="wrap">
     <div class="sec-head rv">
       <p class="eyebrow">The same crew, on the water</p>
