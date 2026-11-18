@@ -1,50 +1,77 @@
 {
- "_about": "Written by hand. vrbo: Vrbo blocks scripts, so its reviews were copied from vrbo.com/2536886a (Perla) and vrbo.com/2536959a (Varanda) on 2026-11-18, word for word; date = the month of the stay, as Vrbo shows no review date. translations: English for reviews that came with no translation or a half-finished one; the guest's own words stay in the original field and on the page. Update by hand when new reviews come in.",
- "vrbo": {
-  "perla": {
-   "rating": 10, "scale": 10, "count": 4,
-   "url": "https://www.vrbo.com/2536886a",
-   "categories": [["Cleanliness", 10], ["Check-in", 10], ["Communication", 10], ["Location", 9.0]],
-   "reviews": [
-    {"id": "vrbo-perla-nina-2026-03", "name": "Nina J D.", "from": "Travelled with family", "date": "2026-03-15", "rating": 10, "stay": "Stayed 14 nights",
-     "text": {"title": "", "good": "The property was as described, very clean and comfortable. Kitchen had everything we needed, we were there for 2 weeks and cooked in a few times. Natalia was always quick to respond to our enquires. There is a convenience store right by the apartment and other shops about 15 mins walk. The buses are really easy to use and stops about 2 minutes walk from the building. The views are fantastic from the terrace and balcony.", "bad": ""}},
-    {"id": "vrbo-perla-reid-2026-02", "name": "Reid H.", "from": "Travelled with family", "date": "2026-02-15", "rating": 10, "stay": "Stayed 15 nights",
-     "text": {"title": "", "good": "We spent almost two weeks in this unit and enjoyed it. A spacious, well maintained, one-bedroom apartment with an extra bed in an alcove to accommodate a third person if you wished. Located on the 6th floor in a family friendly residential apartment building a short drive from Funchal old town. The surrounding residential area has upscale villas and multiple housing. Lovely. Well equipped kitchen with a full size fridge-freezer and a dishwasher. Big screen TV with a few basic English-language channels and easy access to your Netflix account. Beautiful view overlooking Funchal harbour to watch the cruise ships come and go. Two big terraces for sitting out in warm weather. Note that this unit, like virtually all of Funchal, is in a hilly area and walking can be a challenge for some. There is a large grocery store about 500 metres away and smaller shops for groceries, veggies and bakery items about 200 metres away but all shopping requires walking up or down considerable hills if you wanted to go by foot. A rental car would be useful, but we managed well using Bolt/Uber that can be ordered by app within 2-5 minutes and is really inexpensive with nice cars and friendly drivers. We just booked them using the address of the pizza restaurant at the ground level of the building and the drivers knew where to go immediately. Dealing with the owners Natalia and Hugo was very easy. Immediate response and really helpful. We would stay again.", "bad": ""},
-     "reply": "Reid and Karen were wonderful guests. Communication was easy and pleasant throughout their stay. They took great care of the apartment and left it clean and in very good condition. It was a pleasure hosting them in Madeira, and I would happily recommend them to other hosts. They are always welcome back anytime! Natalia 🌸"},
-    {"id": "vrbo-perla-patricia-2025-05", "name": "Patricia R.", "from": "Travelled with group", "date": "2025-05-15", "rating": 10, "stay": "Stayed 12 nights",
-     "text": {"title": "Everything’s was good", "good": "The apartment was very clean and large. Equipped with everything you need. You had a great view of the sea and the mountains. Would book again anytime.", "bad": ""}},
-    {"id": "vrbo-perla-michael-2025-04", "name": "Michael L.", "from": "Travelled with group", "date": "2025-04-15", "rating": 10, "stay": "Stayed 11 nights",
-     "text": {"title": "All excellent", "good": "Very nice and good-value accommodation, everything we needed. Many thanks to Nathalia, Hugo and Arthur. We felt very much at home and would gladly come again.", "bad": ""},
-     "original": {"title": "Alles bestens", "good": "Sehr schöne und auch preiswerte Unterkunft, für unsere Zwecke völlig ausreichend. Besten Dank an Nathalia, Hugo und Arthur. Wir haben uns sehr wohl gefühlt und kommen auch gerne wieder", "bad": ""},
-     "lang": "German"}
-   ]
-  },
-  "varanda": {
-   "rating": 8.8, "scale": 10, "count": 3,
-   "url": "https://www.vrbo.com/2536959a",
-   "categories": [["Cleanliness", 10], ["Check-in", 10], ["Communication", 10], ["Location", 9.4]],
-   "reviews": [
-    {"id": "vrbo-varanda-verified-2026-05", "name": "Verified traveller", "from": "Travelled with partner", "date": "2026-05-15", "rating": 6, "stay": "Stayed 16 nights",
-     "text": {"title": "", "good": "Communication and the key handover were very good. Good location, close to a bus stop. A space in the garage for the car. Shops nearby. The flat is well equipped and very clean. The bed was comfortable.", "bad": "The flat is very noisy, depending on who is in the flats around it. The flat is a little dated overall."},
-     "original": {"title": "", "good": "Kommunikation und Schlüsselübergabe war sehr gut Gute Lage, nähe Bushaltestelle Einstellhallenplatz fürs Auto Einkaufsmöglichkeiten in der Nähe Wohnung ist gut ausgestattet und sehr sauber Das Bett war bequem", "bad": "Negativ zu erwähnen, ist die extreme hellhörigkeit der Wohnung, je nach Besetzung der umliegenden Wohnungen. Die Wohnung ist insgesamt etwas in die Jahre gekommen."},
-     "lang": "German"},
-    {"id": "vrbo-varanda-sandra-2025-08", "name": "Sandra Gabriele R.", "from": "", "date": "2025-08-15", "rating": 10, "stay": "Stayed 9 nights",
-     "text": {"title": "", "good": "We had 10 wonderful days and were happy with the apartment. The location is very good. Communication and check-in were perfect. Thank you, Natalia!", "bad": ""},
-     "original": {"title": "", "good": "Wir hatten 10 wunderschöne Tage, waren mit dem Apartment zufrieden. Die Lage ist sehr gut. Kommunikation und check in sind perfekt. Danke an Natalia!", "bad": ""},
-     "lang": "German"},
-    {"id": "vrbo-varanda-aude-2025-05", "name": "Aude T.", "from": "Travelled with partner", "date": "2025-05-15", "rating": 10, "stay": "Stayed 7 nights",
-     "text": {"title": "A place you have to discover", "good": "Madeira is, without any doubt, a place to discover. Natalia and Hugo's apartment is ideally placed, close to restaurants, shops, bus stops and the famous Lido promenade. The double terrace is more than pleasant, with a view of the ocean, and our hosts told us what to see and what to taste: all the must-dos. I recommend it without any hesitation!", "bad": ""},
-     "original": {"title": "une destination à découvrir absolument", "good": "Madère est sans aucune discussion une destination à découvrir. L'appartement de Natalia et Hugo est idéalement situé, proche des restaurants, des commerces, des arrêts de bus, de l'emblématique promenade du Lido. La double terrasse est plus qu'agréable avec une vue sur l'océan, et les hôtes nous ont indiqué les choses à découvrir, à goûter...les incontournables. Je recommande sans aucune hésitation!", "bad": ""},
-     "lang": "French",
-     "reply": "Un grand merci à Aude pour son passage ! Elle a été une invitée adorable, respectueuse du lieu et de tout ce qui était mis à disposition. On sent qu’elle prend soin des choses comme si c’était chez elle, ce qui est vraiment précieux. Tout s’est passé avec simplicité et bienveillance. Ce serait un vrai plaisir de l’accueillir à nouveau !"}
-   ]
-  }
- },
+ "_about": "Written by hand. translations: English for reviews that came with no translation, a half-finished one, or a machine one we rewrote (keyed by the review id on Airbnb, Booking.com or Vrbo); it is shown in front, and the guest's own words stay on the page as the original. The Vrbo reviews themselves are fetched by fetch-vrbo-reviews.py on the Mac mini.",
  "translations": {
-  "036fc272563c6ba2": {"lang": "Dutch", "text": {"title": "Nice location, welcoming and helpful", "good": "The view", "bad": "Air conditioning, and wifi on the balcony"}},
-  "c76a56f5797e3adb": {"lang": "Russian", "text": {"title": "Friendly hosts. A super comfortable and beautiful apartment. Convenient location", "good": "An apartment with a huge terrace looking out over the ocean", "bad": "Everything was great"}},
-  "c54eb3a4e9124b59": {"lang": "French", "text": {"title": "", "good": "A very practical location for seeing the island\nTerrace with a sea view", "bad": "Nothing"}},
-  "5523245bd4b330c2": {"lang": "Italian", "text": {"title": "Spectacular terrace", "good": "Spectacular terrace with a sea view, a very spacious apartment with every comfort. The garage is very handy too.", "bad": "If I had to find a flaw, perhaps the bathroom: the shower is almost impossible to set between hot and cold, and it is a bit worn overall, from the door itself to the shower tray."}},
-  "9666b9e079105f7c": {"lang": "Italian", "text": {"title": "", "good": "Excellent location, lots of space. A wonderful neighbourhood, full of places for lunch and dinner, and a supermarket too. A short hop from Funchal and the centre. The garage is great to use as well. Very kind owners, ready to help with anything.", "bad": "It would be nice to have the flat cleaned at least once every 7 days."}}
+  "036fc272563c6ba2": {
+   "lang": "Dutch",
+   "text": {
+    "title": "Nice location, welcoming and helpful",
+    "good": "The view",
+    "bad": "Air conditioning, and wifi on the balcony"
+   }
+  },
+  "c76a56f5797e3adb": {
+   "lang": "Russian",
+   "text": {
+    "title": "Friendly hosts. A super comfortable and beautiful apartment. Convenient location",
+    "good": "An apartment with a huge terrace looking out over the ocean",
+    "bad": "Everything was great"
+   }
+  },
+  "c54eb3a4e9124b59": {
+   "lang": "French",
+   "text": {
+    "title": "",
+    "good": "A very practical location for seeing the island\nTerrace with a sea view",
+    "bad": "Nothing"
+   }
+  },
+  "5523245bd4b330c2": {
+   "lang": "Italian",
+   "text": {
+    "title": "Spectacular terrace",
+    "good": "Spectacular terrace with a sea view, a very spacious apartment with every comfort. The garage is very handy too.",
+    "bad": "If I had to find a flaw, perhaps the bathroom: the shower is almost impossible to set between hot and cold, and it is a bit worn overall, from the door itself to the shower tray."
+   }
+  },
+  "9666b9e079105f7c": {
+   "lang": "Italian",
+   "text": {
+    "title": "",
+    "good": "Excellent location, lots of space. A wonderful neighbourhood, full of places for lunch and dinner, and a supermarket too. A short hop from Funchal and the centre. The garage is great to use as well. Very kind owners, ready to help with anything.",
+    "bad": "It would be nice to have the flat cleaned at least once every 7 days."
+   }
+  },
+  "682cad3210a9024aa26a6b02": {
+   "lang": "German",
+   "text": {
+    "title": "All excellent",
+    "good": "Very nice and good-value accommodation, everything we needed. Many thanks to Nathalia, Hugo and Arthur. We felt very much at home and would gladly come again.",
+    "bad": ""
+   }
+  },
+  "6a215ca2f13ae05b2d2f3da1": {
+   "lang": "German",
+   "text": {
+    "title": "",
+    "good": "Communication and the key handover were very good. Good location, close to a bus stop. A space in the garage for the car. Shops nearby. The flat is well equipped and very clean. The bed was comfortable.",
+    "bad": "The flat is very noisy, depending on who is in the flats around it. The flat is a little dated overall."
+   }
+  },
+  "68bfd4158f64341d2e085e97": {
+   "lang": "German",
+   "text": {
+    "title": "",
+    "good": "We had 10 wonderful days and were happy with the apartment. The location is very good. Communication and check-in were perfect. Thank you, Natalia!",
+    "bad": ""
+   }
+  },
+  "682b24312b64dd7aba776077": {
+   "lang": "French",
+   "text": {
+    "title": "A place you have to discover",
+    "good": "Madeira is, without any doubt, a place to discover. Natalia and Hugo's apartment is ideally placed, close to restaurants, shops, bus stops and the famous Lido promenade. The double terrace is more than pleasant, with a view of the ocean, and our hosts told us what to see and what to taste: all the must-dos. I recommend it without any hesitation!",
+    "bad": ""
+   }
+  }
  }
 }

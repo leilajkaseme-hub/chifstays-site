@@ -43,7 +43,8 @@ const load = (f) => (existsSync(f) ? JSON.parse(readFileSync(f, "utf8")) : {});
 const SRC = {
   airbnb: load("reviews.json").stays || {},
   booking: load("reviews-booking.json").stays || {},
-  vrbo: load("reviews-manual.json").vrbo || {},
+  // fetch-vrbo-reviews.py, on the Mac mini (Vrbo turns away headless browsers).
+  vrbo: load("reviews-vrbo.json").stays || {},
 };
 const TRANSLATIONS = load("reviews-manual.json").translations || {};
 const PLATFORM = { airbnb: "Airbnb", booking: "Booking.com", vrbo: "Vrbo" };
@@ -52,7 +53,7 @@ const FEATURED = [
   ["varanda", "1759321504500034996"],  // Airbnb, Hannah: the waves from the terrace
   ["varanda", "7cdb02945bb456af"],     // Booking, Diana: the terrace, the beach, the centre
   ["perla", "1589109082578789745"],    // Airbnb, Yanrui: New Year fireworks over the bay
-  ["perla", "vrbo-perla-nina-2026-03"],// Vrbo, Nina: two weeks, the views, the buses
+  ["perla", "69da5b3638ec8b101f304ca7"],// Vrbo, Nina: two weeks, the views, the buses
   ["varanda", "1647925537615631678"],  // Airbnb, Andreas: restaurants, private parking
 ];
 

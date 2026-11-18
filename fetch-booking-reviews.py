@@ -13,6 +13,7 @@ old reviews-booking.json untouched.
 """
 import asyncio
 import json
+import os
 import re
 import sys
 from datetime import date, datetime, timezone
@@ -142,7 +143,9 @@ async def one(ctx, key, slug):
 
 async def main():
     async with async_playwright() as p:
-        browser = await p.chromium.launch(args=["--disable-blink-features=AutomationControlled"])
+        # PW_CHANNEL=chrome uses the installed Google Chrome (the Mac mini has no Playwright Chromium).
+        browser = await p.chromium.launch(channel=os.environ.get("PW_CHANNEL") or None,
+                                          args=["--disable-blink-features=AutomationControlled"])
         ctx = await browser.new_context(locale="en-GB", user_agent=UA, viewport={"width": 1300, "height": 900})
         out = {"fetched": date.today().isoformat(), "stays": {}}
         for key, slug in PROPERTIES.items():
