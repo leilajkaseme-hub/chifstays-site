@@ -89,16 +89,12 @@
      "rating": 10.0,
      "stay": "Stayed 11 nights",
      "text": {
-      "title": "Everything fine",
-      "good": "Very nice and inexpensive accommodation, completely sufficient for our purposes. Many thanks to Nathalia, Hugo and Arthur. We felt very comfortable and would love to come back",
-      "bad": ""
-     },
-     "original": {
       "title": "Alles bestens",
       "good": "Sehr schöne und auch preiswerte Unterkunft, für unsere Zwecke völlig ausreichend. Besten Dank an Nathalia, Hugo und Arthur. Wir haben uns sehr wohl gefühlt und kommen auch gerne wieder",
       "bad": ""
      },
-     "lang": "German",
+     "original": null,
+     "lang": "",
      "reply": "Vielen herzlichen Dank für Ihre nette Rückmeldung! Es freut uns sehr, dass Ihnen der Aufenthalt gefallen hat und die Unterkunft Ihren Bedürfnissen entsprochen hat. Nathalia, Hugo und Arthur bedanken sich herzlich – wir würden uns sehr freuen, Sie bald wieder bei uns begrüßen zu dürfen. Bis zum nächsten Mal!"
     }
    ]
@@ -144,15 +140,11 @@
      "stay": "Stayed 16 nights",
      "text": {
       "title": "",
-      "good": "Communication and key collection was very good. Good location, close to the bus stop. Parking space for the car. Shops nearby. Apartment is well equipped and very clean. The bed was comfortable. A negative mention is the extremely noisiness of the apartment, depending on the occupancy of the surrounding apartments. Overall, the apartment is a bit old.",
-      "bad": ""
-     },
-     "original": {
-      "title": "",
       "good": "Kommunikation und Schlüsselübergabe war sehr gut Gute Lage, nähe Bushaltestelle  Einstellhallenplatz fürs Auto Einkaufsmöglichkeiten in der Nähe Wohnung ist gut ausgestattet und sehr sauber Das Bett war bequem- Negativ zu erwähnen, ist die extreme hellhörigkeit der Wohnung, je nach Besetzung der umliegenden Wohnungen.- Die Wohnung ist insgesamt etwas in die Jahre gekommen.",
       "bad": ""
      },
-     "lang": "German",
+     "original": null,
+     "lang": "",
      "reply": ""
     },
     {
@@ -164,15 +156,11 @@
      "stay": "Stayed 9 nights",
      "text": {
       "title": "",
-      "good": "We had 10 wonderful days and were happy with the apartment. The location is very good. Communication and check in are perfect. Thanks to Natalia!",
-      "bad": ""
-     },
-     "original": {
-      "title": "",
       "good": "Wir hatten 10 wunderschöne Tage, waren mit dem Apartment zufrieden. Die Lage ist sehr gut. Kommunikation und check in sind perfekt. Danke an Natalia!",
       "bad": ""
      },
-     "lang": "German",
+     "original": null,
+     "lang": "",
      "reply": ""
     },
     {
@@ -183,16 +171,12 @@
      "rating": 10.0,
      "stay": "Stayed 7 nights",
      "text": {
-      "title": "a destination to discover absolutely",
-      "good": "Madeira is without any discussion a destination to discover. Natalia and Hugo's apartment is ideally located, close to restaurants, shops, bus stops, and the emblematic Lido promenade. The double terrace is more than pleasant with a view of the ocean, and the hosts told us the things to discover, to taste...the essentials. I recommend without any hesitation!",
-      "bad": ""
-     },
-     "original": {
       "title": "une destination à découvrir absolument",
       "good": "Madère est sans aucune discussion une destination à découvrir. L'appartement de Natalia et Hugo est idéalement situé, proche des restaurants, des commerces, des arrêts de bus, de l'emblématique promenade du Lido. La double terrasse est plus qu'agréable avec une vue sur l'océan, et les hôtes nous ont indiqué les choses à découvrir, à goûter...les incontournables. Je recommande sans aucune hésitation!",
       "bad": ""
      },
-     "lang": "French",
+     "original": null,
+     "lang": "",
      "reply": "Un grand merci à Aude pour son passage ! Elle a été une invitée adorable, respectueuse du lieu et de tout ce qui était mis à disposition. On sent qu’elle prend soin des choses comme si c’était chez elle, ce qui est vraiment précieux. Tout s’est passé avec simplicité et bienveillance. Ce serait un vrai plaisir de l’accueillir à nouveau !"
     }
    ]
