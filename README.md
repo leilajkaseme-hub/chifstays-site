@@ -39,14 +39,16 @@ frame.
 
 ## Design
 
-Airbnb-shaped, deliberately not Chifbay-coloured. Chifbay is dark navy with
-gold and a serif display face; this is white with terracotta and one sans.
-The terracotta is the roof tiles in the photos and the teal is the water, so
-the palette comes from the apartments rather than from Airbnb's pink.
+Airbnb-shaped, deliberately: white, one sea blue for actions, Figtree, photos
+in rounded grids, review stars in gold. Alternate sections are a cool light
+grey (`--sand` is #f7f7f7 despite its name), never beige. Buttons are flat,
+10px corners, no glow. Reviews sit in CSS columns so short ones leave no holes.
+A bolder redesign (full-screen terrace, serif titles) was tried on 18 Nov 2026
+and turned down: keep this style and improve details.
 
 The movement is Chifbay's: `.rv` elements start low and faded, an
-IntersectionObserver adds `.in`, and `.rv-group` staggers its children. With
-JavaScript off or `prefers-reduced-motion` on, everything is simply visible.
+IntersectionObserver adds `.in`. With JavaScript off or
+`prefers-reduced-motion` on, everything is simply visible.
 
 ## Still to decide
 
