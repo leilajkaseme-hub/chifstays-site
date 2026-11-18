@@ -61,9 +61,15 @@ IntersectionObserver adds `.in`. With JavaScript off or
 - **Reviews.** Every review with text from Airbnb, Booking.com and Vrbo is on
   its flat's page, low scores included, with the guest's own words under any
   translation. Airbnb: `fetch-reviews.mjs`. Booking.com:
-  `fetch-booking-reviews.py` (Playwright). Vrbo blocks scripts, so its reviews
-  are copied by hand into `reviews-manual.json`. `.github/workflows/reviews.yml`
-  refreshes Airbnb and Booking.com every Monday. Six show at first, "Show
+  `fetch-booking-reviews.py` (Playwright). Vrbo: `fetch-vrbo-reviews.py`, which
+  needs a real Chrome window (Vrbo turns away headless browsers). All three run
+  every Monday 07:40 on the Mac mini: `reviews-weekly.sh`, launchd
+  `com.chifstays.reviews` (copy of the plist here), in its own clone
+  `~/repos/chifstays-site`, log `~/repos/chifstays-reviews.log`. It pushes only
+  when something changed and sends Telegram (notify-hub) when new reviews go
+  live or a site cannot be read. `.github/workflows/reviews.yml` is a manual
+  fallback (Airbnb and Booking.com only). Hand-written English for a review goes
+  in `reviews-manual.json` > `translations`, keyed by the review id. Six show at first, "Show
   more reviews" adds six at a time. The home page has every review of both
   flats, the six in `FEATURED` first. **Nothing links to Airbnb, Booking.com or
   Vrbo**: the score tiles and the site buttons only filter the reviews, so
