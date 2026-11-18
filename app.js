@@ -132,3 +132,16 @@
     if (e.key === 'ArrowRight') show(at + 1);
   });
 })();
+
+/* ------------------------------------------------------- all the reviews
+   The first six reviews show; the rest are in the page, hidden, so search
+   engines and screen readers still have them. One button opens them all. */
+(function () {
+  'use strict';
+  var btn = document.querySelector('[data-more-reviews]');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    document.querySelectorAll('.rev-more').forEach(function (r) { r.hidden = false; });
+    btn.remove();
+  });
+})();

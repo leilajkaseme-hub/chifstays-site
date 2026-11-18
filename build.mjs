@@ -10,7 +10,7 @@
  * The same object also writes the JSON-LD, so the structured data and the
  * visible text cannot drift apart.
  */
-import { writeFileSync, existsSync } from "node:fs";
+import { writeFileSync, existsSync, readFileSync } from "node:fs";
 
 /* The wordmark is used only if it is actually on disk. Until make-logo.sh has
    run there is no file, and a nav pointing at a missing image is worse than
@@ -29,7 +29,21 @@ const SITE = "https://chifstays.com";   // acheté 2026-09-04 chez Spaceship
    five. Six would wrap onto a third row and break the block. [stay, photo]. */
 const HERO_FIVE = [[0, 0], [1, 1], [0, 5], [1, 2], [0, 9]];
 
-const HOST = { name: "Natalia", since: "1 year", superhost: true };
+const HOST = { name: "Natalia and Hugo", since: "1 year", superhost: true };
+
+/* Guest reviews, pulled from the two Airbnb listings by fetch-reviews.mjs.
+   Every review with words in it is shown on its flat's page, 4 stars included;
+   only the home page picks a few, by id, below. If the file is missing the
+   site still builds, with the numbers written in STAYS. */
+const REVIEWS = existsSync("reviews.json") ? JSON.parse(readFileSync("reviews.json", "utf8")) : { stays: {} };
+const FEATURED = [
+  ["perla", "1528274650272740814"],    // Jack: peaceful, clean, luxurious
+  ["varanda", "1759321504500034996"],  // Hannah: the waves from the terrace
+  ["perla", "1589109082578789745"],    // Yanrui: New Year fireworks over the bay
+  ["varanda", "1773264651714789303"],  // Pierre: quiet, sea view, beach close
+  ["perla", "1523869168028921696"],    // Deirdre: the balcony and the terrace
+  ["varanda", "1647925537615631678"],  // Andreas: restaurants, private parking
+];
 
 const STAYS = [
   {
@@ -40,6 +54,8 @@ const STAYS = [
     airbnb: "https://www.airbnb.com/rooms/1420093678403124003",
     licence: "164578/AL",
     area: "Barreiros, Funchal",
+    /* The street, not the door: the map shows an area, the address comes after booking. */
+    geo: [32.6474, -16.9333],
     guests: 3, bedrooms: 2, beds: 2, baths: 1,
     rating: 4.95, reviews: 21,
     /* Read off the host calendar on 4 September 2026. airbnbNightly is what
@@ -94,6 +110,7 @@ const STAYS = [
     airbnb: "https://www.airbnb.com/rooms/1397784964911656134",
     licence: "164601/AL",
     area: "Above Praia Formosa, Funchal",
+    geo: [32.6372, -16.9469],
     guests: 3, bedrooms: 2, beds: 2, baths: 1,
     rating: 4.83, reviews: 6,
     airbnbNightly: 176, nightly: 165, minNights: 7, leadDays: 2,
@@ -135,6 +152,17 @@ const STAYS = [
   },
 ];
 
+for (const s of STAYS) {
+  const r = REVIEWS.stays[s.key];
+  if (!r) continue;
+  s.rating = r.rating;
+  s.reviews = r.count;
+  s.categories = r.categories || [];
+  s.reviewList = r.reviews || [];
+}
+const ALL_REVIEWS = STAYS.reduce((n, s) => n + s.reviews, 0);
+const AVG = (STAYS.reduce((n, s) => n + s.rating * s.reviews, 0) / ALL_REVIEWS).toFixed(2);
+
 /* ------------------------------------------------------------------ helpers */
 /* One place that decides what a URL looks like. GitHub Pages already serves
    /perla-do-oceano for perla-do-oceano.html, so the extension is only ever
@@ -160,10 +188,37 @@ const ICON = {
 const ratingBlock = (s) =>
   `<span class="rating">${ICON.star}${s.rating.toFixed(2).replace(/0$/, "")} <span>· ${s.reviews} review${s.reviews > 1 ? "s" : ""}</span></span>`;
 
+const MONTH = (d) => new Date(d + "T12:00:00Z").toLocaleDateString("en-GB", { month: "long", year: "numeric", timeZone: "UTC" });
+const para = (t) => esc(t).split(/\n+/).map((x) => `<p>${x}</p>`).join("");
+const initial = (n) => esc(n.trim().charAt(0).toUpperCase());
+
+/* One review card. A review written in another language shows Airbnb's
+   English translation, says so, and keeps the guest's own words one tap away. */
+const reviewCard = (r, { stayName = "", hidden = false } = {}) => `
+        <article class="rev${hidden ? " rev-more" : ""}"${hidden ? " hidden" : ""}>
+          <header>
+            <span class="rev-av" aria-hidden="true">${initial(r.name)}</span>
+            <div><b>${esc(r.name)}</b><span>${esc(r.from)}</span></div>
+          </header>
+          <div class="rev-meta"><span class="rev-stars" aria-label="${r.rating} out of 5 stars">${"★".repeat(r.rating)}<i>${"★".repeat(5 - r.rating)}</i></span>
+            <span>${MONTH(r.date)}</span>${r.stay ? `<span>${esc(r.stay)}</span>` : ""}${stayName ? `<span>${esc(stayName)}</span>` : ""}</div>
+          <div class="rev-text">${para(r.text)}</div>
+          ${r.original ? `<details class="rev-orig"><summary>Translated from ${esc(r.lang)} · show original</summary>${para(r.original)}</details>` : ""}
+        </article>`;
+
+const reviewJsonLd = (s) => (s.reviewList || []).map((r) => ({
+  "@type": "Review",
+  author: { "@type": "Person", name: r.name },
+  datePublished: r.date,
+  reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 },
+  reviewBody: r.text,
+  publisher: { "@type": "Organization", name: "Airbnb" },
+}));
+
 const img = (s, [file, alt], cls = "") =>
   `<img${cls ? ` class="${cls}"` : ""} src="assets/${s.dir}/${file}.webp" alt="${esc(alt)}" loading="lazy" decoding="async" width="1200" height="800"/>`;
 
-function shell({ title, desc, canonical, body, jsonld, active, booking, noindex }) {
+function shell({ title, desc, canonical, body, jsonld, active, booking, noindex, image, map }) {
   const link = (href, label) =>
     `<a href="${href}"${active === label ? ' aria-current="page"' : ""}>${label}</a>`;
   return `<!doctype html>
@@ -180,6 +235,8 @@ ${noindex ? '<meta name="robots" content="noindex,nofollow"/>' : ""}
 <meta property="og:description" content="${esc(desc)}"/>
 <meta property="og:url" content="${canonical}"/>
 <meta name="twitter:card" content="summary_large_image"/>
+${image ? `<meta property="og:image" content="${image}"/>\n<meta name="twitter:image" content="${image}"/>` : ""}
+${map ? '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>' : ""}
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -199,6 +256,7 @@ ${noindex ? '<meta name="robots" content="noindex,nofollow"/>' : ""}
       ${link("/", "Home")}
       ${link("/perla-do-oceano", "Perla do Oceano")}
       ${link("/varanda-do-sol", "Varanda do Sol")}
+      ${link("/#reviews", "Reviews")}
       ${link("/#boat", "The boat")}
     </div>
   </div>
@@ -244,6 +302,7 @@ ${body}
 
 <script src="app.js"></script>
 ${booking ? '<script src="booking.js"></script>' : ""}
+${map ? '<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>\n<script src="map.js"></script>' : ""}
 </body>
 </html>
 `;
@@ -290,7 +349,7 @@ function home() {
     <div class="hero-facts rv">
       <span><b>${STAYS.length}</b> apartments</span>
       <span><b>${STAYS.reduce((n, s) => n + s.guests, 0)}</b> guests in total</span>
-      <span><b>${STAYS.reduce((n, s) => n + s.reviews, 0)}</b> reviews between them</span>
+      <a class="hero-rating" href="#reviews">${ICON.star}<b>${AVG}</b> from ${ALL_REVIEWS} guest reviews</a>
       <span>Licensed <b>Alojamento Local</b></span>
     </div>
   </div>
@@ -322,6 +381,27 @@ ${STAYS.map((s, i) => `
     </div>
   </div>
 </section>`).join("\n")}
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Guest reviews</p>
+      <h2>${AVG} out of 5, from ${ALL_REVIEWS} guest reviews</h2>
+      <p class="lede">Every review below was written by a guest after their stay, on Airbnb. Nothing is edited;
+      reviews in other languages show Airbnb's English translation.</p>
+    </div>
+    <div class="revs rv-group">
+      ${FEATURED.map(([k, id]) => {
+        const s = STAYS.find((x) => x.key === k);
+        const r = (s.reviewList || []).find((x) => x.id === id);
+        return r ? reviewCard(r, { stayName: s.name }).replace('class="rev"', 'class="rev rv"') : "";
+      }).join("")}
+    </div>
+    <div class="rev-links rv">
+      ${STAYS.map((s) => `<a class="btn btn-o" href="${url(s.slug)}#reviews">${ICON.star} ${s.rating.toFixed(2)} · all ${s.reviews} reviews of ${esc(s.name)}</a>`).join("\n      ")}
+    </div>
+  </div>
+</section>
 
 <section class="sand" id="funchal">
   <div class="wrap">
@@ -401,7 +481,7 @@ ${STAYS.map((s, i) => `
       <details><summary>Is there parking?</summary>
         <p>Varanda do Sol comes with free parking on site. Perla do Oceano has free street parking nearby.</p></details>
       <details><summary>Who looks after the flats?</summary>
-        <p>${HOST.name}, an Airbnb Superhost, hosting for ${HOST.since}. You are met at the door on arrival.</p></details>
+        <p>${HOST.name}, who live in Funchal. Both flats are Superhost-run on Airbnb, and you are met at the door on arrival.</p></details>
       <details><summary>Is there a carbon monoxide alarm?</summary>
         <p>No. Neither apartment has one, and both listings say so. We would rather write it here than leave you
         to find it in the small print.</p></details>
@@ -415,6 +495,7 @@ ${STAYS.map((s, i) => `
     desc: "Two licensed apartments in Funchal, Madeira, each sleeping three with two bedrooms and a private terrace over the sea. Perla do Oceano in Barreiros and Varanda do Sol above Praia Formosa.",
     canonical: SITE + url(),
     active: "Home",
+    image: `${SITE}/assets/gbp/perla-terrasse-vue-mer.jpg`,
     body,
     jsonld: {
       "@context": "https://schema.org",
@@ -516,6 +597,36 @@ function listing(s) {
   </div>
 </div>
 
+<section class="sand" id="reviews">
+  <div class="wrap">
+    <div class="rev-head rv">
+      <div class="rev-score">${ICON.star}<b>${s.rating.toFixed(2)}</b><span>${s.reviews} reviews on Airbnb</span></div>
+      ${s.categories && s.categories.length ? `<ul class="rev-cats">
+        ${s.categories.map(([l, v]) => `<li><span>${esc(l)}</span><i><em style="width:${(v / 5) * 100}%"></em></i><b>${v.toFixed(1)}</b></li>`).join("\n        ")}
+      </ul>` : ""}
+    </div>
+    <div class="revs rv-group">
+      ${(s.reviewList || []).map((r, i) => reviewCard(r, { hidden: i >= 6 }).replace(i < 6 ? 'class="rev"' : "@@", 'class="rev rv"')).join("")}
+    </div>
+    <div class="rev-links rv">
+      ${(s.reviewList || []).length > 6 ? `<button class="btn btn-o" type="button" data-more-reviews>Show all ${s.reviewList.length} reviews</button>` : ""}
+      <a class="btn btn-o" href="${s.airbnb}/reviews" rel="noopener" target="_blank">Read them on Airbnb</a>
+    </div>
+  </div>
+</section>
+
+<section id="where">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Where you will be</p>
+      <h2>${esc(s.area)}</h2>
+      <p class="lede">The circle shows the area. The exact address and the way in come with your booking.</p>
+    </div>
+    <div class="map rv" id="map" data-lat="${s.geo[0]}" data-lng="${s.geo[1]}" role="img"
+         aria-label="Map of ${esc(s.area)}, Madeira"></div>
+  </div>
+</section>
+
 <section>
   <div class="wrap" style="text-align:center">
     <h2 class="rv">Free on your dates?</h2>
@@ -531,6 +642,8 @@ function listing(s) {
     canonical: `${SITE}${url(s.slug)}`,
     active: s.name,
     booking: true,
+    map: true,
+    image: `${SITE}/assets/gbp/${s.key}-${s.hero}.jpg`,
     body,
     jsonld: {
       "@context": "https://schema.org",
@@ -550,6 +663,7 @@ function listing(s) {
                 priceSpecification: { "@type": "UnitPriceSpecification",
                   price: s.nightly, priceCurrency: "EUR", unitCode: "DAY" } },
       image: s.photos.slice(0, 5).map((p) => `${SITE}/assets/${s.dir}/${p[0]}.webp`),
+      review: reviewJsonLd(s),
     },
   });
 }

@@ -1,0 +1,31 @@
+# Every Monday: pull new guest reviews from Airbnb and rebuild the pages.
+# If Airbnb changed its query the job fails with the reason and the site keeps
+# the reviews it already has. Fix steps are at the top of fetch-reviews.mjs.
+name: reviews
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node fetch-reviews.mjs
+      - run: node build.mjs
+      - name: Commit if anything changed
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "Enzo"
+            git config user.email "enzo@users.noreply.github.com"
+            git add -A
+            git commit -m "New guest reviews from Airbnb"
+            git push
+          else
+            echo "No new reviews."
+          fi

@@ -1,0 +1,421 @@
+{
+ "fetched": "2026-11-18",
+ "stays": {
+  "perla": {
+   "rating": 4.96,
+   "count": 24,
+   "categories": [
+    [
+     "Cleanliness",
+     4.9
+    ],
+    [
+     "Accuracy",
+     5
+    ],
+    [
+     "Check-in",
+     5
+    ],
+    [
+     "Communication",
+     5
+    ],
+    [
+     "Location",
+     4.8
+    ],
+    [
+     "Value",
+     4.8
+    ]
+   ],
+   "reviews": [
+    {
+     "id": "1781025878449176233",
+     "name": "Dan",
+     "from": "Tel Aviv-Yafo, Israel",
+     "date": "2026-09-23",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "We loved it, great apartment. Natalia and Hugo were super helpful. 10/10",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1771813591184831721",
+     "name": "Karoline",
+     "from": "7 months on Airbnb",
+     "date": "2026-09-10",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "We had a really lovely stay in the apartment. The apartment was incredibly clean, tidy, and well-maintained, and everything worked as it should. We quickly felt at home and were very pleased with our stay. The host was also kind and helpful.\nWe highly recommend the apartment and would definitely like to stay here again! ☀️",
+     "original": "Vi havde et rigtig dejligt ophold i lejligheden. Lejligheden var utrolig ren, pæn og velholdt, og alt fungerede, som det skulle. Vi følte os hurtigt hjemme og var meget tilfredse med vores ophold. Værten var også sød og hjælpsom.\nVi kan varmt anbefale lejligheden og ville bestemt gerne bo her igen! ☀️",
+     "lang": "Danish"
+    },
+    {
+     "id": "1758709074849465443",
+     "name": "Viacheslav",
+     "from": "4 years on Airbnb",
+     "date": "2026-08-23",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "We had a wonderful stay! The apartment was very clean, tidy, and well maintained, with everything we needed for a comfortable stay.\nThe host was very helpful and always available whenever we had any questions, which made everything easy and stress-free.\nAnd the highlight was definitely the incredible ocean view — absolutely beautiful and something we enjoyed every single day. A great place to stay in Madeira, and we would happily come back again. Highly recommended!",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1751283766374475754",
+     "name": "Luke",
+     "from": "2 years on Airbnb",
+     "date": "2026-08-13",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "What a beautiful place on an indescribably beautiful island.\nThe views were pristine, and the flat was clean, beautifully decorated and incredibly spacious — almost too big for the two of us, but we’re certainly not complaining! It was always just a short drive from great restaurants and the beautiful Funchal city centre.\nIf you have a car, don’t worry about parking — we always managed to find somewhere nearby.\nOur only regret is that we didn’t get to spend more time in the flat and really take it all in, but Madeira simply has so much to see and do!\nWe really hope to return one day and once again sit on that balcony looking out over that incredible sea and city view.\nBook this place — you won’t regret it!\nThank you both for a wonderful stay.\nLuke and Maria.",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1742746707224063944",
+     "name": "Patrik",
+     "from": "5 years on Airbnb",
+     "date": "2026-08-01",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "Amazing location with a great view. We loved the place and stayed for a week. Natalia and Hugo are great hosts and communicate promptly about everything. We recommend car if you stay here. We highly recommend this lovely place.",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1728906599612404303",
+     "name": "Victor",
+     "from": "5 years on Airbnb",
+     "date": "2026-07-13",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "Great stay in Madeira in this very nice, spacious, clean Airbnb with a great view of Funchal. \nOur hosts were extremely thoughtful and helpful, and we were happy to communicate with them (in French!). \nWe also hired Chifbay for a fantastic boat trip and a memorable sunset. \nThanks again for this exceptional vacation!",
+     "original": "Super séjour à Madère dans cet Airbnb très agréable, spacieux, propre et avec une super vue sur Funchal. \nNos hôtes ont été hyper attentionnés et serviables, et nous avons pu communiquer avec eux (en français !) avec grand plaisir. \nNous avons également fait appel aux services de Chifbay pour un tour en bateau fantastique, et un coucher de soleil mémorable. \nMerci encore pour ces vacances exceptionnelles !",
+     "lang": "French"
+    },
+    {
+     "id": "1719621233195784217",
+     "name": "Menno",
+     "from": "8 years on Airbnb",
+     "date": "2026-06-30",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "Beautiful location, spacious apartment and very nice view.",
+     "original": "Mooie locatie, ruim appartement en zeer mooi uitzicht.",
+     "lang": "Dutch"
+    },
+    {
+     "id": "1709449747372517399",
+     "name": "Rubina Alexandra",
+     "from": "8 months on Airbnb",
+     "date": "2026-06-16",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "Natalia and Hugo were wonderful hosts.  They communicated clearly and were very responsive.  The apartment was ideally located in an area where the locals lived; exactly what we wanted.  Yet it was easy access to walk into the Center of Funchal.  Parking was a non issue at the location as there was always plenty of street parking available regardless of the time of day.  The view was wonderful and we spent every morning enjoying coffee on the terrace overlooking the ocean.  Great value.  Would highly recommend.",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1702201499724559616",
+     "name": "Moos",
+     "from": "8 years on Airbnb",
+     "date": "2026-06-06",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "Hugo & Natalia were great hosts, nice apartment, beautiful sea view and a nice central location.",
+     "original": "Hugo & Natalia waren top hosts, mooi appartement, prachtig uitzicht op zee en een fijne centrale locatie.",
+     "lang": "Dutch"
+    },
+    {
+     "id": "1689188863747288490",
+     "name": "Lotte",
+     "from": "3 years on Airbnb",
+     "date": "2026-05-19",
+     "rating": 5,
+     "stay": "Stayed a few nights",
+     "text": "We had a great stay",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1686192099494361591",
+     "name": "Maxime",
+     "from": "11 years on Airbnb",
+     "date": "2026-05-15",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "The apartment was conveniently located, right in the center, with plenty of parking options nearby. The view was absolutely splendid.",
+     "original": "L’appartement était idéalement situé, en plein centre, avec de nombreuses possibilités de stationnement à proximité. La vue était absolument splendide.",
+     "lang": "French"
+    },
+    {
+     "id": "1679739218042058039",
+     "name": "Alexander",
+     "from": "11 years on Airbnb",
+     "date": "2026-05-06",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "We spent a week in this apartment and enjoyed it. Good location, nice view, excellent communication and all the things you might need. Definitely recommended.",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1672494361827146317",
+     "name": "Danielle",
+     "from": "Longueuil, Canada",
+     "date": "2026-04-26",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "Highlights include the terraces and the views. There are also small shops nearby that are very helpful.",
+     "original": "Les points forts sont les terrasses et les points de vue. Il y a aussi les petits commerces à proximité qui dépannent bien.",
+     "lang": "French"
+    },
+    {
+     "id": "1648598494487740590",
+     "name": "Imogen",
+     "from": "9 years on Airbnb",
+     "date": "2026-03-24",
+     "rating": 4,
+     "stay": "Stayed about a week",
+     "text": "Pros - beautiful view from balcony, one sheltered from bad weather, there was always parking available. Natalia’s communication was very responsive and friendly. \nCons - we found mattress hard and uncomfortable and so used a spare duvet to make it softer, there was only one electric heater so difficult to dry things (we had bad weather so couldn’t dry things on balcony), at night the bedroom light bulbs dimly glowed even though switch was off (apparently might be common in Madeira)",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1627589346867182541",
+     "name": "Malcolm",
+     "from": "11 years on Airbnb",
+     "date": "2026-02-23",
+     "rating": 5,
+     "stay": "Stayed over a week",
+     "text": "Loved it here! Great to be away from the tourist hotspots and feel included in a lovely community. Great coffee shops etc!\nAlso got fit walking up and down the hill. Did occasionally resort to a bus or taxi - both very cheap!\nMany Thanks for a great stay!",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1589109082578789745",
+     "name": "Yanrui",
+     "from": "7 years on Airbnb",
+     "date": "2026-01-01",
+     "rating": 5,
+     "stay": "Stayed a few nights",
+     "text": "Great place to stay, overlooking the entire bay, we saw the most beautiful New Year's Eve fireworks here!",
+     "original": "很棒的住宿，可以俯瞰整个海湾，我们在这里看到了最美的跨年烟花！",
+     "lang": "Chinese (Simplified)"
+    },
+    {
+     "id": "1560131660317152584",
+     "name": "Richard",
+     "from": "11 years on Airbnb",
+     "date": "2025-11-22",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "Lovely flat with views of the sea and mountains. Everything needed was there. Would highly recommend!",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1536219020906802856",
+     "name": "Peter",
+     "from": "9 years on Airbnb",
+     "date": "2025-10-20",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "Great place to stay, friendly hosts, good location and lovely outside space",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1528274650272740814",
+     "name": "Jack",
+     "from": "5 years on Airbnb",
+     "date": "2025-10-09",
+     "rating": 5,
+     "stay": "Stayed a few nights",
+     "text": "Peaceful, clean, luxurious and relaxing. Couldnt have asked for a better place to stay. Made our visit to madeira feel comfortable and relaxed. Will be coming again! Thank you!",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1523869168028921696",
+     "name": "Deirdre",
+     "from": "8 years on Airbnb",
+     "date": "2025-10-03",
+     "rating": 5,
+     "stay": "Stayed over a week",
+     "text": "Exceptionally clean, spacious and well equipped apartment. The balcony off the living room offers stunning views over Funchal to the ocean. The large outdoor terrace is  a standout amenity.",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1497813508429594943",
+     "name": "Andréa",
+     "from": "10 years on Airbnb",
+     "date": "2025-08-28",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "I am more than delighted with my stay at Nathalia and Hugo's. \nThe apartment is in a great location, clean and spacious.\nThe place is quiet and peaceful.\nThe apartment is beautifully decorated, small touches of authenticity make up the charm of the apartment, which makes it warm.\nEasy access, ideal with children or a person with reduced mobility.\nI had a very nice week with my father. \nI would highly recommend it, and I am in a hurry to return to feel at home again. \nThanks again 🌺\nSee you soon \nAndréa and her Dad",
+     "original": "Je suis plus que Ravie de mon séjour chez Nathalia et Hugo. \nL’appartement est idéalement situé, propre et spacieux.\nL’endroit est Calme et paisible.\nL’appartement est magnifiquement décoré, des petites touche d’authenticité font tout le charme de l’appartement, cela je rends chaleureux.\nFacile d’accès, idéal avec des enfants ou une personnalité à mobilité réduite.\nJ’ai passé une semaine très agréable avec mon père. \nJe recommande vivement, et je suis pressé de revenir pour m’y sentir de nouveau chez moi. \nEncore merci 🌺\nÀ très vite \nAndréa et son Papa",
+     "lang": "French"
+    },
+    {
+     "id": "1469509633702689256",
+     "name": "Niko",
+     "from": "3 years on Airbnb",
+     "date": "2025-07-20",
+     "rating": 5,
+     "stay": "Stayed over a week",
+     "text": "Large terrace and beautiful views",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1435496398781096579",
+     "name": "Barbara",
+     "from": "2 years on Airbnb",
+     "date": "2025-06-03",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "The apartment was very large and clean, there was everything you needed. The large terrace was just great overlooking the sea and Funchal. The kitchen was well equipped and you could even do laundry. Communication with Natalia was great, she always responded quickly, we could figure out check-in times and it was super easy. Plenty of parking available in the area, a small kiosk downstairs in the house and a great cafeteria nearby. On foot, it was about 30 minutes to Funchal, we also took the bus. It was a really great stay.\nUnfortunately, there were many barking dogs in the area (for which the hostess can do nothing), but with earplugs it was no problem at night.",
+     "original": "Das Apartment war sehr groß und sauber, es war alles vorhanden was man brauchte. Die große Terrasse war einfach nur toll mit Blick auf das Meer und auf Funchal. Die Küche war toll ausgestattet und man konnte sogar die Wäsche waschen. Die Kommunikation mit Natalia war großartig, sie hat immer schnell geantwortet, Check in Zeiten konnten wir uns ausmachen und war super einfach. Genug Parkplätze in der Gegend vorhanden, ein kleiner Kiosk unten im Haus und gleich in der Nähe eine tolle Cafeteria. Zu Fuss waren es ca. 30 min nach Funchal, wir sind auch mit dem Bus gefahren. Es war ein wirklich toller Aufenthalt.\nLeider waren in der Gegend viele bellende Hunde (wofür die Gastgeberin ja nichts kann), aber mit Ohrenstöpsel war es kein Problem in der Nacht.",
+     "lang": "German"
+    }
+   ]
+  },
+  "varanda": {
+   "rating": 4.89,
+   "count": 9,
+   "categories": [
+    [
+     "Cleanliness",
+     5
+    ],
+    [
+     "Accuracy",
+     4.8
+    ],
+    [
+     "Check-in",
+     5
+    ],
+    [
+     "Communication",
+     5
+    ],
+    [
+     "Location",
+     4.9
+    ],
+    [
+     "Value",
+     4.8
+    ]
+   ],
+   "reviews": [
+    {
+     "id": "1793312364237693505",
+     "name": "Ola",
+     "from": "7 years on Airbnb",
+     "date": "2026-10-10",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "Everything was good. Very nice people to stay with :)",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1781193180396183267",
+     "name": "Lara",
+     "from": "9 years on Airbnb",
+     "date": "2026-09-23",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "We spent our summer vacation here with our young son, and the apartment was really great!\nThe great big terrace was our highlight. When we were in the apartment, we actually just spent our time there. We brought a small paddling pool for our son, so everyone got their money's worth. We can really recommend that. The large awning over the terrace was perfect for that (and everything else)! In the afternoon, the sun shines directly on the terrace, so we were able to find shade under the awning. So it was really pleasant. 😊☀️\nThe location is really great. You can walk to the beach quite quickly, and restaurants and shops are also within easy walking distance. \nThere are ceiling fans in every room except the bathroom, but no air conditioning. Therefore, it was very warm in the bedroom (September).\nParking was very easy thanks to the underground parking garage, the courtyard and nearby parking lots. And the washing machine was helpful, too! 😊",
+     "original": "Wir haben unseren Sommerurlaub mit unserem kleinen Sohn hier verbracht und die Wohnung war wirklich top!\nDie tolle große Terrasse war unser Highlight. Wenn wir in der Wohnung waren, dann haben wir die Zeit eigentlich nur dort verbracht. Wir hatten ein kleines Planschbecken für unseren Sohn dabei, sodass alle auf ihre Kosten kamen - das können wir echt empfehlen. Die große Markise über der Terrasse war dafür (und auch sonst) perfekt! Nachmittags scheint die Sonne direkt auf die Terrasse, sodass wir unter der Markise Schatten finden konnten. So war es richtig angenehm 😊☀️\nDie Lage ist wirklich top. Man ist zu Fuß recht schnell am Strand und auch Restaurants und Einkaufsmöglichkeiten sind fußläufig gut erreichbar. \nEs gibt Deckenventilatoren in jedem Zimmer außer im Bad, aber keine Klimaanlage. Im Schlafzimmer war es daher sehr warm (September).\nDas Parken war durch die Tiefgarage, den Hof und nahegelegene Parkplätze sehr einfach. Und die Waschmaschine war auch hilfreich! 😊",
+     "lang": "German"
+    },
+    {
+     "id": "1773264651714789303",
+     "name": "Pierre",
+     "from": "5 years on Airbnb",
+     "date": "2026-09-12",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "Beautiful, quiet apartment with a beautiful terrace overlooking the sea. Has all the comforts. Close to the supermarket, the beach and lots of good restaurants. Great host, I recommend it!",
+     "original": "Superbe appartement au calme avec une très belle terrasse vue sur mer. Dispose de tout le confort. Proche du supermarché, de la plage et de pleins de bons restaurant. Super hôte je recommande !",
+     "lang": "French"
+    },
+    {
+     "id": "1759321504500034996",
+     "name": "Hannah",
+     "from": "9 years on Airbnb",
+     "date": "2026-08-24",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "A lovely base from which to explore Madeira, good Funchal bus service, natural pool and restaurant/supermarket access. \nA peaceful place to retreat to after days out, sit on the terrace and listen to the waves crashing on the beach below.",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1753702077548333322",
+     "name": "Corneliu",
+     "from": "10 years on Airbnb",
+     "date": "2026-08-16",
+     "rating": 4,
+     "stay": "Stayed over a week",
+     "text": "The apartment is large, comfortable and has a very nice terrace. We ate there every day, especially breakfast. It faces west, so there is nice shade in the morning. There is no air conditioning, but there is a ceiling fan in every room. I do not stand the heat well, but the fans were perfect and we did not need air conditioning.\nThere are restaurants nearby, but we preferred the small, simple Portuguese restaurants in central Funchal. You can also walk to the sea, but like everywhere in Madeira, you have to go down and then climb back up, so be mentally prepared! 😊\nThe apartment is a little outside the centre, but buses run often and the stop is just outside the building. \nThe bathroom is a little dated and would benefit from a refresh. The hosts are very friendly, always available and gave us useful advice about the island.",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1661639383351450412",
+     "name": "Michelle",
+     "from": "8 years on Airbnb",
+     "date": "2026-04-11",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "I stayed at the property with a friend, and we had a wonderful vacation. The apartment is spacious and, with its huge terrace, offers a wonderful vacation feel with a sea view. Having our own garage parking space for the rental car was also super helpful. The only thing was that the house was very noisy. \nNatalia welcomed us very warmly and was very easy to reach. \nThe beach, as well as several restaurants and the natural swimming pool, are within minutes walking distance. A shopping center and grocery stores are also within walking distance. We also enjoyed using the bus stop next door to get downtown. \nAlso, be sure to visit the Tradicional restaurant directly across from the house. The food is extremely good. \nTo eat on the outdoor terrace at the restaurant by the natural pool, you absolutely need to make a reservation in advance. \nIn downtown, we loved “Bar Number Two” (best poncha and caipirinha!!).",
+     "original": "Ich war mit einer Freundin in der Unterkunft und wir hatten einen wunderschönen Urlaub. Die Wohnung ist geräumig und bietet mit der riesigen Terrasse ein wunderschönes Urlaubsfeeling mit Meerblick. Super hilfreich war auch der eigene Garagenstellplatz für den Mietwagen. Einzig das Haus war sehr hellhörig. \nNatalia hat uns sehr herzlich empfangen und war sehr gut erreichbar. \nDer Strand sowie einige Restaurants und das Naturbad sind in wenigen Minuten zu Fuß erreichbar. Ein Einkaufszentrum und Lebensmittelgeschäfte sind ebenfalls zu Fuß erreichbar. Wir haben auch gerne die Bushaltestelle nebenan genutzt, um in die Innenstadt zu kommen. \nBesucht auch unbedingt das Tradicional Restaurant direkt gegenüber vom Haus. Das Essen ist extrem gut. \nUm beim Restaurant am Naturbad auf der Außenterrasse zu Essen, muss man dringend vorher reservieren. \nIn der Innenstadt haben wir die \"Bar Number Two\" geliebt (bester Poncha und Caipirinha!!).",
+     "lang": "German"
+    },
+    {
+     "id": "1647925537615631678",
+     "name": "Andreas",
+     "from": "9 years on Airbnb",
+     "date": "2026-03-23",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "Really nice place to stay and a super friendly host. Great location with lots of restaurants nearby, a lovely terrace, and easy private parking. We’d definitely stay here again!",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1595640461108663300",
+     "name": "Mandy",
+     "from": "7 years on Airbnb",
+     "date": "2026-01-10",
+     "rating": 5,
+     "stay": "Stayed over a week",
+     "text": "We had a lovely time at Natalia’s place over Christmas and New Year’s Eve. The terrace is the heart of the apartment, and we spent most of our time there. \nThe apartment is ideal for two people, but it also works well for three and has super fast internet, which allowed me to comfortably work remotely after the holidays.\nCommunication with Natalia was always great — she responded quickly and took care of everything. The only small note for people who enjoy cooking a lot: with the available equipment and the stove, cooking can be a bit challenging and may take a little longer. However, this is manageable.\nOther than that, everything was wonderful, and I would definitely come back anytime. Thanks for hosting us!🌞🌸",
+     "original": "",
+     "lang": ""
+    },
+    {
+     "id": "1542103857432241042",
+     "name": "Sandra",
+     "from": "7 years on Airbnb",
+     "date": "2025-10-28",
+     "rating": 5,
+     "stay": "Stayed about a week",
+     "text": "Fast and friendly answers, always available even if you leave your key in the apartment :) \nClear check-in and check-out instructions. Great big apartment and beautiful terrace :) happy to come back next time",
+     "original": "Schnelle und freundliche Antworten, immer erreichbar auch wenn man mal seinen Schlüssel in der Wohnung liegen lässt :) \nKlare Anweisungen für Check-in und out. Tolle große Wohnung und wunderschöner Terasse :) gerne beim nächsten Mal wieder",
+     "lang": "German"
+    }
+   ]
+  }
+ }
+}

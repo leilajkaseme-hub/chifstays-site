@@ -414,3 +414,50 @@ footer li{margin-bottom:9px}
   .flat-shots{aspect-ratio:3/2}
   .flat{padding:34px 0}
 }
+
+/* ------------------------------------------------------------- reviews
+   Cards in the same white-on-sand language as .feat. Stars in --gold, the
+   only place gold is used. */
+.hero-rating{display:inline-flex;align-items:center;gap:6px;color:var(--ink);text-decoration:none}
+.hero-rating svg{width:16px;height:16px;fill:var(--gold);stroke:none}
+.hero-rating:hover b{color:var(--sea)}
+.revs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}
+.rev{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px 20px}
+.rev header{display:flex;align-items:center;gap:12px}
+.rev header div{display:flex;flex-direction:column;line-height:1.3}
+.rev header span:not(.rev-av){color:var(--ink-3);font-size:.86rem}
+.rev-av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;flex:none;
+  background:var(--sea-soft);color:var(--sea-dark);font-weight:700}
+.rev-meta{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;margin:12px 0 10px;font-size:.84rem;color:var(--ink-3)}
+.rev-stars{font-size:.95rem}
+.rev-stars{color:var(--gold);letter-spacing:1px}
+.rev-stars i{color:var(--line);font-style:normal}
+.rev-text p{margin:0 0 8px;color:var(--ink-2);font-size:.95rem}
+.rev-orig{margin-top:6px;font-size:.84rem;color:var(--ink-3)}
+.rev-orig summary{cursor:pointer}
+.rev-orig p{margin:8px 0 0;font-style:italic}
+.rev-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.rev-links svg{width:15px;height:15px;fill:var(--gold);stroke:none;vertical-align:-2px}
+.rev-head{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,72px);align-items:center;margin-bottom:clamp(28px,4vw,44px)}
+.rev-score{display:flex;flex-direction:column;align-items:flex-start}
+.rev-score svg{width:30px;height:30px;fill:var(--gold);stroke:none}
+.rev-score b{font-size:clamp(2.6rem,6vw,3.6rem);line-height:1;letter-spacing:-.03em;margin-top:6px}
+.rev-score span{color:var(--ink-3);font-size:.92rem;margin-top:6px}
+.rev-cats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 36px}
+.rev-cats li{display:grid;grid-template-columns:110px 1fr 30px;align-items:center;gap:12px;font-size:.92rem}
+.rev-cats i{height:4px;border-radius:4px;background:var(--line);overflow:hidden}
+.rev-cats em{display:block;height:100%;background:var(--ink)}
+.rev-cats b{text-align:right}
+@media (max-width:960px){ .revs{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:640px){
+  .revs{grid-template-columns:1fr}
+  .rev-head{grid-template-columns:1fr}
+  .rev-cats{grid-template-columns:1fr}
+  .rev-links .btn{width:100%;justify-content:center;text-align:center}
+}
+
+/* ----------------------------------------------------------------- map */
+.map .leaflet-tile-pane{filter:saturate(.75)}
+.map{height:clamp(300px,42vw,440px);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);
+  background:var(--sand);z-index:0}
+.map .leaflet-control-attribution{font-size:10px}
