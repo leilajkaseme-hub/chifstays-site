@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Apartment","name":"Perla do Oceano Suite","description":"A two-bedroom apartment in Barreiros with two large balconies and an open view across Funchal bay. It sleeps three: a double bedroom, a second bedroom, and a sofa bed in the living room. The building has a lift, free street parking sits close by, and we meet you at the door with the keys.","url":"https://chifstays.com/perla-do-oceano","address":{"@type":"PostalAddress","addressLocality":"Funchal","addressRegion":"Madeira","addressCountry":"PT"},"numberOfBedrooms":2,"numberOfBathroomsTotal":1,"occupancy":{"@type":"QuantitativeValue","maxValue":3},"amenityFeature":[{"@type":"LocationFeatureSpecification","name":"Kitchen","value":true},{"@type":"LocationFeatureSpecification","name":"Wifi","value":true},{"@type":"LocationFeatureSpecification","name":"Free street parking","value":true},{"@type":"LocationFeatureSpecification","name":"TV","value":true},{"@type":"LocationFeatureSpecification","name":"Washing machine","value":true},{"@type":"LocationFeatureSpecification","name":"Tumble dryer","value":true},{"@type":"LocationFeatureSpecification","name":"Bathtub","value":true},{"@type":"LocationFeatureSpecification","name":"Hair dryer","value":true},{"@type":"LocationFeatureSpecification","name":"Fridge","value":true},{"@type":"LocationFeatureSpecification","name":"Lift in the building","value":true},{"@type":"LocationFeatureSpecification","name":"Carbon monoxide alarm","value":false}],"offers":{"@type":"Offer","price":115,"priceCurrency":"EUR","description":"Lowest nightly rate; high season costs more.","availability":"https://schema.org/InStock","priceSpecification":{"@type":"UnitPriceSpecification","price":115,"priceCurrency":"EUR","unitCode":"DAY"}},"image":["https://chifstays.com/assets/perla/terrasse-vue-mer.webp","https://chifstays.com/assets/perla/salon-balcon.webp","https://chifstays.com/assets/perla/chambre-balcon.webp","https://chifstays.com/assets/perla/salon-canape.webp","https://chifstays.com/assets/perla/balcon-transats.webp"]}</script>
 </head>
@@ -43,7 +43,7 @@
 
 <div class="wrap listing-head">
   <div class="rv">
-    <p class="listing-where">Barreiros, Funchal</p>
+    <p class="eyebrow">Barreiros, Funchal</p>
     <h1>Perla do Oceano Suite</h1>
     <div class="listing-sub">
       <span class="rating"><svg viewBox="0 0 24 24"><path d="m12 3 2.7 5.8 6.3.8-4.6 4.3 1.2 6.2L12 17l-5.6 3.1 1.2-6.2L3 9.6l6.3-.8z"/></svg>4.96 <span>· 24 reviews</span></span>
@@ -80,11 +80,11 @@
         </div>
         <p class="lede rv">A two-bedroom apartment in Barreiros with two large balconies and an open view across Funchal bay. It sleeps three: a double bedroom, a second bedroom, and a sofa bed in the living room. The building has a lift, free street parking sits close by, and we meet you at the door with the keys.</p>
 
-        <ol class="points rv">
-          <li><h3>Two balconies, not one</h3><p>One is wide enough for loungers and a table; the other catches the morning sun for breakfast.</p></li>
-          <li><h3>A quiet street</h3><p>Guests keep saying the same thing: it is calm. Cafés, shops and buses are a short walk away.</p></li>
-          <li><h3>Met at the door</h3><p>Tell us your arrival time and we hand over the keys in person and show you around.</p></li>
-        </ol>
+        <div class="feats rv-group" style="grid-template-columns:1fr;gap:14px;margin-top:32px">
+          <div class="feat rv"><h3>Two balconies, not one</h3><p>One is wide enough for loungers and a table; the other catches the morning sun for breakfast.</p></div>
+          <div class="feat rv"><h3>A quiet street</h3><p>Guests keep saying the same thing: it is calm. Cafés, shops and buses are a short walk away.</p></div>
+          <div class="feat rv"><h3>Met at the door</h3><p>Tell us your arrival time and we hand over the keys in person and show you around.</p></div>
+        </div>
       </section>
 
       <section style="padding-top:14px">
@@ -133,9 +133,10 @@
   </div>
 </div>
 
-<section class="mist" id="reviews">
+<section class="sand" id="reviews">
   <div class="wrap">
     <div class="sec-head rv">
+      <p class="eyebrow">Guest reviews</p>
       <h2>33 reviews, on three sites</h2>
     </div>
     <div class="rv"><div class="src-tiles">
@@ -163,7 +164,7 @@
       <button type="button" data-filter="booking" aria-pressed="false">Booking.com 4</button>
       <button type="button" data-filter="vrbo" aria-pressed="false">Vrbo 4</button>
     </div>
-    <div class="revs">
+    <div class="revs rv-group">
       
         <article class="rev rv" data-src="airbnb">
           <header>
@@ -547,6 +548,7 @@
 <section id="where">
   <div class="wrap">
     <div class="sec-head rv">
+      <p class="eyebrow">Where you will be</p>
       <h2>Barreiros, Funchal</h2>
       <p class="lede">The circle shows the area. The exact address and the way in come with your booking.</p>
     </div>
@@ -555,7 +557,7 @@
   </div>
 </section>
 
-<section class="mist">
+<section>
   <div class="wrap" style="text-align:center">
     <h2 class="rv">Free on your dates?</h2>
     <p class="lede rv" style="margin:14px auto 26px">Book straight here, and keep what Airbnb would have charged you on top.</p>
