@@ -1,0 +1,269 @@
+{
+ "fetched": "2026-11-18",
+ "stays": {
+  "perla": {
+   "rating": 8.8,
+   "scale": 10,
+   "count": 5,
+   "categories": [
+    [
+     "Staff",
+     9.5
+    ],
+    [
+     "Facilities",
+     9.5
+    ],
+    [
+     "Cleanliness",
+     10.0
+    ],
+    [
+     "Comfort",
+     9.5
+    ],
+    [
+     "Value for money",
+     9.0
+    ],
+    [
+     "Location",
+     9.5
+    ]
+   ],
+   "url": "https://www.booking.com/hotel/pt/funchal-bay-view-walk-to-lido-amp-city-center.html",
+   "reviews": [
+    {
+     "id": "036fc272563c6ba2",
+     "name": "Max",
+     "from": "Netherlands",
+     "date": "2025-09-18",
+     "rating": 9.0,
+     "stay": "Stayed 14 nights",
+     "text": {
+      "title": "Fijne locatie gastvrijheid en hulpvaardig",
+      "good": "Uitzicht",
+      "bad": "Airco en wifi op het balkon"
+     },
+     "original": null,
+     "lang": "",
+     "reply": "Thank you very much, Max, for your kind comments and for highlighting our hospitality and helpfulness 🌸. We are delighted that you enjoyed the comfort, cleanliness, and location of the apartment.\n\nWe were, however, a little surprised by the 7.5 rating for staff, as it seems somewhat inconsistent with your positive remarks. We always do our very best to be responsive and available to ensure our guests have a pleasant stay.\n\nYour feedback is nevertheless very valuable to us, and it encourages us to keep improving. We would be very happy to welcome you back to Madeira in the future ✨🏝\nNatalia &amp; Hugo"
+    },
+    {
+     "id": "9aa09c1d35eccd1b",
+     "name": "Gonzalo",
+     "from": "Portugal",
+     "date": "2025-09-16",
+     "rating": 9.0,
+     "stay": "Stayed 6 nights",
+     "text": {
+      "title": "",
+      "good": "Confortable and clean spaces, very sunny and well ventilated, quiet neighbourhood,",
+      "bad": "The bed mattress is too firm but that is my personal taste"
+     },
+     "original": null,
+     "lang": "",
+     "reply": ""
+    },
+    {
+     "id": "7958e0d3c4b70d49",
+     "name": "Bram",
+     "from": "Netherlands",
+     "date": "2025-08-05",
+     "rating": 9.0,
+     "stay": "Stayed 13 nights",
+     "text": {
+      "title": "Delicious",
+      "good": "Super accommodation, clean, spacious, and with a huge XXL terrace.",
+      "bad": "Nothing"
+     },
+     "original": {
+      "title": "Heerlijk",
+      "good": "Super accommodatie, schoon, ruim en met een enorm xxl terras.",
+      "bad": "Niets"
+     },
+     "lang": "Dutch",
+     "reply": "Hi Bram 🌟\n\nThanks a ton for the awesome rating! You’re welcome back anytime🏝️\n\nCheers,\nNatalia"
+    },
+    {
+     "id": "c76a56f5797e3adb",
+     "name": "Ina",
+     "from": "Moldova",
+     "date": "2025-07-01",
+     "rating": 10.0,
+     "stay": "Stayed 6 nights",
+     "text": {
+      "title": "Приветливые хозяева.Супер комфортная и красивая квартира.Удобное расположение",
+      "good": "Квартира с огромной террасой с видом на океан",
+      "bad": "Все было супер"
+     },
+     "original": null,
+     "lang": "",
+     "reply": "Hi Ina🌟\n\nThank you so much for your wonderful comment! 🥰\nWe’re delighted that you enjoyed the warm welcome, the comfort of the apartment, and the terrace overlooking the ocean.\nKnowing that “everything was great” truly warms our hearts. We look forward to hosting you again🏝️\nNatalia 🌺"
+    }
+   ]
+  },
+  "varanda": {
+   "rating": 9.3,
+   "scale": 10,
+   "count": 11,
+   "categories": [
+    [
+     "Staff",
+     10.0
+    ],
+    [
+     "Facilities",
+     9.4
+    ],
+    [
+     "Cleanliness",
+     9.6
+    ],
+    [
+     "Comfort",
+     9.6
+    ],
+    [
+     "Value for money",
+     9.3
+    ],
+    [
+     "Location",
+     9.6
+    ]
+   ],
+   "url": "https://www.booking.com/hotel/pt/ocean-cliff-retreat-between-natural-pools-amp-praia-formosa.html",
+   "reviews": [
+    {
+     "id": "d03ebbbe558df7d8",
+     "name": "Thomas",
+     "from": "Germany",
+     "date": "2026-05-24",
+     "rating": 9.0,
+     "stay": "Stayed 7 nights",
+     "text": {
+      "title": "A pleasant stay",
+      "good": "The apartment is well-equipped and located in a very quiet area near the promenade.",
+      "bad": "The bathroom needs renovating."
+     },
+     "original": {
+      "title": "Ein schöner Aufenthalt",
+      "good": "Das Apartment ist gut ausgestattet und liegt sehr ruhig in der Nähe der Promenade.",
+      "bad": "Das Bad gehört renoviert."
+     },
+     "lang": "German",
+     "reply": ""
+    },
+    {
+     "id": "54889dd59343005c",
+     "name": "Cindy",
+     "from": "Germany",
+     "date": "2026-05-19",
+     "rating": 9.0,
+     "stay": "Stayed 5 nights",
+     "text": {
+      "title": "It was a very nice stay.",
+      "good": "Great location, nice and quiet, second row to the sea, sound of the sea included, bus stop right outside, everything easily and quickly accessible. Many thanks to the truly lovely hosts for making the departure to the airport, which you organized, go so smoothly! We felt very comfortable.",
+      "bad": ""
+     },
+     "original": {
+      "title": "Es war sein sehr schöner Aufenthalt.",
+      "good": "Super Lage, schön ruhig, 2. Reihe zum Meer, Meeresrauschen inklusive, Bus vor der Tür, alles gut und schnell erreichbar. Vielen Dank an die wirklich sehr netten Gastgeber, dass auch die von euch organisierte Abreise zum Flughafen so gut geklappt hat! Wir haben uns sehr wohl gefühlt.",
+      "bad": ""
+     },
+     "lang": "German",
+     "reply": ""
+    },
+    {
+     "id": "7cdb02945bb456af",
+     "name": "Diana",
+     "from": "Serbia",
+     "date": "2025-11-22",
+     "rating": 10.0,
+     "stay": "Stayed 8 nights",
+     "text": {
+      "title": "Perfect stay",
+      "good": "The apartment is amazing and very well-equipped; you truly have everything you need. The hosts were great as well, with very fast and easy communication. The terrace is beyond beautiful. The location is excellent—really close to the city center, yet you still have your own peaceful spot near the beach. There are plenty of markets and restaurants around, and if we ever come back to Madeira, we would definitely stay here again.",
+      "bad": "Everything was great."
+     },
+     "original": null,
+     "lang": "",
+     "reply": "Thank you so much for your wonderful feedback. It truly makes us happy to hear that your stay was perfect and that you enjoyed the apartment, the terrace, and the neighborhood.\nYou were fantastic guests, and communicating with you was really easy.\nIf you ever come back to Madeira, we’d be delighted to welcome you again.\nNatalia & Hugo"
+    },
+    {
+     "id": "c54eb3a4e9124b59",
+     "name": "Corentin",
+     "from": "France",
+     "date": "2025-09-13",
+     "rating": 10.0,
+     "stay": "Stayed 7 nights",
+     "text": {
+      "title": "",
+      "good": "Emplacement très practical pour la visite de l'île \nTerrace with sea view",
+      "bad": "Nothing"
+     },
+     "original": {
+      "title": "",
+      "good": "Emplacement très pratique pour la visite de l'île \nTerrasse avec vue sur mer",
+      "bad": "Rien"
+     },
+     "lang": "French",
+     "reply": "Bonjour,\nMerci infiniment pour votre gentil message et pour avoir tout laissé impeccable, c’est vraiment attentionné. \nJe vous souhaite un excellent retour, et ce sera un vrai plaisir de vous revoir un jour sur l’île ! Natalia 🌸"
+    },
+    {
+     "id": "b01ec12050184700",
+     "name": "Olga",
+     "from": "Poland",
+     "date": "2025-08-29",
+     "rating": 10.0,
+     "stay": "Stayed 11 nights",
+     "text": {
+      "title": "The stay was wonderful as the apartment stays in a good location near the natural pools beach. It was very clean, we had",
+      "good": "Location, the apartment and the terrace.",
+      "bad": "All was great!"
+     },
+     "original": null,
+     "lang": "",
+     "reply": ""
+    },
+    {
+     "id": "5523245bd4b330c2",
+     "name": "Stefano",
+     "from": "Italy",
+     "date": "2025-08-20",
+     "rating": 10.0,
+     "stay": "Stayed 7 nights",
+     "text": {
+      "title": "Spectacular terrace",
+      "good": "Terrazzo spettacolare with sea view, very spacious apartment with great comfort. The garage too very comfortable.",
+      "bad": "If I had to find a flaw, it would probably be the bathroom: the shower is almost impossible to regulate between hot and cold water, and the door itself is a bit ruined in general, right down to the shower floor."
+     },
+     "original": {
+      "title": "Terrazzo spettacolare",
+      "good": "Terrazzo spettacolare con vista mare,appartamento molto spazioso e con ogni comfort . Anche il Garage comodissimo.",
+      "bad": "Se dovessi trovare una pecca forse il bagno,doccia quasi impossibile da regolare tra acqua calda e fredda e un po’ rovinato in generale dalla porta stessa al piano doccia."
+     },
+     "lang": "Italian",
+     "reply": ""
+    },
+    {
+     "id": "9666b9e079105f7c",
+     "name": "Carmelo",
+     "from": "Italy",
+     "date": "2025-06-23",
+     "rating": 7.0,
+     "stay": "Stayed 8 nights",
+     "text": {
+      "title": "",
+      "good": "Posizione dell'appartamento ottima, ampi spazi. Vicinato stupendo, molto fornito di locali per cenare e pranzare ma anche supermercato. A due passi da Funchal e dal centro. Inoltre ottimo per l'utilizzo del box auto. Proprietari molto gentili e disponibili per qualsiasi evenienza.",
+      "bad": "Sarebbe carino poter usufruire di un servizio di pulizia dell'appartamento minimo 1 volta ogni 7 giorni."
+     },
+     "original": null,
+     "lang": "",
+     "reply": "Ciao,\n\nGrazie per il tuo feedback. Siamo felici che tu abbia apprezzato la posizione dell’appartamento, il quartiere e la vicinanza al centro di Funchal. È stato un piacere ospitarti.\n\nPer quanto riguarda il servizio di pulizia durante il soggiorno, ci dispiace ci sia stato un malinteso. Se ce lo avessi richiesto, avremmo potuto organizzarlo senza problemi.\n\nIl prezzo della prenotazione include infatti solo la pulizia finale dopo la partenza, oltre alla gestione della biancheria da letto e da bagno, per garantire un alto standard di pulizia a tutti gli ospiti.\n\nIl servizio di pulizia durante il soggiorno non è incluso, ma può essere organizzato su richiesta anticipata.\n\nGrazie ancora per il tuo soggiorno e per il tuo commento.\n\nCordiali saluti,\nNatália & Hugo"
+    }
+   ]
+  }
+ }
+}

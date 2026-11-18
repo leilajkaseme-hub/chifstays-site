@@ -31,18 +31,29 @@ const HERO_FIVE = [[0, 0], [1, 1], [0, 5], [1, 2], [0, 9]];
 
 const HOST = { name: "Natalia and Hugo", since: "1 year", superhost: true };
 
-/* Guest reviews, pulled from the two Airbnb listings by fetch-reviews.mjs.
-   Every review with words in it is shown on its flat's page, 4 stars included;
-   only the home page picks a few, by id, below. If the file is missing the
-   site still builds, with the numbers written in STAYS. */
-const REVIEWS = existsSync("reviews.json") ? JSON.parse(readFileSync("reviews.json", "utf8")) : { stays: {} };
+/* Guest reviews from the three sites the flats are sold on.
+     reviews.json          Airbnb, by fetch-reviews.mjs (weekly on GitHub)
+     reviews-booking.json  Booking.com, by fetch-booking-reviews.py (weekly on GitHub)
+     reviews-manual.json   Vrbo, copied by hand (Vrbo blocks scripts), and clean
+                           English for reviews that came with no translation
+   Every review with words in it is shown on its flat's page, low scores
+   included; only the home page picks a few, by id, below. A missing file just
+   means that site's reviews are not shown. */
+const load = (f) => (existsSync(f) ? JSON.parse(readFileSync(f, "utf8")) : {});
+const SRC = {
+  airbnb: load("reviews.json").stays || {},
+  booking: load("reviews-booking.json").stays || {},
+  vrbo: load("reviews-manual.json").vrbo || {},
+};
+const TRANSLATIONS = load("reviews-manual.json").translations || {};
+const PLATFORM = { airbnb: "Airbnb", booking: "Booking.com", vrbo: "Vrbo" };
 const FEATURED = [
-  ["perla", "1528274650272740814"],    // Jack: peaceful, clean, luxurious
-  ["varanda", "1759321504500034996"],  // Hannah: the waves from the terrace
-  ["perla", "1589109082578789745"],    // Yanrui: New Year fireworks over the bay
-  ["varanda", "1773264651714789303"],  // Pierre: quiet, sea view, beach close
-  ["perla", "1523869168028921696"],    // Deirdre: the balcony and the terrace
-  ["varanda", "1647925537615631678"],  // Andreas: restaurants, private parking
+  ["perla", "1528274650272740814"],    // Airbnb, Jack: peaceful, clean, luxurious
+  ["varanda", "1759321504500034996"],  // Airbnb, Hannah: the waves from the terrace
+  ["varanda", "7cdb02945bb456af"],     // Booking, Diana: the terrace, the beach, the centre
+  ["perla", "1589109082578789745"],    // Airbnb, Yanrui: New Year fireworks over the bay
+  ["perla", "vrbo-perla-nina-2026-03"],// Vrbo, Nina: two weeks, the views, the buses
+  ["varanda", "1647925537615631678"],  // Airbnb, Andreas: restaurants, private parking
 ];
 
 const STAYS = [
@@ -152,16 +163,47 @@ const STAYS = [
   },
 ];
 
-for (const s of STAYS) {
-  const r = REVIEWS.stays[s.key];
-  if (!r) continue;
-  s.rating = r.rating;
-  s.reviews = r.count;
-  s.categories = r.categories || [];
-  s.reviewList = r.reviews || [];
+/* Every review becomes the same shape: a title, what was good, what was not,
+   the guest's own words when we show a translation, and the host's reply. */
+const asParts = (t) => (t == null ? null : typeof t === "string" ? { title: "", good: t, bad: "" } : t);
+function normalise(platform, r, scale) {
+  const tr = TRANSLATIONS[r.id];
+  const text = asParts(tr ? tr.text : r.text);
+  const original = tr ? asParts(r.original || r.text) : asParts(r.original || null);
+  return {
+    id: r.id, platform, scale, name: r.name, from: r.from || "", date: r.date, rating: r.rating,
+    stay: r.stay || "", text, original: original && original.good + original.title + original.bad ? original : null,
+    lang: tr ? tr.lang : r.lang || "", reply: r.reply || "",
+  };
 }
-const ALL_REVIEWS = STAYS.reduce((n, s) => n + s.reviews, 0);
+
+for (const s of STAYS) {
+  s.sources = [];
+  s.reviewList = [];
+  for (const key of Object.keys(SRC)) {
+    const d = SRC[key][s.key];
+    if (!d) continue;
+    const scale = d.scale || 5;
+    s.sources.push({ key, name: PLATFORM[key], rating: d.rating, scale, count: d.count,
+      url: key === "airbnb" ? `${s.airbnb}/reviews` : d.url, categories: d.categories || [] });
+    s.reviewList.push(...(d.reviews || []).map((r) => normalise(key, r, scale)));
+    if (key === "airbnb") { s.rating = d.rating; s.reviews = d.count; s.categories = d.categories || []; }
+  }
+  s.reviewList.sort((a, b) => b.date.localeCompare(a.date));
+  s.reviewTotal = s.sources.reduce((n, x) => n + x.count, 0) || s.reviews;
+}
+const ALL_REVIEWS = STAYS.reduce((n, s) => n + s.reviews, 0);          // Airbnb only
 const AVG = (STAYS.reduce((n, s) => n + s.rating * s.reviews, 0) / ALL_REVIEWS).toFixed(2);
+const TOTAL = STAYS.reduce((n, s) => n + s.reviewTotal, 0);              // all three sites
+/* One score per site across both flats, weighted by how many reviews each has. */
+const SITE_SCORES = Object.keys(PLATFORM).map((key) => {
+  const rows = STAYS.map((s) => s.sources.find((x) => x.key === key)).filter(Boolean);
+  const count = rows.reduce((n, x) => n + x.count, 0);
+  if (!count) return null;
+  return { key, name: PLATFORM[key], scale: rows[0].scale, count,
+    rating: rows.reduce((n, x) => n + x.rating * x.count, 0) / count };
+}).filter(Boolean);
+const fmtScore = (v, scale) => (scale === 5 ? v.toFixed(2) : v % 1 ? v.toFixed(1) : String(v));
 
 /* ------------------------------------------------------------------ helpers */
 /* One place that decides what a URL looks like. GitHub Pages already serves
@@ -192,28 +234,34 @@ const MONTH = (d) => new Date(d + "T12:00:00Z").toLocaleDateString("en-GB", { mo
 const para = (t) => esc(t).split(/\n+/).map((x) => `<p>${x}</p>`).join("");
 const initial = (n) => esc(n.trim().charAt(0).toUpperCase());
 
-/* One review card. A review written in another language shows Airbnb's
-   English translation, says so, and keeps the guest's own words one tap away. */
-const reviewCard = (r, { stayName = "", hidden = false } = {}) => `
-        <article class="rev${hidden ? " rev-more" : ""}"${hidden ? " hidden" : ""}>
+const block = (t) => `${t.title ? `<p class="rev-title">${esc(t.title)}</p>` : ""}${t.good ? para(t.good) : ""}${
+  t.bad ? `<p class="rev-bad"><span>Less good:</span> ${esc(t.bad).replace(/\n+/g, " ")}</p>` : ""}`;
+
+/* One review card. A review written in another language shows an English
+   translation, says so, and keeps the guest's own words one tap away. Airbnb
+   scores out of 5 and shows stars; Booking.com and Vrbo score out of 10 and
+   show the number, as they do on their own sites. */
+const reviewCard = (r, { stayName = "", hidden = false, reveal = false } = {}) => `
+        <article class="rev${reveal ? " rv" : ""}${hidden ? " rev-more" : ""}" data-src="${r.platform}"${hidden ? " hidden" : ""}>
           <header>
             <span class="rev-av" aria-hidden="true">${initial(r.name)}</span>
             <div><b>${esc(r.name)}</b><span>${esc(r.from)}</span></div>
+            <span class="rev-src rev-src-${r.platform}">${esc(PLATFORM[r.platform])}</span>
           </header>
-          <div class="rev-meta"><span class="rev-stars" aria-label="${r.rating} out of 5 stars">${"★".repeat(r.rating)}<i>${"★".repeat(5 - r.rating)}</i></span>
+          <div class="rev-meta">${r.scale === 5
+            ? `<span class="rev-stars" aria-label="${r.rating} out of 5 stars">${"★".repeat(r.rating)}<i>${"★".repeat(5 - r.rating)}</i></span>`
+            : `<span class="rev-ten" aria-label="${r.rating} out of 10">${Number(r.rating).toFixed(r.rating % 1 ? 1 : 0)}<i>/10</i></span>`}
             <span>${MONTH(r.date)}</span>${r.stay ? `<span>${esc(r.stay)}</span>` : ""}${stayName ? `<span>${esc(stayName)}</span>` : ""}</div>
-          <div class="rev-text">${para(r.text)}</div>
-          ${r.original ? `<details class="rev-orig"><summary>Translated from ${esc(r.lang)} · show original</summary>${para(r.original)}</details>` : ""}
+          <div class="rev-text">${block(r.text)}</div>
+          ${r.original ? `<details class="rev-orig"><summary>Translated from ${esc(r.lang)} · show original</summary>${block(r.original)}</details>` : ""}
+          ${r.reply ? `<details class="rev-orig"><summary>Reply from ${esc(HOST.name)}</summary>${para(r.reply)}</details>` : ""}
         </article>`;
 
-const reviewJsonLd = (s) => (s.reviewList || []).map((r) => ({
-  "@type": "Review",
-  author: { "@type": "Person", name: r.name },
-  datePublished: r.date,
-  reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 },
-  reviewBody: r.text,
-  publisher: { "@type": "Organization", name: "Airbnb" },
-}));
+/* The site scores as small tiles, each linking to the reviews on that site. */
+const siteTiles = (rows) => `<div class="src-tiles">
+      ${rows.map((x) => `<a class="src-tile" href="${x.url || "#reviews"}"${x.url ? ' rel="noopener" target="_blank"' : ""}>
+        <span>${esc(x.name)}</span><b>${fmtScore(x.rating, x.scale)}<i>/${x.scale}</i></b><small>${x.count} review${x.count > 1 ? "s" : ""}</small></a>`).join("\n      ")}
+    </div>`;
 
 const img = (s, [file, alt], cls = "") =>
   `<img${cls ? ` class="${cls}"` : ""} src="assets/${s.dir}/${file}.webp" alt="${esc(alt)}" loading="lazy" decoding="async" width="1200" height="800"/>`;
@@ -349,7 +397,7 @@ function home() {
     <div class="hero-facts rv">
       <span><b>${STAYS.length}</b> apartments</span>
       <span><b>${STAYS.reduce((n, s) => n + s.guests, 0)}</b> guests in total</span>
-      <a class="hero-rating" href="#reviews">${ICON.star}<b>${AVG}</b> from ${ALL_REVIEWS} guest reviews</a>
+      <a class="hero-rating" href="#reviews">${ICON.star}<b>${AVG}</b> on Airbnb · ${TOTAL} guest reviews on 3 sites</a>
       <span>Licensed <b>Alojamento Local</b></span>
     </div>
   </div>
@@ -386,19 +434,20 @@ ${STAYS.map((s, i) => `
   <div class="wrap">
     <div class="sec-head rv">
       <p class="eyebrow">Guest reviews</p>
-      <h2>${AVG} out of 5, from ${ALL_REVIEWS} guest reviews</h2>
-      <p class="lede">Every review below was written by a guest after their stay, on Airbnb. Nothing is edited;
-      reviews in other languages show Airbnb's English translation.</p>
+      <h2>${TOTAL} guest reviews, on Airbnb, Booking.com and Vrbo</h2>
+      <p class="lede">Each one written by a guest after their stay, on the site they booked through. Nothing is
+      edited; reviews in other languages show an English translation, with the guest's own words one tap away.</p>
     </div>
+    <div class="rv">${siteTiles(SITE_SCORES)}</div>
     <div class="revs rv-group">
       ${FEATURED.map(([k, id]) => {
         const s = STAYS.find((x) => x.key === k);
         const r = (s.reviewList || []).find((x) => x.id === id);
-        return r ? reviewCard(r, { stayName: s.name }).replace('class="rev"', 'class="rev rv"') : "";
+        return r ? reviewCard(r, { stayName: s.name, reveal: true }) : "";
       }).join("")}
     </div>
     <div class="rev-links rv">
-      ${STAYS.map((s) => `<a class="btn btn-o" href="${url(s.slug)}#reviews">${ICON.star} ${s.rating.toFixed(2)} · all ${s.reviews} reviews of ${esc(s.name)}</a>`).join("\n      ")}
+      ${STAYS.map((s) => `<a class="btn btn-o" href="${url(s.slug)}#reviews">All ${s.reviewTotal} reviews of ${esc(s.name)}</a>`).join("\n      ")}
     </div>
   </div>
 </section>
@@ -510,7 +559,6 @@ ${STAYS.map((s, i) => `
           address: { "@type": "PostalAddress", addressLocality: "Funchal", addressRegion: "Madeira", addressCountry: "PT" },
           numberOfBedrooms: s.bedrooms, numberOfBathroomsTotal: s.baths,
           occupancy: { "@type": "QuantitativeValue", maxValue: s.guests },
-          aggregateRating: { "@type": "AggregateRating", ratingValue: s.rating, reviewCount: s.reviews, bestRating: 5 },
         },
       })),
     },
@@ -599,18 +647,29 @@ function listing(s) {
 
 <section class="sand" id="reviews">
   <div class="wrap">
-    <div class="rev-head rv">
-      <div class="rev-score">${ICON.star}<b>${s.rating.toFixed(2)}</b><span>${s.reviews} reviews on Airbnb</span></div>
-      ${s.categories && s.categories.length ? `<ul class="rev-cats">
+    <div class="sec-head rv">
+      <p class="eyebrow">Guest reviews</p>
+      <h2>${s.reviewTotal} reviews, on three sites</h2>
+    </div>
+    <div class="rv">${siteTiles(s.sources)}</div>
+    ${s.categories && s.categories.length ? `<div class="rev-head rv">
+      <p class="rev-cats-h">Airbnb scores, out of 5</p>
+      <ul class="rev-cats">
         ${s.categories.map(([l, v]) => `<li><span>${esc(l)}</span><i><em style="width:${(v / 5) * 100}%"></em></i><b>${v.toFixed(1)}</b></li>`).join("\n        ")}
-      </ul>` : ""}
+      </ul>
+    </div>` : ""}
+    <div class="rev-filter rv" role="group" aria-label="Show reviews from">
+      <button type="button" class="on" data-filter="all" aria-pressed="true">All ${s.reviewList.length}</button>
+      ${s.sources.map((x) => {
+        const n = s.reviewList.filter((r) => r.platform === x.key).length;
+        return n ? `<button type="button" data-filter="${x.key}" aria-pressed="false">${esc(x.name)} ${n}</button>` : "";
+      }).join("\n      ")}
     </div>
     <div class="revs rv-group">
-      ${(s.reviewList || []).map((r, i) => reviewCard(r, { hidden: i >= 6 }).replace(i < 6 ? 'class="rev"' : "@@", 'class="rev rv"')).join("")}
+      ${s.reviewList.map((r, i) => reviewCard(r, { hidden: i >= 6, reveal: i < 6 })).join("")}
     </div>
     <div class="rev-links rv">
-      ${(s.reviewList || []).length > 6 ? `<button class="btn btn-o" type="button" data-more-reviews>Show all ${s.reviewList.length} reviews</button>` : ""}
-      <a class="btn btn-o" href="${s.airbnb}/reviews" rel="noopener" target="_blank">Read them on Airbnb</a>
+      ${s.reviewList.length > 6 ? `<button class="btn btn-o" type="button" data-more-reviews>Show all ${s.reviewList.length} reviews</button>` : ""}
     </div>
   </div>
 </section>
@@ -656,14 +715,15 @@ function listing(s) {
       numberOfBathroomsTotal: s.baths,
       occupancy: { "@type": "QuantitativeValue", maxValue: s.guests },
       amenityFeature: s.amenities.map(([a, on]) => ({ "@type": "LocationFeatureSpecification", name: a, value: !!on })),
-      aggregateRating: { "@type": "AggregateRating", ratingValue: s.rating, reviewCount: s.reviews, bestRating: 5 },
+      /* No aggregateRating and no Review here: Google's rules forbid marking up
+         ratings collected on other sites (Airbnb, Booking, Vrbo), and breaking
+         them can cost the page its rich results. The reviews stay visible. */
       offers: { "@type": "Offer", price: s.nightly, priceCurrency: "EUR",
                 description: "Lowest nightly rate; high season costs more.",
                 availability: "https://schema.org/InStock",
                 priceSpecification: { "@type": "UnitPriceSpecification",
                   price: s.nightly, priceCurrency: "EUR", unitCode: "DAY" } },
       image: s.photos.slice(0, 5).map((p) => `${SITE}/assets/${s.dir}/${p[0]}.webp`),
-      review: reviewJsonLd(s),
     },
   });
 }

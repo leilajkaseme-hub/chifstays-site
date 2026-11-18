@@ -1,6 +1,7 @@
-# Every Monday: pull new guest reviews from Airbnb and rebuild the pages.
-# If Airbnb changed its query the job fails with the reason and the site keeps
-# the reviews it already has. Fix steps are at the top of fetch-reviews.mjs.
+# Every Monday: pull new guest reviews from Airbnb and Booking.com and rebuild
+# the pages. Each site runs on its own: if one changes its page, that step fails
+# with the reason, the other still updates, and the site keeps the reviews it
+# already has. Vrbo blocks scripts, so its reviews live in reviews-manual.json.
 name: reviews
 on:
   schedule:
@@ -16,7 +17,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node fetch-reviews.mjs
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Airbnb
+        id: airbnb
+        continue-on-error: true
+        run: node fetch-reviews.mjs
+      - name: Booking.com
+        id: booking
+        continue-on-error: true
+        run: |
+          pip install playwright==1.48.0
+          python -m playwright install --with-deps chromium
+          python fetch-booking-reviews.py
       - run: node build.mjs
       - name: Commit if anything changed
         run: |
@@ -24,8 +38,13 @@ jobs:
             git config user.name "Enzo"
             git config user.email "enzo@users.noreply.github.com"
             git add -A
-            git commit -m "New guest reviews from Airbnb"
+            git commit -m "New guest reviews"
             git push
           else
             echo "No new reviews."
           fi
+      - name: Fail the run if a site could not be read
+        if: steps.airbnb.outcome == 'failure' || steps.booking.outcome == 'failure'
+        run: |
+          echo "Airbnb: ${{ steps.airbnb.outcome }}, Booking.com: ${{ steps.booking.outcome }}"
+          exit 1

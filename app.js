@@ -135,13 +135,31 @@
 
 /* ------------------------------------------------------- all the reviews
    The first six reviews show; the rest are in the page, hidden, so search
-   engines and screen readers still have them. One button opens them all. */
+   engines and screen readers still have them. "Show all" opens them, and the
+   site buttons (Airbnb, Booking.com, Vrbo) show only that site's reviews. */
 (function () {
   'use strict';
+  var cards = [].slice.call(document.querySelectorAll('.rev[data-src]'));
   var btn = document.querySelector('[data-more-reviews]');
-  if (!btn) return;
-  btn.addEventListener('click', function () {
-    document.querySelectorAll('.rev-more').forEach(function (r) { r.hidden = false; });
-    btn.remove();
+  var filters = [].slice.call(document.querySelectorAll('.rev-filter button'));
+  var showAll = false;
+
+  function apply(src) {
+    var shown = 0;
+    cards.forEach(function (c) {
+      var match = src === 'all' || c.getAttribute('data-src') === src;
+      var visible = match && (showAll || src !== 'all' || shown < 6);
+      c.hidden = !visible;
+      if (visible) { shown++; c.classList.add('in'); }
+    });
+    if (btn) btn.hidden = showAll || src !== 'all';
+  }
+
+  if (btn) btn.addEventListener('click', function () { showAll = true; apply('all'); });
+  filters.forEach(function (f) {
+    f.addEventListener('click', function () {
+      filters.forEach(function (o) { o.classList.toggle('on', o === f); o.setAttribute('aria-pressed', o === f ? 'true' : 'false'); });
+      apply(f.getAttribute('data-filter'));
+    });
   });
 })();
