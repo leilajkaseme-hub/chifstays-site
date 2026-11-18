@@ -46,12 +46,13 @@ EOF
 }
 before="$(ids | sort)"
 
-failed=()
-node fetch-reviews.mjs            || failed+=("Airbnb")
-python3 fetch-booking-reviews.py  || failed+=("Booking.com")
-python3 fetch-vrbo-reviews.py     || failed+=("Vrbo")
+# A plain list, not a bash array: macOS's bash 3.2 calls an empty array unbound under set -u.
+failed=""
+node fetch-reviews.mjs            || failed="$failed Airbnb"
+python3 fetch-booking-reviews.py  || failed="$failed Booking.com"
+python3 fetch-vrbo-reviews.py     || failed="$failed Vrbo"
 
-for site in "${failed[@]}"; do
+for site in $failed; do
   hub alerts "Chifstays reviews: $site could not be read this week. Its old reviews stay on the site. Log: ~/repos/chifstays-reviews.log on the mini." \
     --once "chifstays-reviews-$site"
 done
@@ -63,7 +64,7 @@ fi
 
 if [ -z "$(git status --porcelain)" ]; then
   echo "nothing changed"
-  [ ${#failed[@]} -eq 0 ] && exit 0 || exit 1
+  [ -z "$failed" ] && exit 0 || exit 1
 fi
 
 new="$(comm -13 <(echo "$before") <(ids | sort) | cut -d' ' -f1 | sort | uniq -c \
@@ -80,4 +81,4 @@ echo "pushed ${new:-score or text changes only}"
 if [ -n "$new" ]; then
   hub done "New guest reviews on chifstays.com: $new." --button "See them=https://chifstays.com/#reviews"
 fi
-[ ${#failed[@]} -eq 0 ]
+[ -z "$failed" ]
