@@ -15,7 +15,7 @@ Everything on the site is read from the two live Airbnb listings, on
 | Licence | 164578/AL | 164601/AL |
 | Where | Barreiros, Funchal | above Praia Formosa, Funchal |
 | Sleeps | 3 · 2 bedrooms · 2 beds · 1 bath | 3 · 2 bedrooms · 2 beds · 1 bath |
-| Rating | 4.95 from 21 reviews | 4.83 from 6 reviews |
+| Rating | live from `reviews.json` (4.96 / 24 on 18 Nov) | live (4.89 / 9 on 18 Nov) |
 | Badge | Guest favourite (top 10%) | Superhost |
 | Photos | 15 | 13 |
 
@@ -56,5 +56,8 @@ JavaScript off or `prefers-reduced-motion` on, everything is simply visible.
 - **Direct contact.** The site sends every booking to Airbnb. If you want
   direct bookings, a phone number or an email has to be added; I have neither,
   so I left it out rather than making one up.
-- **Reviews.** The counts are shown but no review text is quoted. The words
-  belong to the guests who wrote them on Airbnb.
+- **Reviews.** Since 18 Nov 2026 every Airbnb review with text is on its
+  flat's page, translated by Airbnb where needed, original one tap away, with
+  "Read them on Airbnb" next to it. `fetch-reviews.mjs` writes `reviews.json`;
+  `.github/workflows/reviews.yml` runs it every Monday and rebuilds. The home
+  page shows six, picked by id in `FEATURED` in `build.mjs`.
