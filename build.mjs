@@ -287,7 +287,7 @@ ${image ? `<meta property="og:image" content="${image}"/>\n<meta name="twitter:i
 ${map ? '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>' : ""}
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
 <script type="application/ld+json">${JSON.stringify(jsonld)}</script>
 </head>
@@ -390,7 +390,7 @@ function home() {
   <div class="wrap">
     <div class="hero-copy rv">
       <p class="eyebrow">Funchal · Madeira</p>
-      <h1>Two apartments, <em>both with the sea</em> in the window</h1>
+      <h1>Two apartments, both with the sea in the window</h1>
       <p class="lede">Both sleep three, both have two bedrooms and a terrace of their own. One looks over
       Funchal bay from Barreiros, the other sits on the cliff above Praia Formosa.</p>
     </div>
@@ -434,8 +434,8 @@ ${STAYS.map((s, i) => `
   <div class="wrap">
     <div class="sec-head rv">
       <p class="eyebrow">Guest reviews</p>
-      <h2>${TOTAL} guest reviews, on Airbnb, Booking.com and Vrbo</h2>
-      <p class="lede">Each one written by a guest after their stay, on the site they booked through. Nothing is
+      <h2>${TOTAL} guest reviews</h2>
+      <p class="lede">Each one written by a guest after their stay, on Airbnb, Booking.com or Vrbo. Nothing is
       edited; reviews in other languages show an English translation, with the guest's own words one tap away.</p>
     </div>
     <div class="rv">${siteTiles(SITE_SCORES)}</div>
@@ -506,7 +506,7 @@ ${STAYS.map((s, i) => `
         <div class="ico">${ICON.key}</div>
         <h3>Rated 5.0</h3>
         <p>Across every verified trip, with the same two skippers on board each time.</p>
-        <p style="margin-top:12px"><a class="btn btn-p" href="https://chifbay.com" rel="noopener">chifbay.com</a></p>
+        <p style="margin-top:12px"><a class="btn btn-o" href="https://chifbay.com" rel="noopener">Visit chifbay.com</a></p>
       </div>
     </div>
   </div>
