@@ -15,7 +15,7 @@ Everything on the site is read from the two live Airbnb listings, on
 | Licence | 164578/AL | 164601/AL |
 | Where | Barreiros, Funchal | above Praia Formosa, Funchal |
 | Sleeps | 3 · 2 bedrooms · 2 beds · 1 bath | 3 · 2 bedrooms · 2 beds · 1 bath |
-| Rating | live from `reviews.json` (4.96 / 24 on 18 Nov) | live (4.89 / 9 on 18 Nov) |
+| Rating | Airbnb 4.96/24, Booking 8.8/5, Vrbo 10/4 (18 Nov) | Airbnb 4.89/9, Booking 9.3/11, Vrbo 8.8/3 (18 Nov) |
 | Badge | Guest favourite (top 10%) | Superhost |
 | Photos | 15 | 13 |
 
@@ -56,8 +56,11 @@ JavaScript off or `prefers-reduced-motion` on, everything is simply visible.
 - **Direct contact.** The site sends every booking to Airbnb. If you want
   direct bookings, a phone number or an email has to be added; I have neither,
   so I left it out rather than making one up.
-- **Reviews.** Since 18 Nov 2026 every Airbnb review with text is on its
-  flat's page, translated by Airbnb where needed, original one tap away, with
-  "Read them on Airbnb" next to it. `fetch-reviews.mjs` writes `reviews.json`;
-  `.github/workflows/reviews.yml` runs it every Monday and rebuilds. The home
-  page shows six, picked by id in `FEATURED` in `build.mjs`.
+- **Reviews.** Every review with text from Airbnb, Booking.com and Vrbo is on
+  its flat's page, low scores included, with the guest's own words under any
+  translation. Airbnb: `fetch-reviews.mjs`. Booking.com:
+  `fetch-booking-reviews.py` (Playwright). Vrbo blocks scripts, so its reviews
+  are copied by hand into `reviews-manual.json`. `.github/workflows/reviews.yml`
+  refreshes Airbnb and Booking.com every Monday. The home page shows six,
+  picked by id in `FEATURED` in `build.mjs`. No rating markup in the JSON-LD:
+  Google does not allow ratings taken from other sites.
