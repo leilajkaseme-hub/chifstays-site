@@ -39,14 +39,22 @@ frame.
 
 ## Design
 
-Airbnb-shaped, deliberately not Chifbay-coloured. Chifbay is dark navy with
-gold and a serif display face; this is white with terracotta and one sans.
-The terracotta is the roof tiles in the photos and the teal is the water, so
-the palette comes from the apartments rather than from Airbnb's pink.
+Redone on 18 November 2026. The page opens on the Perla terrace, because the
+terrace and the view are what both flats are booked for. Real listing photos
+only, big and early, framed inside the page width (the originals are 1200px
+wide, so a full-bleed frame would soften them).
 
-The movement is Chifbay's: `.rv` elements start low and faded, an
-IntersectionObserver adds `.in`, and `.rv-group` staggers its children. With
-JavaScript off or `prefers-reduced-motion` on, everything is simply visible.
+- Type: Young Serif for titles, Hanken Grotesk for reading. No Inter, no
+  capital-letter labels above sections.
+- Colour: cool white ground (`--mist` for alternate sections, never beige),
+  one sea blue for every action, a deep Atlantic band for the boat and the
+  footer, terracotta (`--roof`) for small marks only. Gold is review stars.
+- Layout: 7/5 photo and text splits that mirror for the second flat,
+  numbered lists instead of icon cards, cards only for reviews.
+- Motion: the hero photo settles once; blocks fade in as they arrive, with no
+  stagger. Off with `prefers-reduced-motion`.
+- The boat photo (`assets/boat/skippers.webp`) is the two Chifbay skippers,
+  copied from the Chifbay site.
 
 ## Still to decide
 

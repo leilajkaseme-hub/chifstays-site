@@ -77,6 +77,9 @@ const STAYS = [
     badgeNote: "In the top 10% of listings on Airbnb, by rating, reviews and reliability.",
     dir: "perla",
     hero: "terrasse-vue-mer",
+    /* The home page opens on terrasse-vue-mer already, so the flat's own
+       block there leads with the loungers instead of showing it twice. */
+    homeShots: ["balcon-transats", "salon-balcon", "chambre-balcon"],
     // The order the gallery and the lightbox use.
     photos: [
       ["terrasse-vue-mer",   "The XL terrace, looking over the rooftops of Funchal to the sea"],
@@ -287,7 +290,7 @@ ${image ? `<meta property="og:image" content="${image}"/>\n<meta name="twitter:i
 ${map ? '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>' : ""}
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
 <script type="application/ld+json">${JSON.stringify(jsonld)}</script>
 </head>
@@ -358,166 +361,121 @@ ${map ? '<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity
 
 /* --------------------------------------------------------------- home page */
 function home() {
-  const cards = STAYS.map((s) => `
-      <article class="stay rv">
-        <div class="stay-shot">
-          <span class="badge">${esc(s.badge)}</span>
-          ${img(s, [s.hero, s.photos.find((p) => p[0] === s.hero)[1]])}
-        </div>
-        <div class="stay-body">
-          <div class="stay-top">
-            <h3>${esc(s.name)}</h3>
-            ${ratingBlock(s)}
-          </div>
-          <div class="stay-where">${esc(s.area)}</div>
-          <div class="stay-meta">
-            <span>${ICON.guests} ${s.guests} guests</span>
-            <span>${ICON.bed} ${s.bedrooms} bedrooms · ${s.beds} beds</span>
-            <span>${ICON.bath} ${s.baths} bathroom</span>
-          </div>
-          <p>${esc(s.tagline)}.</p>
-          <p class="price"><b>from €${s.nightly}</b> a night · ${s.minNights} nights minimum
-             <span>€10 or more a night under Airbnb, and no service fee</span></p>
-          <div class="stay-cta">
-            <a class="btn btn-p" href="${url(s.slug)}">See the apartment</a>
-            <a class="btn btn-o" href="${url(s.slug)}#book">Check dates</a>
-          </div>
-        </div>
-      </article>`).join("\n");
+  const perla = STAYS.find((s) => s.key === "perla");
+  const lowest = Math.min(...STAYS.map((s) => s.nightly));
+  const photo = (s, file) => s.photos.find((p) => p[0] === file);
+
+  /* One block per flat. The big photo is the terrace, because the terrace is
+     what both flats are booked for; the two small ones show the inside. */
+  const flat = (s, i) => `
+  <article class="flat${i % 2 ? " flip" : ""}" id="${s.slug}">
+    <a class="flat-shots rv" href="${url(s.slug)}" aria-label="See ${esc(s.name)}">
+      ${(s.homeShots || s.photos.slice(0, 3).map((p) => p[0])).map((f, j) => `<figure${j ? "" : ' class="lead"'}>${img(s, photo(s, f))}</figure>`).join("\n      ")}
+    </a>
+    <div class="flat-copy rv">
+      <p class="flat-where">${esc(s.area)} · ${esc(s.badge)}</p>
+      <h3>${esc(s.name)}</h3>
+      <p class="flat-line">${esc(s.tagline)}.</p>
+      <p class="flat-facts">${s.guests} guests · ${s.bedrooms} bedrooms · ${s.baths} bathroom · ${s.minNights} nights minimum</p>
+      <p class="flat-score">${ICON.star}<b>${fmtScore(s.rating, 5)}</b> on Airbnb · ${s.reviewTotal} reviews on 3 sites</p>
+      <p class="flat-price"><b>from €${s.nightly}</b> a night, no service fee</p>
+      <div class="flat-cta">
+        <a class="btn btn-p" href="${url(s.slug)}#book">Check dates</a>
+        <a class="link" href="${url(s.slug)}">See the flat</a>
+      </div>
+    </div>
+  </article>`;
 
   const body = `
-<header class="intro">
-  <div class="wrap">
-    <div class="hero-copy rv">
-      <p class="eyebrow">Funchal · Madeira</p>
-      <h1>Two apartments, <em>both with the sea</em> in the window</h1>
-      <p class="lede">Both sleep three, both have two bedrooms and a terrace of their own. One looks over
-      Funchal bay from Barreiros, the other sits on the cliff above Praia Formosa.</p>
-    </div>
-    <div class="hero-facts rv">
-      <span><b>${STAYS.length}</b> apartments</span>
-      <span><b>${STAYS.reduce((n, s) => n + s.guests, 0)}</b> guests in total</span>
-      <a class="hero-rating" href="#reviews">${ICON.star}<b>${AVG}</b> on Airbnb · ${TOTAL} guest reviews on 3 sites</a>
-      <span>Licensed <b>Alojamento Local</b></span>
+<header class="hero">
+  <div class="hero-frame">
+    <img class="hero-img" src="assets/perla/terrasse-vue-mer.webp" alt="${esc(photo(perla, "terrasse-vue-mer")[1])}"
+         width="1200" height="800" fetchpriority="high" decoding="async"/>
+    <div class="hero-copy">
+      <h1>Two terraces above Funchal bay</h1>
+      <p>Perla do Oceano in Barreiros and Varanda do Sol over Praia Formosa. Two bedrooms each, room for three,
+      and booked here for less than on Airbnb.</p>
+      <div class="hero-cta">
+        <a class="btn btn-light" href="#flats">Choose a flat</a>
+        <a class="hero-rating" href="#reviews">${ICON.star}<b>${AVG}</b> on Airbnb · ${TOTAL} guest reviews</a>
+      </div>
     </div>
   </div>
+  <ul class="hero-facts wrap">
+    <li><b>from €${lowest}</b> a night</li>
+    <li><b>No service fee</b> when you book here</li>
+    <li><b>Met at the door</b> with the keys</li>
+    <li><b>Licensed</b> Alojamento Local</li>
+  </ul>
 </header>
 
-${STAYS.map((s, i) => `
-<section class="flat${i % 2 ? " sand" : ""}" id="${s.slug}">
-  <div class="wrap flat-in${i % 2 ? " flip" : ""}">
-    <div class="flat-shots rv">
-      ${s.photos.slice(0, 3).map((ph, j) => `<figure${j ? "" : ' class="lead"'}>${img(s, ph)}</figure>`).join("\n      ")}
-    </div>
-    <div class="flat-copy rv">
-      <span class="badge-flat">${esc(s.badge)}</span>
-      <h2>${esc(s.name)}</h2>
-      <p class="flat-where">${esc(s.area)}</p>
-      ${ratingBlock(s)}
-      <div class="stay-meta">
-        <span>${ICON.guests} ${s.guests} guests</span>
-        <span>${ICON.bed} ${s.bedrooms} bedrooms · ${s.beds} beds</span>
-        <span>${ICON.bath} ${s.baths} bathroom</span>
-      </div>
-      <p>${esc(s.tagline)}.</p>
-      <p class="price"><b>from €${s.nightly}</b> a night · ${s.minNights} nights minimum
-         <span>€10 or more a night under Airbnb, and no service fee</span></p>
-      <div class="stay-cta">
-        <a class="btn btn-p" href="${url(s.slug)}">See the apartment</a>
-        <a class="btn btn-o" href="${url(s.slug)}#book">Check dates</a>
-      </div>
-    </div>
-  </div>
-</section>`).join("\n")}
-
-<section id="reviews">
+<section id="flats">
   <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">Guest reviews</p>
-      <h2>${TOTAL} guest reviews, on Airbnb, Booking.com and Vrbo</h2>
-      <p class="lede">Each one written by a guest after their stay, on the site they booked through. Nothing is
-      edited; reviews in other languages show an English translation, with the guest's own words one tap away.</p>
+    <h2 class="sec-title rv">Pick your terrace</h2>
+    ${STAYS.map(flat).join("\n")}
+  </div>
+</section>
+
+<section class="mist" id="reviews">
+  <div class="wrap">
+    <div class="sec-split rv">
+      <h2>${TOTAL} guests have written about their stay</h2>
+      <p class="lede">On Airbnb, Booking.com and Vrbo, after they left. Nothing is edited, low scores included;
+      reviews in other languages show an English translation with the guest's own words one tap away.</p>
     </div>
     <div class="rv">${siteTiles(SITE_SCORES)}</div>
-    <div class="revs rv-group">
+    <div class="revs">
       ${FEATURED.map(([k, id]) => {
         const s = STAYS.find((x) => x.key === k);
-        const r = (s.reviewList || []).find((x) => x.id === id);
+        const r = s.reviewList.find((x) => x.id === id);
         return r ? reviewCard(r, { stayName: s.name, reveal: true }) : "";
       }).join("")}
     </div>
     <div class="rev-links rv">
-      ${STAYS.map((s) => `<a class="btn btn-o" href="${url(s.slug)}#reviews">All ${s.reviewTotal} reviews of ${esc(s.name)}</a>`).join("\n      ")}
+      ${STAYS.map((s) => `<a class="link" href="${url(s.slug)}#reviews">All ${s.reviewTotal} reviews of ${esc(s.name)}</a>`).join("\n      ")}
     </div>
   </div>
 </section>
 
-<section class="sand" id="funchal">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">What you get either way</p>
-      <h2>The same three things in both flats</h2>
-    </div>
-    <div class="feats rv-group">
-      <div class="feat rv">
-        <div class="ico">${ICON.wave}</div>
-        <h3>A terrace, not a token balcony</h3>
-        <p>Space for loungers and a table, facing the water. It is where you will spend the evening.</p>
-      </div>
-      <div class="feat rv">
-        <div class="ico">${ICON.key}</div>
-        <h3>Met at the door</h3>
-        <p>Tell us when you land. We hand over the keys in person and show you how everything works.</p>
-      </div>
-      <div class="feat rv">
-        <div class="ico">${ICON.tick}</div>
-        <h3>Licensed and registered</h3>
-        <p>${STAYS.map((s) => `${s.name} is ${s.licence}`).join(", and ")}. Both are registered Alojamento Local.</p>
-      </div>
+<section id="both">
+  <div class="wrap both">
+    <figure class="both-shot rv">${img(STAYS[1], photo(STAYS[1], "coucher-de-soleil"))}</figure>
+    <div class="both-copy rv">
+      <h2>In both flats</h2>
+      <ol class="both-list">
+        <li><h3>A terrace, not a token balcony</h3>
+          <p>Room for loungers and a table, facing the water. It is where the evenings go.</p></li>
+        <li><h3>Met at the door</h3>
+          <p>Tell us when you land. ${esc(HOST.name)} hand over the keys in person and show you how everything works.</p></li>
+        <li><h3>Licensed and registered</h3>
+          <p>${STAYS.map((s) => `${esc(s.name)} is ${s.licence}`).join(", ")}. Both are registered Alojamento Local.</p></li>
+      </ol>
     </div>
   </div>
 </section>
 
-<section id="boat">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">The same crew, on the water</p>
-      <h2>We also run the boat</h2>
-      <p class="lede">Chifbay is our private boat out of Marina do Funchal, the same family, a few minutes
-      from either apartment. One group at a time, never shared: Cabo Girão, a swim at Fajã dos Padres, or the
-      coast at golden hour. Guests staying with us book it directly.</p>
-    </div>
-    <div class="feats rv-group">
-      <div class="feat rv">
-        <div class="ico">${ICON.wave}</div>
-        <h3>The day trip</h3>
-        <p>Two and a half or three hours down the west coast, with swimming and paddle boarding.</p>
-        <p style="margin-top:12px"><a class="btn btn-o" href="https://chifbay.com/hidden-coves-half-day"
-           rel="noopener">See the day trip</a></p>
-      </div>
-      <div class="feat rv">
-        <div class="ico">${ICON.star}</div>
-        <h3>The sunset trip</h3>
-        <p>Two hours to Cabo Girão as the light goes, or two and a half on to Ribeira Brava.</p>
-        <p style="margin-top:12px"><a class="btn btn-o" href="https://chifbay.com/sunset-cruise"
-           rel="noopener">See the sunset trip</a></p>
-      </div>
-      <div class="feat rv">
-        <div class="ico">${ICON.key}</div>
-        <h3>Rated 5.0</h3>
-        <p>Across every verified trip, with the same two skippers on board each time.</p>
-        <p style="margin-top:12px"><a class="btn btn-p" href="https://chifbay.com" rel="noopener">chifbay.com</a></p>
-      </div>
+<section class="sea" id="boat">
+  <div class="wrap boat">
+    <figure class="boat-shot rv"><img src="assets/boat/skippers.webp" alt="The two Chifbay skippers at the wheel, below the cliffs of Madeira"
+      width="900" height="1200" loading="lazy" decoding="async"/></figure>
+    <div class="boat-copy rv">
+      <h2>Same family, on the water</h2>
+      <p class="lede">Chifbay is our private boat out of Marina do Funchal, a few minutes from either flat. One group
+      at a time, never shared, with the same two skippers on board. Rated 5.0 across every verified trip.</p>
+      <ul class="boat-trips">
+        <li><a href="https://chifbay.com/hidden-coves-half-day" rel="noopener"><b>The day trip</b>
+          <span>Two and a half or three hours down the west coast, with swimming and paddle boarding.</span></a></li>
+        <li><a href="https://chifbay.com/sunset-cruise" rel="noopener"><b>The sunset trip</b>
+          <span>Two hours to Cabo Girão as the light goes, or two and a half on to Ribeira Brava.</span></a></li>
+      </ul>
+      <a class="btn btn-light" href="https://chifbay.com" rel="noopener">Visit chifbay.com</a>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">Questions</p>
-      <h2>Before you book</h2>
-    </div>
+<section id="faq">
+  <div class="wrap faq-wrap">
+    <h2 class="rv">Before you book</h2>
     <div class="faq rv">
       <details><summary>How do I book?</summary>
         <p>Here, on this site. Pick your dates on the apartment page and pay by card through Stripe. The
@@ -579,7 +537,7 @@ function listing(s) {
   const body = `
 <div class="wrap listing-head">
   <div class="rv">
-    <p class="eyebrow">${esc(s.area)}</p>
+    <p class="listing-where">${esc(s.area)}</p>
     <h1>${esc(s.name)}</h1>
     <div class="listing-sub">
       ${ratingBlock(s)}
@@ -603,9 +561,9 @@ function listing(s) {
         </div>
         <p class="lede rv">${esc(s.intro)}</p>
 
-        <div class="feats rv-group" style="grid-template-columns:1fr;gap:14px;margin-top:32px">
-          ${s.points.map(([h, p]) => `<div class="feat rv"><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("\n          ")}
-        </div>
+        <ol class="points rv">
+          ${s.points.map(([h, p]) => `<li><h3>${esc(h)}</h3><p>${esc(p)}</p></li>`).join("\n          ")}
+        </ol>
       </section>
 
       <section style="padding-top:14px">
@@ -645,10 +603,9 @@ function listing(s) {
   </div>
 </div>
 
-<section class="sand" id="reviews">
+<section class="mist" id="reviews">
   <div class="wrap">
     <div class="sec-head rv">
-      <p class="eyebrow">Guest reviews</p>
       <h2>${s.reviewTotal} reviews, on three sites</h2>
     </div>
     <div class="rv">${siteTiles(s.sources)}</div>
@@ -665,7 +622,7 @@ function listing(s) {
         return n ? `<button type="button" data-filter="${x.key}" aria-pressed="false">${esc(x.name)} ${n}</button>` : "";
       }).join("\n      ")}
     </div>
-    <div class="revs rv-group">
+    <div class="revs">
       ${s.reviewList.map((r, i) => reviewCard(r, { hidden: i >= 6, reveal: i < 6 })).join("")}
     </div>
     <div class="rev-links rv">
@@ -677,7 +634,6 @@ function listing(s) {
 <section id="where">
   <div class="wrap">
     <div class="sec-head rv">
-      <p class="eyebrow">Where you will be</p>
       <h2>${esc(s.area)}</h2>
       <p class="lede">The circle shows the area. The exact address and the way in come with your booking.</p>
     </div>
@@ -686,7 +642,7 @@ function listing(s) {
   </div>
 </section>
 
-<section>
+<section class="mist">
   <div class="wrap" style="text-align:center">
     <h2 class="rv">Free on your dates?</h2>
     <p class="lede rv" style="margin:14px auto 26px">Book straight here, and keep what Airbnb would have charged you on top.</p>
@@ -738,7 +694,6 @@ function bookingDone() {
   const body = `
 <section style="min-height:60vh;display:grid;place-items:center;text-align:center">
   <div class="wrap" style="max-width:620px">
-    <p class="eyebrow" id="dnEyebrow">Booking</p>
     <h1 id="dnTitle" style="margin-bottom:16px">Checking your booking…</h1>
     <p class="lede" id="dnText" style="margin-inline:auto">One moment.</p>
     <div id="dnFacts" style="margin-top:26px"></div>
