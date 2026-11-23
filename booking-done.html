@@ -72,12 +72,15 @@
       .then(function (b) {
         if (b.status !== 'paid' && tries++ < 4) { setTimeout(check, 2000); return; }
         if (b.status === 'paid') {
-          say('You are booked', 'We have your payment and the dates are yours. You will hear from us with the keys and the arrival details.');
+          say('You are booked', 'We have your deposit and the dates are yours. You will hear from us with the keys and the arrival details.');
           facts.innerHTML = '<ul class="book-list" style="text-align:left;max-width:320px;margin:0 auto">'
             + '<li><span>Arrive</span><b>' + b.from + '</b></li>'
             + '<li><span>Leave</span><b>' + b.to + '</b></li>'
             + '<li><span>Nights</span><b>' + b.nights + '</b></li>'
-            + '<li><span>Paid</span><b>&euro;' + (b.amount / 100).toFixed(0) + '</b></li></ul>';
+            + '<li><span>Stay</span><b>&euro;' + (b.amount / 100).toFixed(0) + '</b></li>'
+            + '<li><span>Paid now</span><b>&euro;' + ((b.deposit != null ? b.deposit : b.amount) / 100).toFixed(0) + '</b></li>'
+            + (b.balance ? '<li><span>On arrival</span><b>&euro;' + (b.balance / 100).toFixed(0) + '</b></li>' : '')
+            + '</ul>' + (b.balance ? '<p style="color:var(--ink-2);font-size:.9rem;margin-top:12px">The rest and the Funchal tourist tax (&euro;2 per adult per night, 7 nights at most) are paid when you arrive.</p>' : '');
         } else {
           say('Payment not completed', 'Nothing has been charged and the dates have been released. You can pick them again whenever you like.');
         }

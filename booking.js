@@ -186,16 +186,19 @@
     total.appendChild(el('span', 'bk-per', n + (n > 1 ? ' nights' : ' night')));
     total.appendChild(el('b', 'bk-amount', '…'));
     s.appendChild(total);
+    /* Filled by quote(): the length discount, then what is paid now (20%)
+       and what is paid on arrival. */
+    s.appendChild(el('div', 'bk-split'));
 
     var name = field(s, 'Your name', 'text', 'bkName');
     var mail = field(s, 'Email', 'email', 'bkMail');
 
-    var go = el('button', 'btn btn-p btn-lg bk-go', 'Book and pay');
+    var go = el('button', 'btn btn-p btn-lg bk-go', 'Book and pay the deposit');
     go.type = 'button';
     go.onclick = function () { checkout(name.value, mail.value, go); };
     s.appendChild(go);
 
-    s.appendChild(el('p', 'bk-note', 'Card payment through Stripe. No Airbnb service fee.'));
+    s.appendChild(el('p', 'bk-note', 'Card payment through Stripe. No Airbnb fees. The Funchal tourist tax (€2 per adult per night, 7 nights at most) is paid on arrival.'));
     return s;
   }
 
@@ -235,13 +238,32 @@
       .then(function (r) { return r.json().then(function (b) { return { ok: r.ok, b: b }; }); })
       .then(function (res) {
         if (!res.ok) { box.textContent = '—'; showError(res.b.error); return; }
-        box.textContent = '€' + (res.b.amount / 100).toFixed(0);
+        var b = res.b, e = function (c) { return '€' + (c / 100).toFixed(0); };
+        box.textContent = e(b.amount);
         var per = root.querySelector('.bk-per');
-        if (per && res.b.perNight) {
-          per.textContent = n2(res.b) + ' · €' + (res.b.perNight / 100).toFixed(0) + ' a night';
+        if (per && b.perNight) {
+          per.textContent = n2(b) + ' · ' + e(b.perNight) + ' a night';
+        }
+        var split = root.querySelector('.bk-split');
+        if (split) {
+          split.innerHTML = '';
+          if (b.discountPct) split.appendChild(line((b.discountPct === 10 ? 'Monthly' : 'Weekly') + ' price, ' + b.discountPct + '% off', '−' + e(b.discount)));
+          if (b.deposit != null) {
+            split.appendChild(line('Pay now to book (20%)', e(b.deposit), true));
+            split.appendChild(line('Pay on arrival', e(b.balance)));
+            var go = root.querySelector('.bk-go');
+            if (go && !go.disabled) go.textContent = 'Book and pay ' + e(b.deposit) + ' now';
+          }
         }
       })
       .catch(function () { box.textContent = '—'; });
+  }
+
+  function line(label, value, strong) {
+    var r = el('div', 'bk-row' + (strong ? ' bk-now' : ''));
+    r.appendChild(el('span', null, label));
+    r.appendChild(el('b', null, value));
+    return r;
   }
 
   function showError(msg) {
@@ -266,7 +288,7 @@
       .then(function (res) {
         if (res.ok && res.b.url) { location.href = res.b.url; return; }
         button.disabled = false;
-        button.textContent = 'Book and pay';
+        button.textContent = 'Book and pay the deposit';
         /* A week that went while the guest was choosing: reload the calendar so
            the greyed nights are current, rather than leaving them staring at a
            refusal they cannot see the reason for. */
@@ -275,7 +297,7 @@
       })
       .catch(function () {
         button.disabled = false;
-        button.textContent = 'Book and pay';
+        button.textContent = 'Book and pay the deposit';
         showError('Could not reach the booking service. Please try again.');
       });
   }

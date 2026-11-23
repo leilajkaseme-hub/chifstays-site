@@ -367,6 +367,9 @@ footer li{margin-bottom:9px}
 .bk-total{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
   padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:14px}
 .bk-amount{font-size:1.5rem;letter-spacing:-.03em}
+.bk-split{margin:-4px 0 14px}
+.bk-split .bk-row{margin-bottom:6px;color:var(--ink-2)}
+.bk-split .bk-now{color:var(--ink);font-weight:600}
 .bk-field{display:block;margin-bottom:10px}
 .bk-field span{display:block;font-size:.78rem;font-weight:600;color:var(--ink-2);margin-bottom:4px}
 .bk-field input{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;

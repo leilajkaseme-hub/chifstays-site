@@ -70,10 +70,10 @@ const STAYS = [
     geo: [32.6474, -16.9333],
     guests: 3, bedrooms: 2, beds: 2, baths: 1,
     rating: 4.95, reviews: 21,
-    /* Read off the host calendar on 4 September 2026. airbnbNightly is what
-       Airbnb charges before its own service fee; nightly is what we charge
-       here, and there is no service fee on top of it. */
-    airbnbNightly: 126, nightly: 115, minNights: 7, leadDays: 2,
+    /* 23 Nov 2026: nightly = the lowest rate here, Airbnb's own price without
+       Airbnb's fee (Airbnb 134.65 / 1.14). The full table is in the booking
+       Worker (ST_RATES); the server prices every stay, never this file. */
+    airbnbNightly: 135, nightly: 118, minNights: 7, leadDays: 2,
     badge: "Guest favourite",
     badgeNote: "In the top 10% of listings on Airbnb, by rating, reviews and reliability.",
     dir: "perla",
@@ -167,7 +167,7 @@ const STAYS = [
     geo: [32.6372, -16.9469],
     guests: 3, bedrooms: 2, beds: 2, baths: 1,
     rating: 4.83, reviews: 6,
-    airbnbNightly: 176, nightly: 165, minNights: 7, leadDays: 2,
+    airbnbNightly: 149, nightly: 131, minNights: 7, leadDays: 2,
     badge: "Superhost",
     badgeNote: "Free parking on site, which is rare in this part of Funchal.",
     dir: "varanda",
@@ -563,7 +563,7 @@ function home() {
           </div>
           <p>${esc(s.tagline)}.</p>
           <p class="price"><b>from €${s.nightly}</b> a night · ${s.minNights} nights minimum
-             <span>€10 or more a night under Airbnb, and no service fee</span></p>
+             <span>Airbnb's own price without Airbnb's fees. 20% to book, the rest on arrival</span></p>
           <div class="stay-cta">
             <a class="btn btn-p" href="${url(s.slug)}">See the apartment</a>
             <a class="btn btn-o" href="${url(s.slug)}#book">Check dates</a>
@@ -607,7 +607,7 @@ ${STAYS.map((s, i) => `
       </div>
       <p>${esc(s.tagline)}.</p>
       <p class="price"><b>from €${s.nightly}</b> a night · ${s.minNights} nights minimum
-         <span>€10 or more a night under Airbnb, and no service fee</span></p>
+         <span>Airbnb's own price without Airbnb's fees. 20% to book, the rest on arrival</span></p>
       <div class="stay-cta">
         <a class="btn btn-p" href="${url(s.slug)}">See the apartment</a>
         <a class="btn btn-o" href="${url(s.slug)}#book">Check dates</a>
@@ -699,11 +699,13 @@ ${nearbyBlock(null)}
     </div>
     <div class="faq rv">
       <details><summary>How do I book?</summary>
-        <p>Here, on this site. Pick your dates on the apartment page and pay by card through Stripe. The
+        <p>Here, on this site. Pick your dates on the apartment page and pay a 20% deposit by card through Stripe;
+        the rest is paid when you arrive. The
         calendar shows what is actually free: it reads the same availability as Airbnb, Vrbo and Booking, so a
         night sold anywhere is closed everywhere.</p></details>
       <details><summary>Is it cheaper than Airbnb?</summary>
-        <p>Yes, twice over. The nightly rate here is lower, and there is no Airbnb service fee on top.</p></details>
+        <p>Yes. You pay the same price as on Airbnb without Airbnb's fees, with the same weekly (5%) and monthly (10%)
+        discounts. Only 20% is paid online to book; the rest is paid on arrival.</p></details>
       <details><summary>How many people can stay?</summary>
         <p>Three in each apartment. Both have two bedrooms, two beds and one bathroom.</p></details>
       <details><summary>Is there parking?</summary>
@@ -807,8 +809,8 @@ function listing(s) {
       <div class="book rv">
         ${ratingBlock(s)}
         <div class="book-price"><b>from €${s.nightly}</b> <span>a night</span></div>
-        <p class="book-save">Always at least €10 a night under the same flat on Airbnb,
-           and no Airbnb service fee on top. Pick your dates for the exact price.</p>
+        <p class="book-save">Airbnb's own price without Airbnb's fees: 5% off a week, 10% off a month.
+           Pay 20% to book, the rest on arrival. Pick your dates for the exact price.</p>
         <h3>${esc(s.badge)}</h3>
         <p style="color:var(--ink-2);font-size:.94rem">${esc(s.badgeNote)}</p>
         <div id="book" data-stay="${s.key}" data-nightly="${s.nightly}"
@@ -942,12 +944,15 @@ function bookingDone() {
       .then(function (b) {
         if (b.status !== 'paid' && tries++ < 4) { setTimeout(check, 2000); return; }
         if (b.status === 'paid') {
-          say('You are booked', 'We have your payment and the dates are yours. You will hear from us with the keys and the arrival details.');
+          say('You are booked', 'We have your deposit and the dates are yours. You will hear from us with the keys and the arrival details.');
           facts.innerHTML = '<ul class="book-list" style="text-align:left;max-width:320px;margin:0 auto">'
             + '<li><span>Arrive</span><b>' + b.from + '</b></li>'
             + '<li><span>Leave</span><b>' + b.to + '</b></li>'
             + '<li><span>Nights</span><b>' + b.nights + '</b></li>'
-            + '<li><span>Paid</span><b>&euro;' + (b.amount / 100).toFixed(0) + '</b></li></ul>';
+            + '<li><span>Stay</span><b>&euro;' + (b.amount / 100).toFixed(0) + '</b></li>'
+            + '<li><span>Paid now</span><b>&euro;' + ((b.deposit != null ? b.deposit : b.amount) / 100).toFixed(0) + '</b></li>'
+            + (b.balance ? '<li><span>On arrival</span><b>&euro;' + (b.balance / 100).toFixed(0) + '</b></li>' : '')
+            + '</ul>' + (b.balance ? '<p style="color:var(--ink-2);font-size:.9rem;margin-top:12px">The rest and the Funchal tourist tax (&euro;2 per adult per night, 7 nights at most) are paid when you arrive.</p>' : '');
         } else {
           say('Payment not completed', 'Nothing has been charged and the dates have been released. You can pick them again whenever you like.');
         }
