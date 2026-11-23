@@ -242,12 +242,14 @@
         box.textContent = e(b.amount);
         var per = root.querySelector('.bk-per');
         if (per && b.perNight) {
-          per.textContent = n2(b) + ' · ' + e(b.perNight) + ' a night';
+          // The nightly rate before the length discount, so nights x rate
+          // minus the discount line gives the total shown.
+          per.textContent = n2(b) + ' · ' + e(b.gross != null ? Math.round(b.gross / b.count) : b.perNight) + ' a night';
         }
         var split = root.querySelector('.bk-split');
         if (split) {
           split.innerHTML = '';
-          if (b.discountPct) split.appendChild(line((b.discountPct === 10 ? 'Monthly' : 'Weekly') + ' price, ' + b.discountPct + '% off', '−' + e(b.discount)));
+          if (b.discountPct) split.appendChild(line((b.discountPct === 10 ? 'Monthly' : 'Weekly') + ' discount (' + b.discountPct + '%), already in the total', '−' + e(b.discount)));
           if (b.deposit != null) {
             split.appendChild(line('Pay now to book (20%)', e(b.deposit), true));
             split.appendChild(line('Pay on arrival', e(b.balance)));
