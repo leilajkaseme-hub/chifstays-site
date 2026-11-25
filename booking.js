@@ -28,6 +28,7 @@
   var LEAD = Number(root.dataset.lead);
 
   var blocked = null;          // Set of YYYY-MM-DD, null until the API answers
+  var lastNight = null;        // last night sold (12 months ahead, the Airbnb feed limit)
   var from = null, to = null;
   var month = new Date();
   month.setDate(1);
@@ -109,6 +110,9 @@
 
       var isBlocked = blocked.has(date);
       var tooSoon = date < earliest;
+      /* Past lastNight we cannot see Airbnb, so no arrival there. The day
+         after it is still a valid check-out. */
+      var tooFar = !!lastNight && (from && !to ? date > addDays(lastNight, 1) : date > lastNight);
 
       /* Once an arrival is chosen, every date that would make a stay shorter
          than the minimum is switched off. Before this, a guest could pick six
@@ -119,9 +123,10 @@
       if (from && !to) tooShort = date > from && date < addDays(from, MIN);
 
       if (isBlocked) b.classList.add('is-taken');
-      if (tooSoon) b.classList.add('is-past');
+      if (tooSoon || tooFar) b.classList.add('is-past');
       if (tooShort) b.classList.add('is-short');
-      b.disabled = isBlocked || tooSoon || tooShort;
+      b.disabled = isBlocked || tooSoon || tooShort || tooFar;
+      if (tooFar) b.title = 'Bookings open 12 months ahead';
       if (isBlocked) b.title = 'Already booked';
       if (tooShort) b.title = MIN + ' nights minimum';
 
@@ -226,6 +231,7 @@
       .then(function (d) {
         if (!d.blocked) throw new Error('no calendar');
         blocked = new Set(d.blocked);
+        lastNight = d.lastNight || null;
         render();
       })
       .catch(function () { blocked = false; render(); });
